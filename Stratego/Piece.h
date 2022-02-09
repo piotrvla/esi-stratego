@@ -2,9 +2,9 @@
 #define PIECE_H
 
 class Piece{
-
+    Piece(char symbole);
     char symbole;
-    bool isVisible;
+    bool isVisible=false;
 
     /**
      * @brief changeVisibility
