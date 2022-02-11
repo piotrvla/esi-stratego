@@ -185,7 +185,7 @@
 											"top": 204,
 											"width": 321.17236328125,
 											"height": 13,
-											"text": "-attack(rank1: integer, rank2 : integer): boolean",
+											"text": "-attack(piece1 : Piece, piece2 : Piece): Piece",
 											"horizontalAlignment": 0
 										},
 										{
@@ -255,30 +255,13 @@
 											"height": 13,
 											"text": "-isInside(Position pos)",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF+579O8LX9lVs=",
-											"_parent": {
-												"$ref": "AAAAAAF+w67107Ah+jY="
-											},
-											"model": {
-												"$ref": "AAAAAAF+579O57X6GXU="
-											},
-											"font": "Arial;13;0",
-											"left": 93,
-											"top": 279,
-											"width": 321.17236328125,
-											"height": 13,
-											"text": "-canStepOn(pos: Position)",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 88,
 									"top": 184,
 									"width": 331.17236328125,
-									"height": 113
+									"height": 98
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -2235,6 +2218,7 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "size",
+							"documentation": "const size of the board n x n, used to initialize the  2d array with its value\n",
 							"visibility": "private",
 							"type": "int"
 						}
@@ -2247,6 +2231,7 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "move",
+							"documentation": "Moves the piece given in the argument to the given direction by n cases, 1 by default.  Then at its new position if there's an enemy piece, it process to attack.",
 							"visibility": "package",
 							"parameters": [
 								{
@@ -2289,6 +2274,7 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "attack",
+							"documentation": "Two pieces are proceeding to attack, the stronger one is returned as the winner. ",
 							"visibility": "private",
 							"parameters": [
 								{
@@ -2297,8 +2283,10 @@
 									"_parent": {
 										"$ref": "AAAAAAF+w8AdDND/mXs="
 									},
-									"name": "rank1",
-									"type": "integer"
+									"name": "piece1 ",
+									"type": {
+										"$ref": "AAAAAAF+w68N7rBCzhA="
+									}
 								},
 								{
 									"_type": "UMLParameter",
@@ -2306,8 +2294,10 @@
 									"_parent": {
 										"$ref": "AAAAAAF+w8AdDND/mXs="
 									},
-									"name": "rank2 ",
-									"type": "integer"
+									"name": "piece2 ",
+									"type": {
+										"$ref": "AAAAAAF+w68N7rBCzhA="
+									}
 								},
 								{
 									"_type": "UMLParameter",
@@ -2315,7 +2305,9 @@
 									"_parent": {
 										"$ref": "AAAAAAF+w8AdDND/mXs="
 									},
-									"type": "boolean",
+									"type": {
+										"$ref": "AAAAAAF+w68N7rBCzhA="
+									},
 									"direction": "return"
 								}
 							]
@@ -2406,28 +2398,6 @@
 									},
 									"name": "Position pos",
 									"type": ""
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF+579O57X6GXU=",
-							"_parent": {
-								"$ref": "AAAAAAF+w6710rAYCmw="
-							},
-							"name": "canStepOn",
-							"visibility": "private",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF+57+hLLZLIKU=",
-									"_parent": {
-										"$ref": "AAAAAAF+579O57X6GXU="
-									},
-									"name": "pos",
-									"type": {
-										"$ref": "AAAAAAF+3ZXBhLmk2WM="
-									}
 								}
 							]
 						}
