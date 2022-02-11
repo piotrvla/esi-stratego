@@ -4,10 +4,14 @@
 class Piece{
 private:
     char symbole;
-    bool isVisible=false;
+    unsigned player;
+    //bool isVisible=false;
 
 public:
-    Piece(char symbole);
-    void changeVisibility();
+    Piece(unsigned player, char symbole);
+    inline char getSymbole();
+    inline unsigned getPlayer();
+    /*bool getVisibility();
+    void changeVisibility();*/
 };
 #endif // PIECE_H

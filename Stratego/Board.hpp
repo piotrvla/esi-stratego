@@ -11,6 +11,7 @@ namespace Modele{
     private:
         std::array<std::array<std::optional<Piece>,10>,10> board;
 
+        void initializeArmy();
         Piece attack(Piece piece, Piece piece2);
         void swapPieces(Position pos1, Position pos2);
         inline bool isInside(Position pos);
@@ -18,9 +19,8 @@ namespace Modele{
 
         public:
         Board();
-        void initializeArmy();
-        void move(Piece piece, Direction direction, int distance);
-        inline Piece getPiece(Position pos);
+        void move(Piece piece, Direction direction, int distance=1);
+        inline std::optional<Piece> getPiece(Position pos);
     };
 };
 #endif // BOARD_H
