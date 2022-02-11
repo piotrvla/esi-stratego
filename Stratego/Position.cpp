@@ -1,9 +1,11 @@
 #include <Position.hpp>
 
-inline int Position::getX(){
+Position::Position(int x, int y ):x{x},y{y}{}
+
+
+int Position::getX(){
     return x;
 }
-
-inline int Position::getY(){
+int Position::getY(){
     return y;
 }

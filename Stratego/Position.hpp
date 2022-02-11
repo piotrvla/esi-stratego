@@ -7,7 +7,7 @@ private:
 
 public:
     Position(int x, int y );
-    inline int getX();
-    inline int getY();
+    int getX();
+    int getY();
 };
 #endif // POSITION_H

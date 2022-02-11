@@ -8,18 +8,18 @@
 
 namespace Modele{
     class Board {
-    private:
-        std::array<std::array<std::optional<Piece>,10>,10> board;
+        static const unsigned BOARD_SIZE = 10;
+        std::array<std::array<std::optional<Piece>,BOARD_SIZE>,BOARD_SIZE> board;
 
         void initializeArmy();
-        Piece attack(Piece piece, Piece piece2);
+        Piece attack(std::optional<Piece> piece, std::optional<Piece> piece2);
         void swapPieces(Position pos1, Position pos2);
         inline bool isInside(Position pos);
         inline bool isPiece(Position pos);
-
+        void setPiece(Position pos, std::optional<Piece>);
         public:
         Board();
-        void move(Piece piece, Direction direction, int distance=1);
+        void move(Position pos, Direction direction, int distance=1);
         inline std::optional<Piece> getPiece(Position pos);
     };
 };

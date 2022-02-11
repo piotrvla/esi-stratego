@@ -8,9 +8,9 @@ private:
     //bool isVisible=false;
 
 public:
-    Piece(unsigned player, char symbole);
-    inline char getSymbole();
-    inline unsigned getPlayer();
+    Piece (char symbole,unsigned player);
+    char getSymbole();
+    unsigned getPlayer();
     /*bool getVisibility();
     void changeVisibility();*/
 };
