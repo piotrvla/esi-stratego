@@ -136,13 +136,30 @@
 											"height": 13,
 											"text": "-size: int",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF+5/ZEJd1zhHk=",
+											"_parent": {
+												"$ref": "AAAAAAF+w67107Agk/o="
+											},
+											"model": {
+												"$ref": "AAAAAAF+5/ZEHd1w/n0="
+											},
+											"font": "Arial;13;0",
+											"left": 93,
+											"top": 181,
+											"width": 321.17236328125,
+											"height": 13,
+											"text": "-cheatMode: boolean",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 88,
 									"top": 161,
 									"width": 331.17236328125,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -165,7 +182,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 93,
-											"top": 189,
+											"top": 204,
 											"width": 321.17236328125,
 											"height": 13,
 											"text": "~move(piece : Piece, direction : Direction, distance : int)",
@@ -182,10 +199,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 93,
-											"top": 204,
+											"top": 219,
 											"width": 321.17236328125,
 											"height": 13,
-											"text": "-attack(rank1: integer, rank2 : integer): boolean",
+											"text": "-attack(piece1 : Piece, piece2 : Piece): Piece",
 											"horizontalAlignment": 0
 										},
 										{
@@ -199,7 +216,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 93,
-											"top": 219,
+											"top": 234,
 											"width": 321.17236328125,
 											"height": 13,
 											"text": "~initializeArmy(textfile: .txt)",
@@ -216,27 +233,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 93,
-											"top": 234,
-											"width": 321.17236328125,
-											"height": 13,
-											"text": "~swap(Position pos1, Position pos)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF+3Zc38LyAdIc=",
-											"_parent": {
-												"$ref": "AAAAAAF+w67107Ah+jY="
-											},
-											"model": {
-												"$ref": "AAAAAAF+3Zc36rx9QKw="
-											},
-											"font": "Arial;13;0",
-											"left": 93,
 											"top": 249,
 											"width": 321.17236328125,
 											"height": 13,
-											"text": "~getPiece(Position: pos)",
+											"text": "~swap(Position pos1, Position pos)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -255,30 +255,13 @@
 											"height": 13,
 											"text": "-isInside(Position pos)",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF+579O8LX9lVs=",
-											"_parent": {
-												"$ref": "AAAAAAF+w67107Ah+jY="
-											},
-											"model": {
-												"$ref": "AAAAAAF+579O57X6GXU="
-											},
-											"font": "Arial;13;0",
-											"left": 93,
-											"top": 279,
-											"width": 321.17236328125,
-											"height": 13,
-											"text": "-canStepOn(pos: Position)",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 88,
-									"top": 184,
+									"top": 199,
 									"width": 331.17236328125,
-									"height": 113
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -2235,8 +2218,20 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "size",
+							"documentation": "const size of the board n x n, used to initialize the  2d array with its value\n",
 							"visibility": "private",
 							"type": "int"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAF+5/ZEHd1w/n0=",
+							"_parent": {
+								"$ref": "AAAAAAF+w6710rAYCmw="
+							},
+							"name": "cheatMode",
+							"documentation": "indicates if the cheat mode is on, used to set all the pieces visible.\n",
+							"visibility": "private",
+							"type": "boolean"
 						}
 					],
 					"operations": [
@@ -2247,6 +2242,7 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "move",
+							"documentation": "Moves the piece given in the argument to the given direction by n cases, 1 by default.  Then at its new position if there's an enemy piece, it process to attack.\n",
 							"visibility": "package",
 							"parameters": [
 								{
@@ -2289,6 +2285,7 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "attack",
+							"documentation": "Two pieces are proceeding to attack, the stronger one is returned as the winner. ",
 							"visibility": "private",
 							"parameters": [
 								{
@@ -2297,8 +2294,10 @@
 									"_parent": {
 										"$ref": "AAAAAAF+w8AdDND/mXs="
 									},
-									"name": "rank1",
-									"type": "integer"
+									"name": "piece1 ",
+									"type": {
+										"$ref": "AAAAAAF+w68N7rBCzhA="
+									}
 								},
 								{
 									"_type": "UMLParameter",
@@ -2306,8 +2305,10 @@
 									"_parent": {
 										"$ref": "AAAAAAF+w8AdDND/mXs="
 									},
-									"name": "rank2 ",
-									"type": "integer"
+									"name": "piece2 ",
+									"type": {
+										"$ref": "AAAAAAF+w68N7rBCzhA="
+									}
 								},
 								{
 									"_type": "UMLParameter",
@@ -2315,7 +2316,9 @@
 									"_parent": {
 										"$ref": "AAAAAAF+w8AdDND/mXs="
 									},
-									"type": "boolean",
+									"type": {
+										"$ref": "AAAAAAF+w68N7rBCzhA="
+									},
 									"direction": "return"
 								}
 							]
@@ -2327,6 +2330,7 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "initializeArmy",
+							"documentation": "Initializes the pieces of 1 player from the .txt file.",
 							"visibility": "package",
 							"parameters": [
 								{
@@ -2347,6 +2351,7 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "swap",
+							"documentation": "Swaps two pieces at the given position of the same player, used only during initialization phase of the game.\n ",
 							"visibility": "package",
 							"parameters": [
 								{
@@ -2371,31 +2376,12 @@
 						},
 						{
 							"_type": "UMLOperation",
-							"_id": "AAAAAAF+3Zc36rx9QKw=",
-							"_parent": {
-								"$ref": "AAAAAAF+w6710rAYCmw="
-							},
-							"name": "getPiece",
-							"visibility": "package",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF+3ZyV7b7Jkh4=",
-									"_parent": {
-										"$ref": "AAAAAAF+3Zc36rx9QKw="
-									},
-									"name": "Position",
-									"type": "pos"
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
 							"_id": "AAAAAAF+3Zy9C78BC3M=",
 							"_parent": {
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "isInside",
+							"documentation": "Checks if the position is in the inside the board.",
 							"visibility": "private",
 							"parameters": [
 								{
@@ -2406,28 +2392,6 @@
 									},
 									"name": "Position pos",
 									"type": ""
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF+579O57X6GXU=",
-							"_parent": {
-								"$ref": "AAAAAAF+w6710rAYCmw="
-							},
-							"name": "canStepOn",
-							"visibility": "private",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF+57+hLLZLIKU=",
-									"_parent": {
-										"$ref": "AAAAAAF+579O57X6GXU="
-									},
-									"name": "pos",
-									"type": {
-										"$ref": "AAAAAAF+3ZXBhLmk2WM="
-									}
 								}
 							]
 						}
@@ -2498,6 +2462,7 @@
 								"$ref": "AAAAAAF+w69fILBs6Cc="
 							},
 							"name": "currentPlayer",
+							"documentation": "ID of current player",
 							"visibility": "private",
 							"type": "int"
 						},
@@ -2508,6 +2473,7 @@
 								"$ref": "AAAAAAF+w69fILBs6Cc="
 							},
 							"name": "state",
+							"documentation": "current state of the game",
 							"visibility": "private",
 							"type": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
@@ -2624,6 +2590,7 @@
 						"$ref": "AAAAAAF+w66t6bASbrg="
 					},
 					"name": "Direction",
+					"documentation": "All different possible directions to move in the game.",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2666,6 +2633,7 @@
 						"$ref": "AAAAAAF+w66t6bASbrg="
 					},
 					"name": "State",
+					"documentation": "Different states of the game.",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2673,7 +2641,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
 							},
-							"name": "NOT_STARTED"
+							"name": "NOT_STARTED",
+							"documentation": "Game not started, used to initialize the army of both players."
 						},
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2681,7 +2650,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
 							},
-							"name": "MOVING"
+							"name": "MOVING",
+							"documentation": "Indicates that one of the players have to move."
 						},
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2689,7 +2659,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
 							},
-							"name": "NEXT_PLAYER"
+							"name": "NEXT_PLAYER",
+							"documentation": "Turn ended, player is changed."
 						},
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2697,7 +2668,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
 							},
-							"name": "GAME_OVER"
+							"name": "GAME_OVER",
+							"documentation": "The flag has been captured, it's game over."
 						}
 					]
 				},
@@ -2708,6 +2680,7 @@
 						"$ref": "AAAAAAF+w66t6bASbrg="
 					},
 					"name": "Position",
+					"documentation": "Position in the game x and y",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
