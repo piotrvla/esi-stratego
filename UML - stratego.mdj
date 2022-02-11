@@ -2229,6 +2229,7 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "cheatMode",
+							"documentation": "indicates if the cheat mode is on, used to set all the pieces visible.\n",
 							"visibility": "private",
 							"type": "boolean"
 						}
@@ -2461,6 +2462,7 @@
 								"$ref": "AAAAAAF+w69fILBs6Cc="
 							},
 							"name": "currentPlayer",
+							"documentation": "ID of current player",
 							"visibility": "private",
 							"type": "int"
 						},
@@ -2471,6 +2473,7 @@
 								"$ref": "AAAAAAF+w69fILBs6Cc="
 							},
 							"name": "state",
+							"documentation": "current state of the game",
 							"visibility": "private",
 							"type": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
@@ -2587,6 +2590,7 @@
 						"$ref": "AAAAAAF+w66t6bASbrg="
 					},
 					"name": "Direction",
+					"documentation": "All different possible directions to move in the game.",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2629,6 +2633,7 @@
 						"$ref": "AAAAAAF+w66t6bASbrg="
 					},
 					"name": "State",
+					"documentation": "Different states of the game.",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2636,7 +2641,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
 							},
-							"name": "NOT_STARTED"
+							"name": "NOT_STARTED",
+							"documentation": "Game not started, used to initialize the army of both players."
 						},
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2644,7 +2650,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
 							},
-							"name": "MOVING"
+							"name": "MOVING",
+							"documentation": "Indicates that one of the players have to move."
 						},
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2652,7 +2659,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
 							},
-							"name": "NEXT_PLAYER"
+							"name": "NEXT_PLAYER",
+							"documentation": "Turn ended, player is changed."
 						},
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -2660,7 +2668,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+w/brnvwtgGM="
 							},
-							"name": "GAME_OVER"
+							"name": "GAME_OVER",
+							"documentation": "The flag has been captured, it's game over."
 						}
 					]
 				},
@@ -2671,6 +2680,7 @@
 						"$ref": "AAAAAAF+w66t6bASbrg="
 					},
 					"name": "Position",
+					"documentation": "Position in the game x and y",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
