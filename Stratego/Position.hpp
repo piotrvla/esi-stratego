@@ -3,11 +3,11 @@
 
 class Position{
 private:
-    int x,y;
+    unsigned x,y;
 
 public:
-    Position(int x, int y );
-    int getX();
-    int getY();
+    Position(unsigned x, unsigned y );
+    unsigned getX();
+    unsigned getY();
 };
 #endif // POSITION_H
