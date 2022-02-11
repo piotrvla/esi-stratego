@@ -2,16 +2,12 @@
 #define PIECE_H
 
 class Piece{
-    Piece(char symbole);
+private:
     char symbole;
     bool isVisible=false;
 
-    /**
-     * @brief changeVisibility
-     */
+public:
+    Piece(char symbole);
     void changeVisibility();
-
-
-
 };
 #endif // PIECE_H

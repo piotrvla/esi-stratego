@@ -1,6 +1,7 @@
 #ifndef STATE_H
 #define STATE_H
-#include <Position.h>
+#include <Position.hpp>
+
 enum class State{
     NOT_STARTED,
     NEXT_PLAYER,

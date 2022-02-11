@@ -1,9 +1,12 @@
 #ifndef POSITION_H
 #define POSITION_H
+
 class Position{
-    Position(int x, int y );
+private:
     int x,y;
+
 public:
+    Position(int x, int y );
     inline int getX(){
         return this->x;
     }
