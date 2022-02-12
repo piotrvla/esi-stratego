@@ -70,10 +70,11 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
                 throw std::invalid_argument("Cannot move there! Out of the board");
             if(isPiece(moveAt) && getPiece(moveAt).value().getSymbole()=='W')
                 throw std::invalid_argument("Obstacle at given destination");
+            if(isPiece(moveAt)&& getPiece(pos)->getPlayer()==getPiece(moveAt)->getPlayer())
+                throw std::invalid_argument("Cannot attack same player's piece");
             if(distance!=1){
                 for(int i=1;i<distance;i++){
-                    if(isInside(Position{pos.getX(),pos.getY()+i})
-                            && isPiece(Position{pos.getX(),pos.getY()+i}))
+                    if(isPiece(Position{pos.getX(),pos.getY()+i}))
                         throw std::invalid_argument("Piece cannot move there!");
                 }
             }
@@ -87,10 +88,11 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
                 throw std::invalid_argument("Cannot move there! Out of the board");
             if(isPiece(moveAt) && getPiece(moveAt).value().getSymbole()=='W')
                 throw std::invalid_argument("Obstacle at given destination");
+            if(isPiece(moveAt)&& getPiece(pos)->getPlayer()==getPiece(moveAt)->getPlayer())
+                throw std::invalid_argument("Cannot attack same player's piece");
             if(distance!=1){
                 for(int i=1;i<distance;i++){
-                    if(isInside(Position{pos.getX()-i,pos.getY()})
-                            && isPiece(Position{pos.getX()-i,pos.getY()}))
+                    if(isPiece(Position{pos.getX()-i,pos.getY()}))
                         throw std::invalid_argument("Piece cannot move there!");
                 }
             }
@@ -107,10 +109,11 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
                 throw std::invalid_argument("Cannot move there! Out of the board");
             if(isPiece(moveAt) && getPiece(moveAt).value().getSymbole()=='W')
                 throw std::invalid_argument("Obstacle at given destination");
+            if(isPiece(moveAt)&& getPiece(pos)->getPlayer()==getPiece(moveAt)->getPlayer())
+                throw std::invalid_argument("Cannot attack same player's piece");
             if(distance!=1){
                 for(int i=1;i<distance;i++){
-                    if(isInside(Position{pos.getX()+i,pos.getY()})
-                            && isPiece(Position{pos.getX()+i,pos.getY()}))
+                    if(isPiece(Position{pos.getX()+i,pos.getY()}))
                         throw std::invalid_argument("Piece cannot move there!");
                 }
             }
@@ -123,10 +126,11 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
                 throw std::invalid_argument("Cannot move there! Out of the board");
             if(isPiece(moveAt) && getPiece(moveAt).value().getSymbole()=='W')
                 throw std::invalid_argument("Obstacle at given destination");
+            if(isPiece(moveAt)&& getPiece(pos)->getPlayer()==getPiece(moveAt)->getPlayer())
+                throw std::invalid_argument("Cannot attack same player's piece");
             if(distance!=1){
                 for(int i=1;i<distance;i++){
-                    if(isInside(Position{pos.getX(),pos.getY()-distance})
-                            && isPiece(Position{pos.getX(),pos.getY()-distance}))
+                    if(isPiece(Position{pos.getX(),pos.getY()-distance}))
                         throw std::invalid_argument("Piece cannot move there!");
                 }
             }
