@@ -270,7 +270,7 @@
 											"top": 407,
 											"width": 397.42041015625,
 											"height": 13,
-											"text": "~initializeArmy(fileName : String)",
+											"text": "-initializeArmy(fileName : String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -907,23 +907,6 @@
 										},
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAF+58Mjkri3pgQ=",
-											"_parent": {
-												"$ref": "AAAAAAF+w69fIbB1y5c="
-											},
-											"model": {
-												"$ref": "AAAAAAF+58MjiLi0//0="
-											},
-											"font": "Arial;13;0",
-											"left": 613,
-											"top": 706,
-											"width": 312.4951171875,
-											"height": 13,
-											"text": "+initializeArmy(fileName : String)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
 											"_id": "AAAAAAF+7fNolt8JYDI=",
 											"_parent": {
 												"$ref": "AAAAAAF+w69fIbB1y5c="
@@ -933,7 +916,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 613,
-											"top": 721,
+											"top": 706,
 											"width": 312.4951171875,
 											"height": 13,
 											"text": "+at(pos: Position): Piece",
@@ -950,7 +933,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 613,
-											"top": 736,
+											"top": 721,
 											"width": 312.4951171875,
 											"height": 13,
 											"text": "+isGameOver(): boolean",
@@ -967,7 +950,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 613,
-											"top": 751,
+											"top": 736,
 											"width": 312.4951171875,
 											"height": 13,
 											"text": "+getWinner(): int",
@@ -978,7 +961,7 @@
 									"left": 608,
 									"top": 671,
 									"width": 322.4951171875,
-									"height": 98
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -2868,7 +2851,7 @@
 							},
 							"name": "initializeArmy",
 							"documentation": "Initializes the pieces of 1 player from the .txt file.",
-							"visibility": "package",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -2922,7 +2905,7 @@
 								"$ref": "AAAAAAF+w6710rAYCmw="
 							},
 							"name": "attack",
-							"documentation": "Two pieces are proceeding to attack, the stronger one is returned as the winner.  If both of them got the same number, both are leaving the board. Bomb destroys everyone expect the sapper\nwho defuses the bomb. Marshall can be killed only by the scout.\n\n",
+							"documentation": "Two pieces are proceeding to attack, the stronger one is returned as the winner.  If both of them got the same number, both are leaving the board. Bomb destroys anyone expect the sapper\nwho defuses the bomb. Marshall can be killed only by the scout.\n\n",
 							"visibility": "private",
 							"parameters": [
 								{
@@ -2976,7 +2959,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF+3Zy9C78BC3M="
 									},
-									"name": "Position pos"
+									"name": "Position pos",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -3285,26 +3269,6 @@
 							},
 							"name": "nextPlayer",
 							"documentation": "Swaps the current player to the next one."
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF+58MjiLi0//0=",
-							"_parent": {
-								"$ref": "AAAAAAF+w69fILBs6Cc="
-							},
-							"name": "initializeArmy",
-							"documentation": "Initializes the pieces of 1 player from the .txt file.",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF+58PT8Lk1Egc=",
-									"_parent": {
-										"$ref": "AAAAAAF+58MjiLi0//0="
-									},
-									"name": "fileName ",
-									"type": "String"
-								}
-							]
 						},
 						{
 							"_type": "UMLOperation",
@@ -19774,7 +19738,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF+7lIFWAFFoHU="
 									},
-									"name": "std string fileName"
+									"name": "std string fileName",
+									"type": ""
 								}
 							]
 						},
@@ -19793,7 +19758,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF+7iMBdfcYp+k="
 									},
-									"name": "Position pos"
+									"name": "Position pos",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -19801,7 +19767,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF+7iMBdfcYp+k="
 									},
-									"name": "Direction direction"
+									"name": "Direction direction",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -19810,6 +19777,7 @@
 										"$ref": "AAAAAAF+7iMBdfcYp+k="
 									},
 									"name": "int distance ",
+									"type": "",
 									"defaultValue": "1"
 								}
 							]
@@ -19867,7 +19835,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF+7iUHyfcsphI="
 									},
-									"name": "Piece piece"
+									"name": "Piece piece",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -19875,7 +19844,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF+7iUHyfcsphI="
 									},
-									"name": "Piece piece2"
+									"name": "Piece piece2",
+									"type": ""
 								}
 							]
 						},
@@ -19894,7 +19864,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF+7jGghvvhbyE="
 									},
-									"name": "Position pos"
+									"name": "Position pos",
+									"type": ""
 								}
 							]
 						},
@@ -19913,7 +19884,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF+7jKP0PvvcQc="
 									},
-									"name": "Position pos"
+									"name": "Position pos",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -20243,7 +20215,8 @@
 								"$ref": "AAAAAAF+7lUaGAb4gLM="
 							},
 							"name": "int x",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -20252,7 +20225,8 @@
 								"$ref": "AAAAAAF+7lUaGAb4gLM="
 							},
 							"name": "int y",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
