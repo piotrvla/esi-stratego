@@ -20,6 +20,8 @@ To know if a piece is movable, we just have to check if piece symbol is an alpha
 Each turn, a player chooses a piece and a direction. If the piece can move more than one case (scout), the player add a move distance.
 ##### Enemy detection :
 After player chooses a move, the program will check (case by case if the move distance is bigger than 1) if a ennemy is on a case (by calling x and y element in board array), no more move is allowed for this turn and the program check wich piece(s) have to leave the board.
+##### Game over :
+Game is over when the flag piece is catch.
 
 
 
