@@ -17634,24 +17634,7 @@
 											"top": 682,
 											"width": 325.15869140625,
 											"height": 13,
-											"text": "+void nextPlayer()",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF+7lXoXAsgJZo=",
-											"_parent": {
-												"$ref": "AAAAAAF+6sdSt1K3Ev8="
-											},
-											"model": {
-												"$ref": "AAAAAAF+7lXoVgsdIh0="
-											},
-											"font": "Arial;13;0",
-											"left": 277,
-											"top": 697,
-											"width": 325.15869140625,
-											"height": 13,
-											"text": "+initializeArmy(std string fileName)",
+											"text": "-void nextPlayer()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -17665,7 +17648,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 277,
-											"top": 712,
+											"top": 697,
 											"width": 325.15869140625,
 											"height": 13,
 											"text": "+Piece at(Position pos)",
@@ -17682,7 +17665,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 277,
-											"top": 727,
+											"top": 712,
 											"width": 325.15869140625,
 											"height": 13,
 											"text": "+bool isGameOver()",
@@ -17699,7 +17682,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 277,
-											"top": 742,
+											"top": 727,
 											"width": 325.15869140625,
 											"height": 13,
 											"text": "+int getWinner()",
@@ -17710,7 +17693,7 @@
 									"left": 272,
 									"top": 662,
 									"width": 335.15869140625,
-									"height": 98
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -20047,26 +20030,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+6sdSt1KuQ4o="
 							},
-							"name": "void nextPlayer"
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF+7lXoVgsdIh0=",
-							"_parent": {
-								"$ref": "AAAAAAF+6sdSt1KuQ4o="
-							},
-							"name": "initializeArmy",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF+7lZKowtvmGU=",
-									"_parent": {
-										"$ref": "AAAAAAF+7lXoVgsdIh0="
-									},
-									"name": "std string fileName",
-									"type": ""
-								}
-							]
+							"name": "void nextPlayer",
+							"visibility": "private"
 						},
 						{
 							"_type": "UMLOperation",
