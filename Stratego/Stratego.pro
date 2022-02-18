@@ -3,6 +3,7 @@ CONFIG -= app_bundle
 
 SOURCES += \
         Board.cpp \
+        Board.cpp.bak \
         Piece.cpp \
         Position.cpp \
         main.cpp
