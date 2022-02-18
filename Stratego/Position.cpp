@@ -1,11 +1,11 @@
 #include <Position.hpp>
 
-Position::Position(int x, int y ):x{x},y{y}{}
+Position::Position(unsigned x, unsigned y ):x{x},y{y}{}
 
 
-int Position::getX(){
+unsigned Position::getX(){
     return x;
 }
-int Position::getY(){
+unsigned Position::getY(){
     return y;
 }
