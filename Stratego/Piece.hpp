@@ -5,13 +5,10 @@ class Piece{
 private:
     char symbole;
     unsigned player;
-    //bool isVisible=false;
 
 public:
-    Piece (char symbole,unsigned player);
+    Piece (char symbole,unsigned player=0);
     char getSymbole();
     unsigned getPlayer();
-    /*bool getVisibility();
-    void changeVisibility();*/
 };
 #endif // PIECE_H

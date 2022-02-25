@@ -12,10 +12,10 @@ namespace Modele{
     class Board {
         static const unsigned BOARD_SIZE = 10;
         bool cheatMode;
-        std::vector<std::pair<Piece, int>> listOfPieces;
+        std::vector<std::pair<char, int>> listOfPieces;
         std::array<std::array<std::optional<Piece>,BOARD_SIZE>,BOARD_SIZE> board;
 
-        void initializeArmy(std::string fileName);
+        void initializeArmy();
         void move(Position pos, Direction direction, int distance=1);
         bool isGameOver();
         int getWinner();
@@ -26,7 +26,7 @@ namespace Modele{
         bool isPiece(Position pos);
         void setPiece(Position pos, std::optional<Piece>);
         public:
-        Board(std::string fileName);
+        Board();
     };
 };
 #endif // BOARD_H
