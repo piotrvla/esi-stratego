@@ -4,19 +4,21 @@
 #include <State.hpp>
 
 class Facade{
-private:
+
     Modele::Board board;
     unsigned currentPlayer;
     State state;
 
     void nextPlayer();
 public:
-    Facade();
-    void swap(Position pos1, Position pos2);
-    void move(Piece piece, Direction direction, int distance=1);
-    Piece at(Position pos);
+    Facade(std::string fileName);
+    void move(Position pos, Direction direction, int distance=1);
+    Piece at(Position pos) const;
     bool isGameOver();
     int getWinner();
+    State getState() const;
+    unsigned getCurrentPlayer() const;
+
 };
 
 #endif // FACADE_H

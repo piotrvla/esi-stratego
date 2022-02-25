@@ -9,8 +9,8 @@ private:
 
 public:
     Piece (char symbole,unsigned player);
-    char getSymbole();
-    unsigned getPlayer();
+    char getSymbole() const;
+    unsigned getPlayer() const;
     /*bool getVisibility();
     void changeVisibility();*/
 };
