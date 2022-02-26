@@ -1,5 +1,5 @@
 #include <Board.hpp>
-
+#include <iostream>
 Modele::Board::Board(std::string fileName){
  //   initializeArmy(fileName);
 }
@@ -14,7 +14,8 @@ std::optional<Piece> & Modele::Board::at (Position pos){
 }
 
 bool Modele::Board::isInside(Position pos){
-    return 0>=pos.getX() && pos.getX()<BOARD_SIZE && 0>=pos.getY()&&pos.getY()<BOARD_SIZE;
+    return 0 <= pos.getX() && 0 <= pos.getY()
+            && pos.getX() < BOARD_SIZE && pos.getY() < BOARD_SIZE;
 }
 
 
@@ -28,8 +29,10 @@ inline bool Modele::Board::isPiece(Position pos){
 }
 
 std::optional<Piece> Modele::Board::attack(std::optional<Piece> piece, std::optional<Piece> piece2){
-    if(piece->getPlayer()==piece->getPlayer())
+    if(piece->getPlayer()==piece2->getPlayer())
         throw std::invalid_argument("Cannot attack own piece!");
+    else if(piece2->getSymbole()=='W')
+        throw std::invalid_argument("Cannot attack an obstacle");
     if(piece->getSymbole()=='2' && piece2->getSymbole()=='B')
         return piece;
     else if(piece2->getSymbole()=='B')
@@ -56,35 +59,39 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
              at(pos)->getSymbole() == 'F' ||
              at(pos)->getSymbole() == 'W')
         throw std::invalid_argument("Object impossible to move");
-    for(int i =1; i <= distance;i++ )
+    else if(distance<=0)
+        throw std::invalid_argument("Cannot move by 0 cases.");
+    else if(distance!=1 && at(pos)->getSymbole()!='0'){
+        throw std::invalid_argument("Only scout can move more than 1 case");
+    }
+    for(int i =1; i <= distance-1;i++ )
         switch(direction){
             case Direction::BOTTOM:{
                 if(!isInside(Position{pos.getX(),pos.getY()-i}))
-                    return false;
-                else if(i != distance && isPiece(Position{pos.getX(),pos.getY()-i}))
-                    return false;
+                    throw std::invalid_argument("Cannot move there");
+                else if(isPiece(Position{pos.getX(),pos.getY()-i}))
+                    throw std::invalid_argument("There's an obstacle in the way");
                 break;
             }
             case Direction::TOP:{
                 if(!isInside(Position{pos.getX(),pos.getY()+i}))
                     return false;
-                else if(i != distance &&isPiece(Position{pos.getX(),pos.getY()+i}))
-                    return false;
+                else if(isPiece(Position{pos.getX(),pos.getY()+i}))
+                    throw std::invalid_argument("There's an obstacle in the way");
                 break;
             }
             case Direction::RIGHT:{
                 if(!isInside(Position{pos.getX()+i,pos.getY()}))
-                    return false;
-                else if(i != distance &&isPiece(Position{pos.getX()+i,pos.getY()}))
-                    return false;
+                    throw std::invalid_argument("Cannot move there");
+                else if(isPiece(Position{pos.getX()+i,pos.getY()}))
+                    throw std::invalid_argument("There's an obstacle in the way");
                 break;
             }
             case Direction::LEFT:{
                 if(!isInside(Position{pos.getX()-i,pos.getY()}))
-                    return false;
-                else if(i != distance &&
-                        isPiece(Position{pos.getX()-i,pos.getY()}))
-                    return false;
+                    throw std::invalid_argument("Cannot move there");
+                else if(isPiece(Position{pos.getX()-i,pos.getY()}))
+                    throw std::invalid_argument("There's an obstacle in the way");
                 break;
             }
     }
@@ -92,8 +99,9 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
 }
 
 
+
 void Modele::Board::move(Position pos, Direction direction, int distance){
-    if(canMoveAt(pos,direction,distance))
+    if(canMoveAt(pos,direction,distance)){
         switch(direction){
             case Direction::BOTTOM:{
                 Position moveAt{pos.getX(),pos.getY()-distance};
@@ -116,8 +124,8 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
                 break;
             }
         }
-
-
+    at(pos)=std::nullopt;
+    }
 }
 bool Modele::Board::isGameOver(){
     int flags{};

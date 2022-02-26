@@ -8,7 +8,7 @@ private:
     //bool isVisible=false;
 
 public:
-    Piece (char symbole,unsigned player);
+    Piece (char symbole,unsigned player=0);
     char getSymbole() const;
     unsigned getPlayer() const;
     /*bool getVisibility();

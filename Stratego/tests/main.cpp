@@ -5,6 +5,7 @@
 #if RUN_TEST
 int main(int argc, char* const argv [])
 {
+
     Catch::Session().run(argc, argv);
 }
 #else
