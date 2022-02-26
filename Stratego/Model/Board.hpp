@@ -10,7 +10,6 @@
 
 namespace Modele{
     class Board {
-
         static const unsigned BOARD_SIZE = 10;
         std::array<std::array<std::optional<Piece>,BOARD_SIZE>,BOARD_SIZE> board;
         bool cheatMode;
@@ -28,6 +27,10 @@ namespace Modele{
         bool isPiece(Position pos);
     public:
         Board(std::string fileName);
+
+        //used for tests
+        Board() = default;
+
         void move(Position pos, Direction direction, int distance=1);
         bool isGameOver();
         unsigned getWinner();
@@ -36,5 +39,5 @@ namespace Modele{
 
 
     };
-};
+}
 #endif // BOARD_H

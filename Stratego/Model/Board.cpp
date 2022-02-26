@@ -1,7 +1,7 @@
 #include <Board.hpp>
 
 Modele::Board::Board(std::string fileName){
-    initializeArmy(fileName);
+ //   initializeArmy(fileName);
 }
 
 

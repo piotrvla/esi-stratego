@@ -1,16 +1,23 @@
-CONFIG += c++17 console
-CONFIG -= app_bundle
+CONFIG -= qt
+
+TEMPLATE = lib
+
+
+
+include(../config.pri)
 
 SOURCES += \
-        sources/Board.cpp \
-        sources/Facade.cpp \
-        sources/Piece.cpp \
-        sources/Position.cpp
+        Board.cpp \
+        Facade.cpp \
+        Piece.cpp \
+        Position.cpp \
+        main.cpp
 
 HEADERS += \
-    headers/Board.hpp \
-    headers/Direction.hpp \
-    headers/Facade.hpp \
-    headers/Piece.hpp \
-    headers/Position.hpp \
-    headers/State.hpp
+    Board.hpp \
+    Direction.hpp \
+    Facade.hpp \
+    Piece.hpp \
+    Position.hpp \
+    State.hpp
+
