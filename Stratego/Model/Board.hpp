@@ -19,7 +19,11 @@ namespace Modele{
             {Piece{'4',99},4},{Piece{'3',99},4},{Piece{'2',99},5},{Piece{'1',99},8},
             {Piece{'0',99},1},{Piece{'D',99},1},{Piece{'B',99},6}};
 
-        void initializeArmy(std::string fileName);
+        void initializeArmy();
+        void move(Position pos, Direction direction, int distance=1);
+        bool isGameOver();
+        int getWinner();
+        std::optional<Piece> at(Position pos);
         std::optional<Piece> attack(std::optional<Piece> piece, std::optional<Piece> piece2);
         bool canMoveAt(Position pos, Direction direction, int distance=1);
         bool isInside(Position pos);
@@ -37,12 +41,8 @@ namespace Modele{
         //also used for tests
         std::optional<Piece> &at(Position pos);
         bool isPiece(Position pos);
-
-
-
-
-
-
+        void setPiece(Position pos, std::optional<Piece>);
+        
     };
 }
 #endif // BOARD_H
