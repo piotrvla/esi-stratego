@@ -1,26 +1,25 @@
 #include <Board.hpp>
+
 using namespace std;
 
 Modele::Board::Board(){
-    for(int player=1; player<=2; player++){
-    initializeArmy(player);
-    }
+    initializeArmy();
 }
 Modele::Board::Board(bool a){
 
 }
 
-void Modele::Board::initializeArmy(unsigned player){
+void Modele::Board::initializeArmy(){
     vector<pair<char, int>> listOfPieces={pair('9',1), pair('8',1),pair('7',2),pair('6',3),pair('5',4),
                 pair('4',4),pair('3',4),pair('2',5),pair('1',8),
                 pair('0',1),pair('D',1),pair('B',6)};
 
-    ifstream fi("player"+to_string(player)+".txt");
+    ifstream fi("player.txt");
+
     if(fi.good()){
         string line;
         unsigned lineNb=0;
-
-        while(getline(fi, line) && lineNb<BOARD_SIZE){
+        while(getline(fi, line)){
             for(unsigned i=0; i<BOARD_SIZE; i++){
                 if(line.size()<2) throw out_of_range("Not enough file input.");
                 char selectedSymbol = line.at(0);
@@ -34,40 +33,32 @@ void Modele::Board::initializeArmy(unsigned player){
                 availibilitySymbol->second--;
 
                 optional<Piece> piece((Piece(selectedSymbol)));
-
-                if(player==1){
                 board[lineNb][i] = piece;
-                }else if(player==2){
-                    board[BOARD_SIZE-lineNb-1][BOARD_SIZE-i-1] = piece;
-                }
             }
             lineNb++;
         }
-
-        fi.close();
     }else{
-        ofstream fo("player"+to_string(player)+".txt");
-        srand(time(NULL)+player);
+        ofstream fo("player.txt");
+        srand(time(NULL));
 
-            for(unsigned i=0; i<4; i++){
-                        for(unsigned j=0; j<BOARD_SIZE; j++){
-                        unsigned randNb = rand()%listOfPieces.size();
-                        pair<char, int> & selectedPiece = listOfPieces.at(randNb);
-                        fo<<selectedPiece.first<<" ";
-                        selectedPiece.second--;
-                        if(selectedPiece.second==0){
-                            listOfPieces.erase(listOfPieces.begin()+randNb);
-                        }
-                }
-                        if(i<3) fo<<endl;
+        for(unsigned i=0; i<4; i++){
+            for(unsigned j=0; j<BOARD_SIZE; j++){
+                    unsigned randNb = rand()%listOfPieces.size();
+                    pair<char, int> & selectedPiece = listOfPieces.at(randNb);
+                    fo<<selectedPiece.first<<" ";
+                    selectedPiece.second--;
+                    if(selectedPiece.second==0){
+                        listOfPieces.erase(listOfPieces.begin()+randNb);
+                    }
             }
 
+            if(i<3) fo<<endl;
+        }
+
         fo.close();
-        initializeArmy(player);
+        initializeArmy();
     }
 }
-
-
 
 
 
@@ -98,14 +89,10 @@ std::optional<Piece> Modele::Board::attack(std::optional<Piece> piece, std::opti
         throw std::invalid_argument("Cannot attack own piece!");
     else if(piece2->getSymbole()=='W')
         throw std::invalid_argument("Cannot attack an obstacle");
-    if(piece->getSymbole()=='2' && piece2->getSymbole()=='B'){
+    if(piece->getSymbole()=='2' && piece2->getSymbole()=='B')
         return piece;
-    }
-
-    else if(piece2->getSymbole()=='B'){
+    else if(piece2->getSymbole()=='B')
         return piece2;
-    }
-
     else if(piece->getSymbole()=='0' && piece2->getSymbole()=='9')
         return piece;
     else if(piece2->getSymbole()=='F')
@@ -116,9 +103,9 @@ std::optional<Piece> Modele::Board::attack(std::optional<Piece> piece, std::opti
         return piece2;
     else
         return std::optional<Piece>{};
+
+
 }
-
-
 bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
     if(!isPiece(pos))
         throw std::invalid_argument("That's not a piece to move!");
@@ -169,7 +156,6 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
 
 
 
-
 void Modele::Board::move(Position pos, Direction direction, int distance){
     if(canMoveAt(pos,direction,distance)){
         switch(direction){
@@ -197,7 +183,6 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
     at(pos)=std::nullopt;
     }
 }
-
 bool Modele::Board::isGameOver(){
     int flags{};
     for(int i = 0 ; i<BOARD_SIZE;i++){
@@ -216,5 +201,4 @@ unsigned Modele::Board::getWinner(){
                 return at(Position{i,j})->getPlayer();
         }
     }
-    return -1;
 }
