@@ -11,7 +11,8 @@ void Modele::Board::initializeArmy(){
                 pair('4',4),pair('3',4),pair('2',5),pair('1',8),
                 pair('0',1),pair('D',1),pair('B',6)};
 
-    ifstream fi("player.txt");
+    for(int player=1; player<=2; player++){
+    ifstream fi("player"+to_string(player)+".txt");
 
     if(fi.good()){
         string line;
@@ -34,12 +35,28 @@ void Modele::Board::initializeArmy(){
             }
             lineNb++;
         }
+
+        fi.close();
     }else{
         ofstream fo("player.txt");
         srand(time(NULL));
 
-        for(unsigned i=0; i<4; i++){
-            for(unsigned j=0; j<BOARD_SIZE; j++){
+        if(player==1){
+            for(unsigned i=0; i<4; i++){
+                        for(unsigned j=0; j<BOARD_SIZE; j++){
+                        unsigned randNb = rand()%listOfPieces.size();
+                        pair<char, int> & selectedPiece = listOfPieces.at(randNb);
+                        fo<<selectedPiece.first<<" ";
+                        selectedPiece.second--;
+                        if(selectedPiece.second==0){
+                            listOfPieces.erase(listOfPieces.begin()+randNb);
+                        }
+                }
+                        if(i<3) fo<<endl;
+            }
+        }else if(player==2){
+        for(unsigned i=3; i>=0; i--){
+            for(unsigned j=BOARD_SIZE-1; j>=0; j--){
                     unsigned randNb = rand()%listOfPieces.size();
                     pair<char, int> & selectedPiece = listOfPieces.at(randNb);
                     fo<<selectedPiece.first<<" ";
@@ -51,10 +68,12 @@ void Modele::Board::initializeArmy(){
 
             if(i<3) fo<<endl;
         }
+        }
 
         fo.close();
         initializeArmy();
     }
+}
 }
 
 

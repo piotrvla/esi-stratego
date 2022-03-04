@@ -18,7 +18,6 @@ namespace Modele{
         bool cheatMode;
 
         void initializeArmy();
-        std::optional<Piece> at(Position pos);
         std::optional<Piece> attack(std::optional<Piece> piece, std::optional<Piece> piece2);
         bool canMoveAt(Position pos, Direction direction, int distance=1);
         bool isInside(Position pos);

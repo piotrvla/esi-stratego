@@ -8,7 +8,7 @@ private:
 
 public:
     Piece (char symbole,unsigned player=0);
-    char getSymbole();
-    unsigned getPlayer();
+    char getSymbole() const;
+    unsigned getPlayer() const;
 };
 #endif // PIECE_H
