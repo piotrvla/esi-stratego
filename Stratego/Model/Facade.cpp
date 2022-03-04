@@ -1,6 +1,6 @@
 #include "Facade.hpp"
 
-Facade::Facade(std::string fileName):board{fileName},currentPlayer{},state{State::NOT_STARTED}{
+Facade::Facade(std::string fileName):board{},currentPlayer{},state{State::NOT_STARTED}{
 
 
 }
