@@ -1,5 +1,4 @@
 #include <Board.hpp>
-
 using namespace std;
 
 Modele::Board::Board(){
@@ -89,10 +88,14 @@ std::optional<Piece> Modele::Board::attack(std::optional<Piece> piece, std::opti
         throw std::invalid_argument("Cannot attack own piece!");
     else if(piece2->getSymbole()=='W')
         throw std::invalid_argument("Cannot attack an obstacle");
-    if(piece->getSymbole()=='2' && piece2->getSymbole()=='B')
+    if(piece->getSymbole()=='2' && piece2->getSymbole()=='B'){
         return piece;
-    else if(piece2->getSymbole()=='B')
+    }
+
+    else if(piece2->getSymbole()=='B'){
         return piece2;
+    }
+
     else if(piece->getSymbole()=='0' && piece2->getSymbole()=='9')
         return piece;
     else if(piece2->getSymbole()=='F')
@@ -103,9 +106,9 @@ std::optional<Piece> Modele::Board::attack(std::optional<Piece> piece, std::opti
         return piece2;
     else
         return std::optional<Piece>{};
-
-
 }
+
+
 bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
     if(!isPiece(pos))
         throw std::invalid_argument("That's not a piece to move!");
@@ -156,6 +159,7 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
 
 
 
+
 void Modele::Board::move(Position pos, Direction direction, int distance){
     if(canMoveAt(pos,direction,distance)){
         switch(direction){
@@ -183,6 +187,7 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
     at(pos)=std::nullopt;
     }
 }
+
 bool Modele::Board::isGameOver(){
     int flags{};
     for(int i = 0 ; i<BOARD_SIZE;i++){

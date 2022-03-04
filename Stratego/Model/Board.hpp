@@ -1,17 +1,18 @@
 #ifndef BOARD_H
 #define BOARD_H
-#include "optional"
-#include "array"
-#include "fstream"
-#include "vector"
-#include "algorithm"
-#include "stdexcept"
-#include <Piece.hpp>
-#include <Position.hpp>
-#include <Direction.hpp>
-#include <time.h>
+#include <optional>
+#include <array>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <stdexcept>
+#include <ctime>
 
 namespace Modele{
+class Piece;
+class Direction;
+class Position;
+
     class Board {
         static const unsigned BOARD_SIZE = 10;
         std::array<std::array<std::optional<Piece>,BOARD_SIZE>,BOARD_SIZE> board;
@@ -23,6 +24,9 @@ namespace Modele{
         bool isInside(Position pos);
     public:
         Board();
+        /**
+         * test use only.
+         */
         Board(bool a);
         void move(Position pos, Direction direction, int distance=1);
         bool isGameOver();

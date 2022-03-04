@@ -3,6 +3,9 @@
 #include <Board.hpp>
 #include <State.hpp>
 
+class Piece;
+class Direction;
+
 class Facade{
 
     Modele::Board board;
