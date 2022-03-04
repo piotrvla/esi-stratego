@@ -3,7 +3,10 @@
 using namespace std;
 
 Modele::Board::Board(){
- initializeArmy();
+    initializeArmy();
+}
+Modele::Board::Board(bool a){
+
 }
 
 void Modele::Board::initializeArmy(){

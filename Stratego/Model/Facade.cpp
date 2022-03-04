@@ -1,6 +1,6 @@
 #include "Facade.hpp"
 
-Facade::Facade(std::string fileName):board{},currentPlayer{},state{State::NOT_STARTED}{
+Facade::Facade():board{},currentPlayer{},state{State::NOT_STARTED}{
 
 
 }
@@ -18,10 +18,7 @@ bool Facade::isGameOver(){
 
 }
 int Facade::getWinner(){
-    if(state!=State::GAME_OVER)
         return board.getWinner();
-
-
 }
 
 State Facade::getState() const{
