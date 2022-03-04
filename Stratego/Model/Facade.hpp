@@ -11,7 +11,7 @@ class Facade{
 
     void nextPlayer();
 public:
-    Facade(std::string fileName);
+    Facade();
     void move(Position pos, Direction direction, int distance=1);
     Piece at(Position pos) const;
     bool isGameOver();

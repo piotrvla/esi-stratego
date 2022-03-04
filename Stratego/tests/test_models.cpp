@@ -9,7 +9,7 @@ TEST_CASE("canMoveAt"){
 }
 TEST_CASE("Moving"){
 
-    Board board;
+    Board board(1);
     SECTION("Moving as a flag"){
         Position pos{1,1};
         std::optional pc{Piece{'F'}};
@@ -65,6 +65,7 @@ TEST_CASE("Moving"){
         Position pos2{1,2};
         std::optional pc{Piece{'3',1}};
         board.at(pos)=pc;
+        board.at(pos2)=std::nullopt;
         board.move(pos,Direction::TOP);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
     }
