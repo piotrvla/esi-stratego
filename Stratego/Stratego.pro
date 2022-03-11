@@ -2,7 +2,8 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     Model \
-    tests
+    tests \
+    tui
 
 tests.depends = Model
 
