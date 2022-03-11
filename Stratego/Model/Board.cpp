@@ -92,9 +92,9 @@ inline bool Modele::Board::isPiece(Position pos){
     return true;
 }
 
-std::optional<Piece> Modele::Board::attack(std::optional<Piece> piece, std::optional<Piece> piece2){
+std::optional<Piece> Modele::Board::attack(std::optional<Piece> &piece, std::optional<Piece> &piece2){
     if(piece->getPlayer()==piece2->getPlayer())
-        throw std::invalid_argument("Cannot attack own piece!");
+        throw std::invalid_argument("Cannot attack own piece! Attacking piece is of player " + std::to_string(piece->getPlayer()) + " while defender's is of " + std::to_string(piece2->getSymbole())  );
     else if(piece2->getSymbole()=='W')
         throw std::invalid_argument("Cannot attack an obstacle");
     if(piece->getSymbole()=='2' && piece2->getSymbole()=='B')
@@ -111,8 +111,6 @@ std::optional<Piece> Modele::Board::attack(std::optional<Piece> piece, std::opti
         return piece2;
     else
         return std::optional<Piece>{};
-
-
 }
 bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
     if(!isPiece(pos))
@@ -131,16 +129,16 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
     for(int i =1; i <= distance-1;i++ )
         switch(direction){
             case Direction::BOTTOM:{
-                if(!isInside(Position{pos.getX()-i,pos.getY()}))
+                if(!isInside(Position{pos.getX()+i,pos.getY()}))
                     throw std::invalid_argument("Cannot move there");
-                else if(isPiece(Position{pos.getX()-i,pos.getY()}))
+                else if(isPiece(Position{pos.getX()+i,pos.getY()}))
                     throw std::invalid_argument("There's an obstacle in the way");
                 break;
             }
             case Direction::TOP:{
-                if(!isInside(Position{pos.getX()+i,pos.getY()}))
+                if(!isInside(Position{pos.getX()-i,pos.getY()}))
                     return false;
-                else if(isPiece(Position{pos.getX()+i,pos.getY()}))
+                else if(isPiece(Position{pos.getX()-i,pos.getY()}))
                     throw std::invalid_argument("There's an obstacle in the way");
                 break;
             }

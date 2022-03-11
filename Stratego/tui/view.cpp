@@ -10,6 +10,7 @@ std::string View::askMove(){
 
     }
     */
+    return moveParams;
 }
 void View::displayBoard(){
 

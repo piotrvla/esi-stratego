@@ -5,8 +5,11 @@ Facade::Facade():board{},currentPlayer{},state{State::NOT_STARTED}{
 
 }
 void Facade::move(Position pos, Direction direction, int distance){
+    if(state!=State::MOVING)
+        //exception dans la façade?
+    if(board.at(pos)->getPlayer()!=currentPlayer)
+        //exception?
     board.move(pos,direction,distance);
-
 }
 Piece Facade::at(Position pos) const{
     return board.at(pos).value();

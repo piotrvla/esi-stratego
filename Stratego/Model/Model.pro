@@ -1,7 +1,7 @@
 
 CONFIG -= qt
 
-#TEMPLATE = lib
+TEMPLATE = lib
 
 
 
@@ -11,8 +11,7 @@ SOURCES += \
         Board.cpp \
         Facade.cpp \
         Piece.cpp \
-        Position.cpp \
-        main.cpp
+        Position.cpp
 
 HEADERS += \
     Board.hpp \

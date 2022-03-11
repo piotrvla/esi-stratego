@@ -1,5 +1,5 @@
 #include "Controller.h"
-
+/*
 int main(){
     Facade facade{};
     stratego::View view{facade};
@@ -8,3 +8,4 @@ int main(){
 
     return 0;
 }
+*/
