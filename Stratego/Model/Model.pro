@@ -1,6 +1,6 @@
 CONFIG -= qt
 
-TEMPLATE = lib
+#TEMPLATE = lib
 
 
 
