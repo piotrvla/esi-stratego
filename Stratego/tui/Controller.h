@@ -14,7 +14,7 @@ public:
      * @param game game
      * @param view view of the game
      */
-    Controller(Facade &facade, View &view):facade{facade},view{view}{}
+    inline Controller(Facade &facade, View &view):facade{facade},view{view}{}
 
     /**
      * Starts the game.
