@@ -7,15 +7,13 @@ class Piece;
 class Position;
 
 Modele::Board::Board(){
-    for(int player=1; player<=2; player++){
-    initializeArmy(player);
-    }
+    initializeArmy();
 }
 Modele::Board::Board(bool a){
 
 }
 
-void Modele::Board::initializeArmy(unsigned player){
+void Modele::Board::initializeArmy(){
     vector<pair<char, int>> listOfPieces={pair('9',1), pair('8',1),pair('7',2),pair('6',3),pair('5',4),
                 pair('4',4),pair('3',4),pair('2',5),pair('1',8),
                 pair('0',1),pair('D',1),pair('B',6)};
@@ -48,8 +46,6 @@ void Modele::Board::initializeArmy(unsigned player){
             }
             lineNb++;
         }
-
-        fi.close();
     }else{
         ofstream fo("player"+std::to_string(player)+".txt");
         srand(time(NULL)+player);
@@ -67,8 +63,11 @@ void Modele::Board::initializeArmy(unsigned player){
                         if(i<3) fo<<endl;
             }
 
+            if(i<3) fo<<endl;
+        }
+
         fo.close();
-        initializeArmy(player);
+        initializeArmy();
     }
 }
 
@@ -211,7 +210,6 @@ unsigned Modele::Board::getWinner(){
                 return at(Position{i,j})->getPlayer();
         }
     }
-    return -1;
 }
 
 string Modele::Board::to_string(){

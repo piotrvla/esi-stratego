@@ -14,17 +14,21 @@
 #include <Position.hpp>
 
 namespace Modele{
+
     class Board {
-        static const int BOARD_SIZE = 10;
+        static const unsigned BOARD_SIZE = 10;
         std::array<std::array<std::optional<Piece>,BOARD_SIZE>,BOARD_SIZE> board;
         bool cheatMode;
 
-        void initializeArmy(unsigned player);
+        void initializeArmy();
         std::optional<Piece> attack(std::optional<Piece> piece, std::optional<Piece> piece2);
         bool canMoveAt(Position pos, Direction direction, int distance=1);
         bool isInside(Position pos);
     public:
         Board();
+        /**
+         * test use only.
+         */
         Board(bool a);
         void move(Position pos, Direction direction, int distance=1);
         bool isGameOver();

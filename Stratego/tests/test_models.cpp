@@ -136,7 +136,7 @@ TEST_CASE("Moving"){
 
 }
 TEST_CASE("Attack"){
-    Board board;
+    Board board(1);
     // 7 tests
     SECTION("Both same value"){
         Position pos{3,3};
@@ -148,6 +148,17 @@ TEST_CASE("Attack"){
         board.move(pos,TOP);
         REQUIRE(!board.isPiece(pos2));
     }
+    SECTION("Both same value check last position"){
+        Position pos{3,3};
+        Position pos2{3,4};
+        std::optional pc{Piece{'2',1}};
+        std::optional pc2{Piece{'2',2}};
+        board.at(pos)=pc;
+        board.at(pos2)=pc2;
+        board.move(pos,TOP);
+        REQUIRE(!board.isPiece(pos));
+    }
+
     SECTION("Scout attacking marechal - move RIGHT"){
         Position pos{2,3};
         Position pos2{6,3};
@@ -207,6 +218,28 @@ TEST_CASE("Attack"){
         board.at(pos2)=pc2;
         board.move(pos,TOP);
         REQUIRE((!board.isPiece(pos) && board.at(pos2)->getSymbole()=='6'));
+    }
+    SECTION("Bomb is attacked by non-sapper"){
+        Position pos{1,1};
+        Position pos2{1,2};
+        std::optional pc{Piece{'B',1}};
+        std::optional pc2{Piece{'3',2}};
+        board.at(pos)=pc;
+        board.at(pos2)=pc2;
+        board.move(pos2,BOTTOM);
+        REQUIRE(board.at(pos)->getSymbole()==pc->getSymbole());
+    }
+    SECTION("Bomb is attacked by a sapper"){
+        Position pos{4,4};
+        Position pos2{3,4};
+        std::optional pc{Piece{'B',1}};
+        std::optional pc2{Piece{'2',2}};
+        board.at(pos)=pc;
+        board.at(pos2)=pc2;
+        board.move(pos2,RIGHT);
+        REQUIRE(board.at(pos)->getSymbole()==pc2->getSymbole());
+
+
     }
 
 

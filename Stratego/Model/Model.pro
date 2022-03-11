@@ -1,3 +1,4 @@
+
 CONFIG -= qt
 
 #TEMPLATE = lib
