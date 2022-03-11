@@ -20,7 +20,7 @@ namespace Modele{
         std::array<std::array<std::optional<Piece>,BOARD_SIZE>,BOARD_SIZE> board;
         bool cheatMode;
 
-        void initializeArmy();
+        void initializeArmy(unsigned player);
         std::optional<Piece> attack(std::optional<Piece> piece, std::optional<Piece> piece2);
         bool canMoveAt(Position pos, Direction direction, int distance=1);
         bool isInside(Position pos);
