@@ -6,10 +6,12 @@
 #include "vector"
 #include "algorithm"
 #include "stdexcept"
+#include "ctime"
+#include "iostream"
+#include "string"
+#include <Direction.hpp>
 #include <Piece.hpp>
 #include <Position.hpp>
-#include <Direction.hpp>
-#include <time.h>
 
 namespace Modele{
 
@@ -32,13 +34,14 @@ namespace Modele{
         bool isGameOver();
         unsigned getWinner();
         std::optional<Piece> at (Position pos) const;
-
+        std::string to_string();
 
         //also used for tests
         std::optional<Piece> & at(Position pos);
         bool isPiece(Position pos);
         void setPiece(Position pos, std::optional<Piece>);
 
+        
     };
 }
 #endif // BOARD_H

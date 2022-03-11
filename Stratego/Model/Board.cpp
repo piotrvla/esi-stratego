@@ -2,6 +2,10 @@
 
 using namespace std;
 
+class Piece;
+
+class Position;
+
 Modele::Board::Board(){
     initializeArmy();
 }
@@ -14,13 +18,13 @@ void Modele::Board::initializeArmy(){
                 pair('4',4),pair('3',4),pair('2',5),pair('1',8),
                 pair('0',1),pair('D',1),pair('B',6)};
 
-    ifstream fi("player.txt");
-
+    ifstream fi("player"+std::to_string(player)+".txt");
     if(fi.good()){
         string line;
         unsigned lineNb=0;
-        while(getline(fi, line)){
-            for(unsigned i=0; i<BOARD_SIZE; i++){
+
+        while(getline(fi, line) && lineNb<BOARD_SIZE){
+            for(int i=BOARD_SIZE-1; i>=0; i--){
                 if(line.size()<2) throw out_of_range("Not enough file input.");
                 char selectedSymbol = line.at(0);
                 line.erase(0, 2);
@@ -33,23 +37,30 @@ void Modele::Board::initializeArmy(){
                 availibilitySymbol->second--;
 
                 optional<Piece> piece((Piece(selectedSymbol)));
-                board[lineNb][i] = piece;
+
+                if(player==1){
+                board[3-lineNb][i] = piece;
+                }else if(player==2){
+                    board[BOARD_SIZE+lineNb-4][BOARD_SIZE-i-1] = piece;
+                }
             }
             lineNb++;
         }
     }else{
-        ofstream fo("player.txt");
-        srand(time(NULL));
+        ofstream fo("player"+std::to_string(player)+".txt");
+        srand(time(NULL)+player);
 
-        for(unsigned i=0; i<4; i++){
-            for(unsigned j=0; j<BOARD_SIZE; j++){
-                    unsigned randNb = rand()%listOfPieces.size();
-                    pair<char, int> & selectedPiece = listOfPieces.at(randNb);
-                    fo<<selectedPiece.first<<" ";
-                    selectedPiece.second--;
-                    if(selectedPiece.second==0){
-                        listOfPieces.erase(listOfPieces.begin()+randNb);
-                    }
+            for(unsigned i=0; i<4; i++){
+                        for(unsigned j=0; j<BOARD_SIZE; j++){
+                        unsigned randNb = rand()%listOfPieces.size();
+                        pair<char, int> & selectedPiece = listOfPieces.at(randNb);
+                        fo<<selectedPiece.first<<" ";
+                        selectedPiece.second--;
+                        if(selectedPiece.second==0){
+                            listOfPieces.erase(listOfPieces.begin()+randNb);
+                        }
+                }
+                        if(i<3) fo<<endl;
             }
 
             if(i<3) fo<<endl;
@@ -59,8 +70,6 @@ void Modele::Board::initializeArmy(){
         initializeArmy();
     }
 }
-
-
 
 std::optional<Piece> Modele::Board::at(Position pos) const{
     return board.at(pos.getX()).at(pos.getY());
@@ -201,4 +210,18 @@ unsigned Modele::Board::getWinner(){
                 return at(Position{i,j})->getPlayer();
         }
     }
+}
+
+string Modele::Board::to_string(){
+    string result = "";
+    for(unsigned i=0; i<board.size(); i++){
+        for(unsigned j=0; j<board.size(); j++){
+            if(board[i][j].has_value()){
+            result.push_back(board[i][j]->getSymbole());
+            result.append(" ");
+            }
+        }
+        result.append("\n");
+    }
+    return result;
 }
