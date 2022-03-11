@@ -13,28 +13,32 @@ TEST_CASE("Moving"){
     SECTION("Moving as a flag"){
         Position pos{1,1};
         std::optional pc{Piece{'F'}};
+        board.at(pos)=pc;
         REQUIRE_THROWS(board.move(pos,Direction::BOTTOM,1));
-
     }
     SECTION("Moving as a bomb"){
         Position pos{1,1};
         std::optional pc{Piece{'B'}};
+        board.at(pos)=pc;
         REQUIRE_THROWS(board.move(pos,Direction::BOTTOM,1));
     }
     SECTION("Moving as a flag more than by 1 case"){
         Position pos{1,1};
         std::optional pc{Piece{'F'}};
+        board.at(pos)=pc;
         REQUIRE_THROWS(board.move(pos,Direction::LEFT,3));
 
     }
     SECTION("Moving as a bomb more than by 1 case"){
         Position pos{1,1};
         std::optional pc{Piece{'B'}};
+        board.at(pos)=pc;
         REQUIRE_THROWS(board.move(pos,Direction::RIGHT,5));
     }
     SECTION("Trying to move outside the board - left"){
         Position pos{0,0};
         std::optional pc{Piece{'7'}};
+        board.at(pos)=pc;
         REQUIRE_THROWS(board.move(pos,Direction::LEFT));
     }
     SECTION("Trying to move 1 that more case as a marechal.") {

@@ -33,6 +33,9 @@ unsigned Facade::getCurrentPlayer() const{
 void Facade::nextPlayer(){
     if(state!=State::NEXT_PLAYER)
         currentPlayer = currentPlayer+1 % 2;
-
 }
+std::string Facade::to_string(){
+    return board.to_string();
+}
+
 

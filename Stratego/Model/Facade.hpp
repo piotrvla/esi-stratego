@@ -20,7 +20,7 @@ public:
     int getWinner();
     State getState() const;
     unsigned getCurrentPlayer() const;
-
+    std::string to_string();
 };
 
 #endif // FACADE_H

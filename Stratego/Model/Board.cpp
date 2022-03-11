@@ -38,7 +38,7 @@ void Modele::Board::initializeArmy(unsigned player){
                 if(availibilitySymbol->second==0) throw out_of_range("No more piece");
                 availibilitySymbol->second--;
 
-                optional<Piece> piece((Piece(selectedSymbol)));
+                optional<Piece> piece((Piece(selectedSymbol,player)));
 
                 if(player==1){
                 board[3-lineNb][i] = piece;
@@ -131,30 +131,30 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
     for(int i =1; i <= distance-1;i++ )
         switch(direction){
             case Direction::BOTTOM:{
-                if(!isInside(Position{pos.getX(),pos.getY()-i}))
+                if(!isInside(Position{pos.getX()-i,pos.getY()}))
                     throw std::invalid_argument("Cannot move there");
-                else if(isPiece(Position{pos.getX(),pos.getY()-i}))
+                else if(isPiece(Position{pos.getX()-i,pos.getY()}))
                     throw std::invalid_argument("There's an obstacle in the way");
                 break;
             }
             case Direction::TOP:{
-                if(!isInside(Position{pos.getX(),pos.getY()+i}))
-                    return false;
-                else if(isPiece(Position{pos.getX(),pos.getY()+i}))
-                    throw std::invalid_argument("There's an obstacle in the way");
-                break;
-            }
-            case Direction::RIGHT:{
                 if(!isInside(Position{pos.getX()+i,pos.getY()}))
-                    throw std::invalid_argument("Cannot move there");
+                    return false;
                 else if(isPiece(Position{pos.getX()+i,pos.getY()}))
                     throw std::invalid_argument("There's an obstacle in the way");
                 break;
             }
-            case Direction::LEFT:{
-                if(!isInside(Position{pos.getX()-i,pos.getY()}))
+            case Direction::RIGHT:{
+                if(!isInside(Position{pos.getX(),pos.getY()+i}))
                     throw std::invalid_argument("Cannot move there");
-                else if(isPiece(Position{pos.getX()-i,pos.getY()}))
+                else if(isPiece(Position{pos.getX(),pos.getY()+i}))
+                    throw std::invalid_argument("There's an obstacle in the way");
+                break;
+            }
+            case Direction::LEFT:{
+                if(!isInside(Position{pos.getX(),pos.getY()-i}))
+                    throw std::invalid_argument("Cannot move there");
+                else if(isPiece(Position{pos.getX(),pos.getY()-i}))
                     throw std::invalid_argument("There's an obstacle in the way");
                 break;
             }
@@ -168,22 +168,22 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
     if(canMoveAt(pos,direction,distance)){
         switch(direction){
             case Direction::BOTTOM:{
-                Position moveAt{pos.getX(),pos.getY()-distance};
-                at(moveAt) = attack(at(pos),at(moveAt));
-                break;
-            }
-            case Direction::TOP:{
-                Position moveAt{pos.getX(),pos.getY()+distance};
-                at(moveAt) = attack(at(pos),at(moveAt));
-                break;
-            }
-            case Direction::LEFT:{
                 Position moveAt{pos.getX()-distance,pos.getY()};
                 at(moveAt) = attack(at(pos),at(moveAt));
                 break;
             }
-            case Direction::RIGHT:{
+            case Direction::TOP:{
                 Position moveAt{pos.getX()+distance,pos.getY()};
+                at(moveAt) = attack(at(pos),at(moveAt));
+                break;
+            }
+            case Direction::LEFT:{
+                Position moveAt{pos.getX(),pos.getY()-distance};
+                at(moveAt) = attack(at(pos),at(moveAt));
+                break;
+            }
+            case Direction::RIGHT:{
+                Position moveAt{pos.getX(),pos.getY()+distance};
                 at(moveAt) = attack(at(pos),at(moveAt));
                 break;
             }

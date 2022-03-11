@@ -3,12 +3,13 @@ using namespace stratego;
 using namespace std;
 std::string View::askMove(){
     std::string moveParams;
-
+/*
     while(!areParamsValid(moveParams)){
-        cout<<"Please insert the position as a (x,y) position."<<endl;
+        cout<<"Please insert the position as a x y value."<<endl;
 
 
     }
+    */
 }
 void View::displayBoard(){
 
