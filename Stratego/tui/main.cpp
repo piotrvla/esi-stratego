@@ -5,9 +5,7 @@ int main(){
     stratego::View view{facade};
     stratego::Controller controller{facade,view};
     view.askMove();
-
     //controller.start();
-
     return 0;
 }
 
