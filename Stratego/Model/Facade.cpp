@@ -1,6 +1,6 @@
 #include "Facade.hpp"
 
-Facade::Facade():board{},currentPlayer{},state{State::NOT_STARTED}{
+Facade::Facade():board{Modele::Board()},currentPlayer{},state{State::NOT_STARTED}{
 
 
 }

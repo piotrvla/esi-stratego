@@ -26,5 +26,3 @@ void View::displayWinner(){
 void View::displayCurrentPlayer(){
     cout<<"Current player is the player: "<<facade.getCurrentPlayer()<<endl;
 }
-
-

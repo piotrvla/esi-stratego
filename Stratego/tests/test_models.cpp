@@ -58,20 +58,19 @@ TEST_CASE("Moving"){
         Position pos{7,2};
         std::optional pc{Piece{'5',5}};
         board.at(pos)=pc;
-        board.at(Position{8,2})=std::optional{Piece('W')};
+        board.at(Position{6,2})=std::optional{Piece('W')};
         REQUIRE_THROWS(board.move(pos,Direction::TOP,1));
     }
-    SECTION("Moving into an empty space right by 1 - TOP") {
-
+    SECTION("Moving into an empty space by 1 - TOP") {
         Position pos{1,1};
-        Position pos2{2,1};
+        Position pos2{0,1};
         std::optional pc{Piece{'3',1}};
         board.at(pos)=pc;
         board.at(pos2)=std::nullopt;
         board.move(pos,Direction::TOP);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
     }
-    SECTION("Moving into an empty space right by 1 - LEFT"){
+    SECTION("Moving into an empty space by 1 - LEFT"){
         Position pos{3,1};
         Position pos2{3,0};
         std::optional pc{Piece{'7',1}};
@@ -79,7 +78,7 @@ TEST_CASE("Moving"){
         board.move(pos,Direction::LEFT);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
     }
-    SECTION("Moving into an empty space right by 1 - RIGHT"){
+    SECTION("Moving into an empty space by 1 - RIGHT"){
         Position pos{3,2};
         Position pos2{3,3};
         std::optional pc{Piece{'7',1}};
@@ -87,21 +86,13 @@ TEST_CASE("Moving"){
         board.move(pos,Direction::RIGHT);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
     }
-    SECTION("Moving into an empty space right by 1 - BOTTOM"){
+    SECTION("Moving into an empty space by 1 - BOTTOM"){
         Position pos{8,8};
-        Position pos2{7,8};
+        Position pos2{9,8};
         std::optional pc{Piece{'7',1}};
         board.at(pos2)=std::nullopt;
         board.at(pos)=pc;
         board.move(pos,Direction::BOTTOM);
-        REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
-    }
-    SECTION("Scout moving more than 1 case - TOP") {
-        Position pos{1,1};
-        Position pos2{4,1};
-        std::optional pc{Piece{'0',5}};
-        board.at(pos)=pc;
-        board.move(pos,Direction::TOP,3);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
     }
     SECTION("Scout moving more than 1 case - LEFT") {
@@ -122,10 +113,18 @@ TEST_CASE("Moving"){
     }
     SECTION("Scout moving more than 1 case - BOTTOM") {
         Position pos{5,5};
-        Position pos2{1,5};
+        Position pos2{9,5};
         std::optional pc{Piece{'0',5}};
         board.at(pos)=pc;
         board.move(pos,Direction::BOTTOM,4);
+        REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
+    }
+    SECTION("Scout moving more than 1 case - TOP") {
+        Position pos{5,5};
+        Position pos2{1,5};
+        std::optional pc{Piece{'0',1}};
+        board.at(pos)=pc;
+        board.move(pos,Direction::TOP,4);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
     }
     SECTION("Move then check if previous position empty" ) {
@@ -143,7 +142,7 @@ TEST_CASE("Attack"){
     // 7 tests
     SECTION("Both same value"){
         Position pos{3,3};
-        Position pos2{4,3};
+        Position pos2{2,3};
         std::optional pc{Piece{'2',1}};
         std::optional pc2{Piece{'2',2}};
         board.at(pos)=pc;
@@ -153,7 +152,7 @@ TEST_CASE("Attack"){
     }
     SECTION("Both same value check last position"){
         Position pos{3,3};
-        Position pos2{4,3};
+        Position pos2{2,3};
         std::optional pc{Piece{'2',1}};
         std::optional pc2{Piece{'2',2}};
         board.at(pos)=pc;
@@ -184,7 +183,7 @@ TEST_CASE("Attack"){
     }
     SECTION("Marechal attacking scout - move BOTTOM"){
         Position pos{8,6};
-        Position pos2{7,6};
+        Position pos2{9,6};
         std::optional pc{Piece{'9',1}};
         std::optional pc2{Piece{'0',2}};
         board.at(pos)=pc;
@@ -204,7 +203,7 @@ TEST_CASE("Attack"){
     }
     SECTION("Marechal attacking scout - move TOP"){
         Position pos{8,3};
-        Position pos2{9,3};
+        Position pos2{7,3};
         std::optional pc{Piece{'9',1}};
         std::optional pc2{Piece{'0',2}};
         board.at(pos)=pc;
@@ -214,7 +213,7 @@ TEST_CASE("Attack"){
     }
     SECTION("Attack then check if previous position empty"){
         Position pos{5,3};
-        Position pos2{6,3};
+        Position pos2{4,3};
         std::optional pc{Piece{'6',1}};
         std::optional pc2{Piece{'5',2}};
         board.at(pos)=pc;
@@ -223,14 +222,14 @@ TEST_CASE("Attack"){
         REQUIRE((!board.isPiece(pos) && board.at(pos2)->getSymbole()=='6'));
     }
     SECTION("Bomb is attacked by non-sapper"){
-        Position pos{0,1};
-        Position pos2{1,1};
+        Position pos{1,1};
+        Position pos2{0,1};
         std::optional pc{Piece{'B',1}};
         std::optional pc2{Piece{'3',2}};
         board.at(pos)=pc;
         board.at(pos2)=pc2;
         board.move(pos2,BOTTOM);
-        REQUIRE(board.at(pos)->getSymbole()==pc->getSymbole());
+        REQUIRE((board.at(pos)->getSymbole()==pc->getSymbole()));
     }
     SECTION("Bomb is attacked by a sapper"){
         Position pos{3,5};
@@ -243,6 +242,66 @@ TEST_CASE("Attack"){
         REQUIRE(board.at(pos)->getSymbole()==pc2->getSymbole());
 
 
+    }
+
+
+}
+TEST_CASE("isGameOver"){
+    Board board(1);
+    SECTION("2 flags left, both players can move"){
+        //player 1
+        board.at(Position{1,3})=std::optional {Piece{'1',1}};
+        board.at(Position{2,3})=std::optional {Piece{'F',1}};
+        board.at(Position{3,3})=std::optional {Piece{'3',1}};
+        //player 2
+        board.at(Position{4,9})=std::optional {Piece{'F',2}};
+        board.at(Position{4,7})=std::optional {Piece{'2',2}};
+        board.at(Position{4,6})=std::optional {Piece{'1',2}};
+    REQUIRE(!board.isGameOver());
+    }
+    SECTION("1 flag left, both players can move"){
+        //player 1
+        board.at(Position{1,3})=std::optional {Piece{'1',1}};
+        board.at(Position{2,3})=std::optional {Piece{'4',1}};
+        board.at(Position{3,3})=std::optional {Piece{'3',1}};
+        //player 2
+        board.at(Position{4,9})=std::optional {Piece{'F',2}};
+        board.at(Position{4,7})=std::optional {Piece{'2',2}};
+        board.at(Position{4,6})=std::optional {Piece{'1',2}};
+        REQUIRE(board.isGameOver());
+    }
+    SECTION("2 flag left, 1 player can't move"){
+        //player 1
+        board.at(Position{1,3})=std::optional {Piece{'F',1}};
+        board.at(Position{2,3})=std::optional {Piece{'B',1}};
+        board.at(Position{3,3})=std::optional {Piece{'B',1}};
+        //player 2
+        board.at(Position{4,9})=std::optional {Piece{'F',2}};
+        board.at(Position{4,7})=std::optional {Piece{'2',2}};
+        board.at(Position{4,6})=std::optional {Piece{'1',2}};
+        REQUIRE(board.isGameOver());
+    }
+    SECTION("1 flag left, 1 player can't move"){
+        //player 1
+        board.at(Position{1,3})=std::optional {Piece{'B',1}};
+        board.at(Position{2,3})=std::optional {Piece{'B',1}};
+        board.at(Position{3,3})=std::optional {Piece{'B',1}};
+        //player 2
+        board.at(Position{4,9})=std::optional {Piece{'F',2}};
+        board.at(Position{4,7})=std::optional {Piece{'2',2}};
+        board.at(Position{4,6})=std::optional {Piece{'1',2}};
+        REQUIRE(board.isGameOver());
+    }
+    SECTION("2 flag left, both player can't move"){
+        //player 1
+        board.at(Position{1,3})=std::optional {Piece{'B',1}};
+        board.at(Position{2,3})=std::optional {Piece{'B',1}};
+        board.at(Position{3,3})=std::optional {Piece{'B',1}};
+        //player 2
+        board.at(Position{4,9})=std::optional {Piece{'F',2}};
+        board.at(Position{4,7})=std::optional {Piece{'B',2}};
+        board.at(Position{4,6})=std::optional {Piece{'B',2}};
+        REQUIRE(board.isGameOver());
     }
 
 
