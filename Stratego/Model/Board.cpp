@@ -180,7 +180,7 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
                 break;
             }
         }
-    at(pos)=nullopt;
+    at(pos)=optional<Piece>{nullopt};
     }
 }
 bool Modele::Board::isGameOver(){
