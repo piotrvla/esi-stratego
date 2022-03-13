@@ -1,10 +1,5 @@
 #include <Board.hpp>
 using namespace std;
-
-class Piece;
-
-class Position;
-
 Modele::Board::Board(){
     for(unsigned player=1; player<=2; player++){
     initializeArmy(player);
@@ -78,7 +73,7 @@ optional<Piece> & Modele::Board::at (Position pos){
 
 bool Modele::Board::isInside(Position pos){
     return 0 <= pos.getX() && 0 <= pos.getY()
-            && pos.getX() < BOARD_SIZE && pos.getY() < BOARD_SIZE;
+            && pos.getX() < (int)BOARD_SIZE && pos.getY() < (int)BOARD_SIZE;
 }
 
 
@@ -218,6 +213,7 @@ unsigned Modele::Board::getWinner(){
                 return at(Position{i,j})->getPlayer();
         }
     }
+    return -1;
 }
 
 string Modele::Board::to_string(){

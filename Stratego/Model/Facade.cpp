@@ -6,11 +6,15 @@ Facade::Facade():board{Modele::Board()},currentPlayer{},state{State::NOT_STARTED
 }
 void Facade::move(Position pos, Direction direction, int distance){
     if(state!=State::MOVING)
-        //exception dans la façade?
+        throw std::invalid_argument("Cannot move right now");
     if(board.at(pos)->getPlayer()!=currentPlayer)
-        //exception?
-    board.move(pos,direction,distance);
-    state=State::NEXT_PLAYER;
+        throw std::invalid_argument("That's not your piece");
+    try {
+        board.move(pos,direction,distance);
+        state=State::NEXT_PLAYER;
+    } catch (std::exception &ex) {
+        throw std::invalid_argument("Invalid move");
+    }
 }
 Piece Facade::at(Position pos) const{
     return board.at(pos).value();
