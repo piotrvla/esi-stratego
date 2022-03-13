@@ -218,6 +218,8 @@ unsigned Modele::Board::getWinner(){
 
 string Modele::Board::to_string(unsigned player){
     string result = "";
+
+    if(player==2){
     for(unsigned i=0; i<board.size(); i++){
         for(unsigned j=0; j<board.size(); j++){
             if(board[i][j].has_value()){
@@ -232,6 +234,23 @@ string Modele::Board::to_string(unsigned player){
             }
         }
         result.append("\n");
+    }
+    }else{
+        for(int i=board.size()-1; i>=0; i--){
+            for(int j=board.size()-1; j>=0; j--){
+                if(board[i][j].has_value()){
+                    if(board[i][j]->getPlayer()==player){
+                result.push_back(board[i][j]->getSymbole());
+                    }else{
+                        result.append("?");
+                    }
+                result.append(" ");
+                }else{
+                    result.append("  ");
+                }
+            }
+            result.append("\n");
+        }
     }
     return result;
 }
