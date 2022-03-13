@@ -11,7 +11,7 @@ class Facade{
     unsigned currentPlayer;
     State state;
 
-    void nextPlayer();
+
 public:
     Facade();
     void move(Position pos, Direction direction, int distance=1);
@@ -20,6 +20,7 @@ public:
     int getWinner();
     State getState() const;
     unsigned getCurrentPlayer() const;
+    void nextPlayer();
     std::string to_string();
 };
 

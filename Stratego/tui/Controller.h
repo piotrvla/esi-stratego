@@ -20,6 +20,9 @@ public:
      * Starts the game.
      */
     void start();
+    Position createPosition(std::string position);
+    Direction createDirection(std::string direction);
+    int createDistance(std::string distance);
 };
 
 }
