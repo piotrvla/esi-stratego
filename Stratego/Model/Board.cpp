@@ -207,15 +207,22 @@ unsigned Modele::Board::getWinner(){
                 return at(Position{i,j})->getPlayer();
         }
     }
+    return -1;
 }
 
-string Modele::Board::to_string(){
+string Modele::Board::to_string(unsigned player){
     string result = "";
     for(unsigned i=0; i<board.size(); i++){
         for(unsigned j=0; j<board.size(); j++){
             if(board[i][j].has_value()){
+                if(board[i][j]->getPlayer()==player){
             result.push_back(board[i][j]->getSymbole());
+                }else{
+                    result.append("?");
+                }
             result.append(" ");
+            }else{
+                result.append("  ");
             }
         }
         result.append("\n");

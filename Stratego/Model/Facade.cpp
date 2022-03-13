@@ -40,7 +40,7 @@ void Facade::nextPlayer(){
     state=State::MOVING;
 }
 std::string Facade::to_string(){
-    return board.to_string();
+    return board.to_string(currentPlayer);
 }
 
 

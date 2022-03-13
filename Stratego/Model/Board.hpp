@@ -16,7 +16,7 @@
 namespace Modele{
 
     class Board {
-        static const unsigned BOARD_SIZE = 10;
+        static const int BOARD_SIZE = 10;
         std::array<std::array<std::optional<Piece>,BOARD_SIZE>,BOARD_SIZE> board;
         bool cheatMode;
 
@@ -34,7 +34,7 @@ namespace Modele{
         bool isGameOver();
         unsigned getWinner();
         std::optional<Piece> at (Position pos) const;
-        std::string to_string();
+        std::string to_string(unsigned player);
         bool canMoveAt(Position pos, Direction direction, int distance=1);
         //also used for tests
         std::optional<Piece> & at(Position pos);
