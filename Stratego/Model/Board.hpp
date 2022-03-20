@@ -25,7 +25,8 @@ namespace Modele{
         /**
          *
          * @brief initializeArmy initializes the board of 1 player at the time, if a file doesn't exist
-         * the file is created and filled with the random generated pieces that respect the given quantity.
+         * the file is created and filled with the random generated pieces that respect the given quantity
+         * then the array is filled optional pieces from the textfile.
          * @param player is a number of the player to initialize the board.
          */
         void initializeArmy(unsigned player);
