@@ -12,6 +12,8 @@
 #include "Direction.hpp"
 #include "Piece.hpp"
 #include "Position.hpp"
+#include <stdlib.h>
+
 
 namespace Modele{
     /**

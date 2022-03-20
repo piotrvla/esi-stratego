@@ -3,6 +3,16 @@ using namespace std;
 Modele::Board::Board(){
     for(unsigned player=1; player<=2; player++){
     initializeArmy(player);
+    at(Position{5,2})=std::optional{Piece{'W'}};
+    at(Position{5,3})=std::optional{Piece{'W'}};
+    at(Position{4,2})=std::optional{Piece{'W'}};
+    at(Position{4,3})=std::optional{Piece{'W'}};
+    at(Position{5,7})=std::optional{Piece{'W'}};
+    at(Position{5,6})=std::optional{Piece{'W'}};
+    at(Position{4,6})=std::optional{Piece{'W'}};
+    at(Position{4,7})=std::optional{Piece{'W'}};
+
+
     }
 }
 Modele::Board::Board(bool a){
@@ -218,12 +228,28 @@ unsigned Modele::Board::getWinner(){
 
 string Modele::Board::to_string(unsigned player){
     string result = "";
+    result.append("     ");
+    for(unsigned i=0;i<board.size();i++){
+        result+=char('A'+i);
+        result.append(" ");
+    }
 
+    result.append("\n");
+    result.append("  ");
+    for(unsigned i=0; i<(board.size()*2)+2; i++)
+        result.append("-");
+
+    result.append("\n");
     if(player==2){
     for(unsigned i=0; i<board.size(); i++){
+        if(i!=9)
+            result.append(std::to_string(i+1)+" |  ");
+        else
+            result.append(std::to_string(i+1)+"|  ");
         for(unsigned j=0; j<board.size(); j++){
+
             if(board[i][j].has_value()){
-                if(board[i][j]->getPlayer()==player){
+                if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
             result.push_back(board[i][j]->getSymbole());
                 }else{
                     result.append("?");
@@ -236,10 +262,14 @@ string Modele::Board::to_string(unsigned player){
         result.append("\n");
     }
     }else{
-        for(int i=board.size()-1; i>=0; i--){
+        for(int i=board.size()-1; i>=0; i--){ 
+            if(i!=0)
+                result.append(std::to_string(10-i)+" |  ");
+            else
+                result.append(std::to_string(10-i)+"|  ");
             for(int j=board.size()-1; j>=0; j--){
                 if(board[i][j].has_value()){
-                    if(board[i][j]->getPlayer()==player){
+                    if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
                 result.push_back(board[i][j]->getSymbole());
                     }else{
                         result.append("?");
