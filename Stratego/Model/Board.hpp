@@ -1,17 +1,17 @@
 #ifndef BOARD_H
 #define BOARD_H
-#include "optional"
-#include "array"
-#include "fstream"
-#include "vector"
-#include "algorithm"
-#include "stdexcept"
-#include "ctime"
-#include "iostream"
-#include "string"
-#include <Direction.hpp>
-#include <Piece.hpp>
-#include <Position.hpp>
+#include <optional>
+#include <array>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <stdexcept>
+#include <ctime>
+#include <iostream>
+#include <string>
+#include "Direction.hpp"
+#include "Piece.hpp"
+#include "Position.hpp"
 
 namespace Modele{
     /**

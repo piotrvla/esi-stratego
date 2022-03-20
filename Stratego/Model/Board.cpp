@@ -1,4 +1,4 @@
-#include <Board.hpp>
+#include "Board.hpp"
 using namespace std;
 Modele::Board::Board(){
     for(unsigned player=1; player<=2; player++){
