@@ -13,6 +13,7 @@ void Facade::move(Position pos, Direction direction, int distance){
         state=State::NEXT_PLAYER;
     } catch (std::exception &ex) {
         throw std::invalid_argument("Invalid move");
+        state=State::MOVING;
     }
 }
 Piece Facade::at(Position pos) const{
@@ -38,9 +39,13 @@ unsigned Facade::getCurrentPlayer() const{
 
 }
 void Facade::nextPlayer(){
-    if(state!=State::NEXT_PLAYER)
+    if(state==State::NEXT_PLAYER | state==State::SWAPING)
         currentPlayer = currentPlayer==1 ? 2 : 1;
-    state=State::MOVING;
+    if(state==State::SWAPING && currentPlayer==2){
+        state=State::SWAPING;
+    }else{
+        state=State::MOVING;
+    }
 }
 std::string Facade::to_string(){
     return board.to_string(currentPlayer);
@@ -49,11 +54,18 @@ std::string Facade::to_string(){
 void Facade::start(){
     if(state!=State::NOT_STARTED)
         throw std::invalid_argument("Game is already started");
-    state=State::MOVING;
+    state=State::SWAPING;
 }
 
 int Facade::getBoardSize() const{
     return board.getBoardSize();
+}
+
+void Facade::swap(Position p1, Position p2){
+    if(state!=State::SWAPING) throw std::invalid_argument("Not in SWAPING.");
+    if(at(p1).getPlayer()!=currentPlayer || at(p2).getPlayer()!=currentPlayer)
+        throw std::invalid_argument("That's not your piece");
+    board.swap(p1, p2);
 }
 
 

@@ -3,6 +3,8 @@ using namespace std;
 Modele::Board::Board(){
     for(unsigned player=1; player<=2; player++){
     initializeArmy(player);
+    }
+
     at(Position{5,2})=std::optional{Piece{'W'}};
     at(Position{5,3})=std::optional{Piece{'W'}};
     at(Position{4,2})=std::optional{Piece{'W'}};
@@ -12,8 +14,7 @@ Modele::Board::Board(){
     at(Position{4,6})=std::optional{Piece{'W'}};
     at(Position{4,7})=std::optional{Piece{'W'}};
 
-
-    }
+    cheatMode=true;
 }
 Modele::Board::Board(bool a){
 
@@ -97,6 +98,11 @@ inline bool Modele::Board::isPiece(Position pos){
 }
 
 optional<Piece> Modele::Board::attack(optional<Piece> &piece, optional<Piece> &piece2){
+    if(cheatMode){
+        piece->setCheated(true);
+        piece2->setCheated(true);
+    }
+
     if(piece->getPlayer()==piece2->getPlayer())
         throw invalid_argument("Cannot attack own piece! Attacking piece is of player " + std::to_string(piece->getSymbole()) + " while defender's is of " + piece2->getSymbole());
     else if(piece2->getSymbole()=='W')
@@ -193,7 +199,7 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
     at(pos)=optional<Piece>{nullopt};
     }
 }
-bool Modele::Board::isGameOver(){
+/*bool Modele::Board::isGameOver(){
     int flags=0;
     bool player1=false;
     bool player2=false;
@@ -214,6 +220,25 @@ bool Modele::Board::isGameOver(){
     }
     return (flags!=2 || !(player1 && player2));
 
+}*/
+
+bool Modele::Board::isGameOver(){
+    bool player1=false;
+    bool player2=false;
+    for(int i = 0 ; i<(int)BOARD_SIZE;i++){
+        for(int j = 0; j <(int)BOARD_SIZE;j++){
+            if(at(Position(i, j))->getSymbole()=='D'){
+                if(at(Position(i, j))->getPlayer()==1){
+                    player1=true;
+                }else if(at(Position(i, j))->getPlayer()==2){
+                    player2=true;
+                }
+                if(player1 && player2) return false;
+            }
+        }
+    }
+
+    return true;
 }
 unsigned Modele::Board::getWinner(){
 
@@ -242,10 +267,9 @@ string Modele::Board::to_string(unsigned player){
     result.append("\n");
     if(player==2){
     for(unsigned i=0; i<board.size(); i++){
-        if(i!=9)
-            result.append(std::to_string(i+1)+" |  ");
-        else
-            result.append(std::to_string(i+1)+"|  ");
+
+        result.append(std::to_string(i)+" |  ");
+
         for(unsigned j=0; j<board.size(); j++){
 
             if(board[i][j].has_value()){
@@ -263,13 +287,11 @@ string Modele::Board::to_string(unsigned player){
     }
     }else{
         for(int i=board.size()-1; i>=0; i--){ 
-            if(i!=0)
-                result.append(std::to_string(10-i)+" |  ");
-            else
-                result.append(std::to_string(10-i)+"|  ");
+
+            result.append(std::to_string(9-i)+" |  ");
             for(int j=board.size()-1; j>=0; j--){
                 if(board[i][j].has_value()){
-                    if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
+                    if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0 || board[i][j]->getCheated()){
                 result.push_back(board[i][j]->getSymbole());
                     }else{
                         result.append("?");
@@ -287,4 +309,8 @@ string Modele::Board::to_string(unsigned player){
 
 int Modele::Board::getBoardSize() const{
     return BOARD_SIZE;
+}
+
+void Modele::Board::swap(Position p1, Position p2){
+    at(p1).swap(at(p2));
 }

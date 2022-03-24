@@ -24,6 +24,7 @@ public:
     std::string to_string();
     void start();
     int getBoardSize() const;
+    void swap(Position p1, Position p2);
 };
 
 #endif // FACADE_H

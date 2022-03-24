@@ -44,6 +44,10 @@ public:
     void displayHelp();
 
     void displayError(string err);
+
+    string askSwap();
+
+    void printPlayer();
 };
 
 

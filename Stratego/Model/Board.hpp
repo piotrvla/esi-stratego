@@ -113,6 +113,8 @@ namespace Modele{
 
         int getBoardSize() const;
 
+        void swap(Position p1, Position p2);
+
         
     };
 }

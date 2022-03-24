@@ -7,6 +7,7 @@ enum class State{
     NOT_STARTED,
     NEXT_PLAYER,
     GAME_OVER,
-    MOVING
+    MOVING,
+    SWAPING
 };
 #endif // STATE_H

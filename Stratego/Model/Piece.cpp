@@ -9,3 +9,11 @@ char Piece::getSymbole() const{
 unsigned Piece::getPlayer() const{
     return player;
 }
+
+unsigned Piece::getCheated() const{
+    return this->cheated;
+}
+
+void Piece::setCheated(bool cheated){
+    this->cheated=cheated;
+}
