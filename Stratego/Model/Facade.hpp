@@ -22,6 +22,8 @@ public:
     unsigned getCurrentPlayer() const;
     void nextPlayer();
     std::string to_string();
+    void start();
+    int getBoardSize() const;
 };
 
 #endif // FACADE_H

@@ -111,6 +111,8 @@ namespace Modele{
          */
         bool isPiece(Position pos);
 
+        int getBoardSize() const;
+
         
     };
 }

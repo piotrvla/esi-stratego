@@ -1,7 +1,6 @@
 #include "Facade.hpp"
 
-Facade::Facade():board{Modele::Board()},currentPlayer{},state{State::NOT_STARTED}{
-
+Facade::Facade():board{Modele::Board()},currentPlayer{1},state{State::NOT_STARTED}{
 
 }
 void Facade::move(Position pos, Direction direction, int distance){
@@ -45,6 +44,16 @@ void Facade::nextPlayer(){
 }
 std::string Facade::to_string(){
     return board.to_string(currentPlayer);
+}
+
+void Facade::start(){
+    if(state!=State::NOT_STARTED)
+        throw std::invalid_argument("Game is already started");
+    state=State::MOVING;
+}
+
+int Facade::getBoardSize() const{
+    return board.getBoardSize();
 }
 
 

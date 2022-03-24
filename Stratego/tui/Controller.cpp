@@ -2,12 +2,13 @@
 #include <iostream>
 
 void stratego::Controller::start(){
-    while(!facade.isGameOver()){
+    while(true){
         switch(facade.getState()){
             case State::NOT_STARTED:{
-
+                facade.start();
             }
             case State::MOVING:{
+                view.displayBoard();
                 std::string moveParams=view.askMove();
                 facade.move(createPosition(moveParams.substr(0, moveParams.find(" "))),
                             createDirection(moveParams.substr(1, moveParams.find(" "))));
@@ -29,8 +30,18 @@ void stratego::Controller::start(){
 }
 
 Position stratego::Controller::createPosition(std::string position){
-    return Position{position.at(0)-65,
-                position.at(1)-65};
+    Position p = Position{position.at(1)-49,
+                position.at(0)-65};
+
+    if(facade.getCurrentPlayer()==1){
+        cout<<"board size : "<<facade.getBoardSize()<<endl;
+        cout<<"x:"<<facade.getBoardSize()-1-p.getX()<<"y:"<<facade.getBoardSize()-1-p.getY()<<endl;
+        return Position(facade.getBoardSize()-1-p.getX(), facade.getBoardSize()-1-p.getY());
+    }else{
+        std::cout<<"x:"<<p.getX()<<"y:"<<p.getY()<<endl;
+        return p;
+    }
+
 }
 
 Direction stratego::Controller::createDirection(std::string direction){

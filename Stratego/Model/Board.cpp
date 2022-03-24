@@ -284,3 +284,7 @@ string Modele::Board::to_string(unsigned player){
     }
     return result;
 }
+
+int Modele::Board::getBoardSize() const{
+    return BOARD_SIZE;
+}
