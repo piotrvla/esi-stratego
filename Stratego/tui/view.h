@@ -42,6 +42,8 @@ public:
      * @brief displayHelp displays additional info about the tui game mode.
      */
     void displayHelp();
+
+    void displayError(string err);
 };
 
 

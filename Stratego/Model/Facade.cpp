@@ -39,7 +39,7 @@ unsigned Facade::getCurrentPlayer() const{
 }
 void Facade::nextPlayer(){
     if(state!=State::NEXT_PLAYER)
-        currentPlayer = currentPlayer+1 % 2;
+        currentPlayer = currentPlayer==1 ? 2 : 1;
     state=State::MOVING;
 }
 std::string Facade::to_string(){

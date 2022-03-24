@@ -98,7 +98,7 @@ inline bool Modele::Board::isPiece(Position pos){
 
 optional<Piece> Modele::Board::attack(optional<Piece> &piece, optional<Piece> &piece2){
     if(piece->getPlayer()==piece2->getPlayer())
-        throw invalid_argument("Cannot attack own piece! Attacking piece is of player " + std::to_string(piece->getPlayer()) + " while defender's is of " + std::to_string(piece2->getSymbole())  );
+        throw invalid_argument("Cannot attack own piece! Attacking piece is of player " + std::to_string(piece->getSymbole()) + " while defender's is of " + piece2->getSymbole());
     else if(piece2->getSymbole()=='W')
         throw invalid_argument("Cannot attack an obstacle");
     if(piece->getSymbole()=='2' && piece2->getSymbole()=='B')
@@ -132,21 +132,21 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
     }
     for(int i =1; i <= distance-1;i++ )
         switch(direction){
-            case Direction::BOTTOM:{
+            case Direction::TOP:{
                 if(!isInside(Position{pos.getX()+i,pos.getY()}))
                     throw invalid_argument("Cannot move there");
                 else if(isPiece(Position{pos.getX()+i,pos.getY()}))
                     throw invalid_argument("There's an obstacle in the way");
                 break;
             }
-            case Direction::TOP:{
+            case Direction::RIGHT:{
                 if(!isInside(Position{pos.getX()-i,pos.getY()}))
                     return false;
                 else if(isPiece(Position{pos.getX()-i,pos.getY()}))
                     throw invalid_argument("There's an obstacle in the way");
                 break;
             }
-            case Direction::RIGHT:{
+            case Direction::BOTTOM:{
                 if(!isInside(Position{pos.getX(),pos.getY()+i}))
                     throw invalid_argument("Cannot move there");
                 else if(isPiece(Position{pos.getX(),pos.getY()+i}))
