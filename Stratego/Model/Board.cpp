@@ -195,8 +195,8 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
 }
 bool Modele::Board::isGameOver(){
     int flags=0;
-    bool player1=false;
-    bool player2=false;
+    player1=false;
+    player2=false;
     for(int i = 0 ; i<(int)BOARD_SIZE;i++){
         for(int j = 0; j <(int)BOARD_SIZE;j++){
             if(isPiece(Position{i,j})
@@ -213,10 +213,13 @@ bool Modele::Board::isGameOver(){
         }
     }
     return (flags!=2 || !(player1 && player2));
+
 }
 
 
+
 unsigned Modele::Board::getWinner(){
+
     for(int i = 0 ; i<(int) BOARD_SIZE;i++){
         for(int j = 0; j <(int) BOARD_SIZE;j++){
             if(isPiece(Position{i,j}) && at(Position{i,j})->getSymbole()=='F'  && at(Position{i,j})->getPlayer()==1 && player1)

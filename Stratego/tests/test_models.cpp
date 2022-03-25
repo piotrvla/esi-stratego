@@ -248,10 +248,10 @@ TEST_CASE("isGameOver"){
     SECTION("2 flags left, both players can move"){
         //player 1
         board.at(Position{1,3})=std::optional {Piece{'1',1}};
-        board.at(Position{2,3})=std::optional {Piece{'D',1}};
+        board.at(Position{2,3})=std::optional {Piece{'F',1}};
         board.at(Position{3,3})=std::optional {Piece{'3',1}};
         //player 2
-        board.at(Position{4,9})=std::optional {Piece{'D',2}};
+        board.at(Position{4,9})=std::optional {Piece{'F',2}};
         board.at(Position{4,7})=std::optional {Piece{'2',2}};
         board.at(Position{4,6})=std::optional {Piece{'1',2}};
     REQUIRE(!board.isGameOver());
@@ -262,18 +262,18 @@ TEST_CASE("isGameOver"){
         board.at(Position{2,3})=std::optional {Piece{'4',1}};
         board.at(Position{3,3})=std::optional {Piece{'3',1}};
         //player 2
-        board.at(Position{4,9})=std::optional {Piece{'D',2}};
+        board.at(Position{4,9})=std::optional {Piece{'F',2}};
         board.at(Position{4,7})=std::optional {Piece{'2',2}};
         board.at(Position{4,6})=std::optional {Piece{'1',2}};
         REQUIRE(board.isGameOver());
     }
     SECTION("2 flag left, 1 player can't move"){
         //player 1
-        board.at(Position{1,3})=std::optional {Piece{'D',1}};
+        board.at(Position{1,3})=std::optional {Piece{'F',1}};
         board.at(Position{2,3})=std::optional {Piece{'B',1}};
         board.at(Position{3,3})=std::optional {Piece{'B',1}};
         //player 2
-        board.at(Position{4,9})=std::optional {Piece{'D',2}};
+        board.at(Position{4,9})=std::optional {Piece{'F',2}};
         board.at(Position{4,7})=std::optional {Piece{'2',2}};
         board.at(Position{4,6})=std::optional {Piece{'1',2}};
         REQUIRE(board.isGameOver());
@@ -284,7 +284,7 @@ TEST_CASE("isGameOver"){
         board.at(Position{2,3})=std::optional {Piece{'B',1}};
         board.at(Position{3,3})=std::optional {Piece{'B',1}};
         //player 2
-        board.at(Position{4,9})=std::optional {Piece{'D',2}};
+        board.at(Position{4,9})=std::optional {Piece{'F',2}};
         board.at(Position{4,7})=std::optional {Piece{'2',2}};
         board.at(Position{4,6})=std::optional {Piece{'1',2}};
         REQUIRE(board.isGameOver());

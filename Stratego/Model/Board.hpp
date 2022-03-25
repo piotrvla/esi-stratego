@@ -23,8 +23,8 @@ namespace Modele{
 
         std::array<std::array<std::optional<Piece>,BOARD_SIZE>,BOARD_SIZE> board;
         bool cheatMode=false;
-        bool player1;
-        bool player2;
+        bool player1=false;
+        bool player2=false;
         /**
          *
          * @brief initializeArmy initializes the board of 1 player at the time, if a file doesn't exist
