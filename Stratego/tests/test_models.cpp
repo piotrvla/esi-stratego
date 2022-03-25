@@ -43,9 +43,9 @@ TEST_CASE("Moving"){
         board.at(pos)=pc;
         REQUIRE_THROWS(board.move(pos,Direction::BOTTOM,5));
     }
-    SECTION("Scout moving more than 1 case - RIGHT, and obstacle there") {
+    SECTION("Not scout moving more than 1 case") {
         Position pos{5,5};
-        std::optional pc{Piece{'1',5}};
+        std::optional pc{Piece{'3',5}};
         board.at(pos)=pc;
         board.at(Position{3,5})=std::optional{Piece('2',4)};
         REQUIRE_THROWS(board.move(pos,Direction::BOTTOM,4););
@@ -95,7 +95,7 @@ TEST_CASE("Moving"){
     SECTION("Scout moving more than 1 case - LEFT") {
         Position pos{1,4};
         Position pos2{1,1};
-        std::optional pc{Piece{'0',5}};
+        std::optional pc{Piece{'1',5}};
         board.at(pos)=pc;
         board.move(pos,Direction::LEFT,3);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
@@ -103,7 +103,7 @@ TEST_CASE("Moving"){
     SECTION("Scout moving more than 1 case - RIGHT") {
         Position pos{1,1};
         Position pos2{1,7};
-        std::optional pc{Piece{'0',5}};
+        std::optional pc{Piece{'1',5}};
         board.at(pos)=pc;
         board.move(pos,Direction::RIGHT,6);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
@@ -111,7 +111,7 @@ TEST_CASE("Moving"){
     SECTION("Scout moving more than 1 case - BOTTOM") {
         Position pos{5,5};
         Position pos2{9,5};
-        std::optional pc{Piece{'0',5}};
+        std::optional pc{Piece{'1',5}};
         board.at(pos)=pc;
         board.move(pos,Direction::BOTTOM,4);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
@@ -119,7 +119,7 @@ TEST_CASE("Moving"){
     SECTION("Scout moving more than 1 case - TOP") {
         Position pos{5,5};
         Position pos2{1,5};
-        std::optional pc{Piece{'0',1}};
+        std::optional pc{Piece{'1',1}};
         board.at(pos)=pc;
         board.move(pos,Direction::TOP,4);
         REQUIRE(board.at(pos2)->getSymbole()==pc->getSymbole());
@@ -158,17 +158,17 @@ TEST_CASE("Attack"){
         REQUIRE((!board.isPiece(pos)&&!board.isPiece(pos2)));
     }
 
-    SECTION("Scout attacking marechal - move RIGHT"){
+    SECTION("spy attacking marechal - move RIGHT"){
         Position pos{2,3};
-        Position pos2{2,7};
+        Position pos2{2,4};
         std::optional pc{Piece{'0',1}};
         std::optional pc2{Piece{'9',2}};
         board.at(pos)=pc;
         board.at(pos2)=pc2;
-        board.move(pos,RIGHT,4);
+        board.move(pos,RIGHT);
         REQUIRE(board.at(pos2)->getSymbole()=='0');
     }
-    SECTION("Marechal attacking scout - move LEFT"){
+    SECTION("Marechal attacking spy - move LEFT"){
         Position pos{4,1};
         Position pos2{4,0};
         std::optional pc{Piece{'9',1}};
@@ -178,7 +178,7 @@ TEST_CASE("Attack"){
         board.move(pos,LEFT);
         REQUIRE(board.at(pos2)->getSymbole()=='9');
     }
-    SECTION("Marechal attacking scout - move BOTTOM"){
+    SECTION("Marechal attacking spy - move BOTTOM"){
         Position pos{8,6};
         Position pos2{9,6};
         std::optional pc{Piece{'9',1}};
@@ -188,7 +188,7 @@ TEST_CASE("Attack"){
         board.move(pos,BOTTOM);
         REQUIRE(board.at(pos2)->getSymbole()=='9');
     }
-    SECTION("Marechal attacking scout - move RIGHT"){
+    SECTION("Marechal attacking spy - move RIGHT"){
         Position pos{7,5};
         Position pos2{7,6};
         std::optional pc{Piece{'9',1}};
@@ -198,7 +198,7 @@ TEST_CASE("Attack"){
         board.move(pos,RIGHT);
         REQUIRE(board.at(pos2)->getSymbole()=='9');
     }
-    SECTION("Marechal attacking scout - move TOP"){
+    SECTION("Marechal attacking spy - move TOP"){
         Position pos{8,3};
         Position pos2{7,3};
         std::optional pc{Piece{'9',1}};

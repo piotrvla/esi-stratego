@@ -51,6 +51,23 @@ Example: A7 TOP
 ```
 So the game continues on ;)
 
+#### List of the pieces
+
+``` 
+0 - Spy
+1 - Scout 
+2 - Sapper
+3 - Sergent
+4 - Lieutenant
+5 - Commander
+6 - Major
+7 - Colonel
+8 - General
+9 - Marechal
+B - Bomb
+F - Flag
+```
+
 ## Technical informations :
 The project respects the MVP architecture structure.
 ### Warnings 

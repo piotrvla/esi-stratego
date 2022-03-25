@@ -126,7 +126,7 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
         throw invalid_argument("Object impossible to move");
     else if(distance<=0)
         throw invalid_argument("Cannot move by 0 cases.");
-    else if(distance!=1 && at(pos)->getSymbole()!='0'){
+    else if(distance!=1 && at(pos)->getSymbole()!='1'){
         throw invalid_argument("Only scout can move more than 1 case");
     }
     for(int i =1; i <= distance-1;i++ )
