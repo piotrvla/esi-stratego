@@ -9,6 +9,7 @@ void Facade::move(Position pos, Direction direction, int distance){
     if(board.at(pos)->getPlayer()!=currentPlayer)
         throw std::invalid_argument("That's not your piece");
     try {
+
         board.move(pos,direction,distance);
         state=State::NEXT_PLAYER;
     } catch (std::exception &ex) {

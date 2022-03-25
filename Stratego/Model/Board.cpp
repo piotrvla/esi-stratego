@@ -199,7 +199,7 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
     at(pos)=optional<Piece>{nullopt};
     }
 }
-/*bool Modele::Board::isGameOver(){
+bool Modele::Board::isGameOver(){
     int flags=0;
     bool player1=false;
     bool player2=false;
@@ -220,26 +220,8 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
     }
     return (flags!=2 || !(player1 && player2));
 
-}*/
-
-bool Modele::Board::isGameOver(){
-    bool player1=false;
-    bool player2=false;
-    for(int i = 0 ; i<(int)BOARD_SIZE;i++){
-        for(int j = 0; j <(int)BOARD_SIZE;j++){
-            if(at(Position(i, j))->getSymbole()=='D'){
-                if(at(Position(i, j))->getPlayer()==1){
-                    player1=true;
-                }else if(at(Position(i, j))->getPlayer()==2){
-                    player2=true;
-                }
-                if(player1 && player2) return false;
-            }
-        }
-    }
-
-    return true;
 }
+
 unsigned Modele::Board::getWinner(){
 
     for(int i = 0 ; i<(int) BOARD_SIZE;i++){

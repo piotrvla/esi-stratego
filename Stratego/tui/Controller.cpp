@@ -32,12 +32,13 @@ void stratego::Controller::start(){
             view.displayBoard();
                 std::string moveParams=view.askMove();
                 Position p = createPosition(moveParams.substr(0, moveParams.find(" ")));
-                moveParams=moveParams.erase(0, moveParams.find(" "));
-                Direction d=createDirection(moveParams);
-                moveParams=moveParams.erase(0, moveParams.find(" "));
+                moveParams=moveParams.erase(0, moveParams.find(" ")+1);
+                Direction d=createDirection(moveParams.substr(0, moveParams.find(" ")));
+                moveParams=moveParams.erase(0, moveParams.find(" ")+1);
                 int dist = 1;
+
                 try{
-                    dist = stoi(moveParams);
+                    dist = stoi(moveParams.substr(0, moveParams.find(" ")));
                 }catch(exception & e){}
                 try{
                 facade.move(p, d, dist);
