@@ -128,7 +128,7 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
     else if(!isInside(pos)){
         throw invalid_argument("Given position is out of bonds");
     }else if(at(pos).value().getSymbole() == 'B'||
-             at(pos)->getSymbole() == 'F' ||
+             at(pos)->getSymbole() == 'D' ||
              at(pos)->getSymbole() == 'W')
         throw invalid_argument("Object impossible to move");
     else if(distance<=0)

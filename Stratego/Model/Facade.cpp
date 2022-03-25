@@ -1,4 +1,4 @@
-#include "Facade.hpp"
+ #include "Facade.hpp"
 
 Facade::Facade():board{Modele::Board()},currentPlayer{1},state{State::NOT_STARTED}{
 

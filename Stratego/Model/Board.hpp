@@ -14,7 +14,6 @@
 #include "Position.hpp"
 #include <stdlib.h>
 
-
 namespace Modele{
     /**
      * @brief The Board class represents an 2d array of the pieces.

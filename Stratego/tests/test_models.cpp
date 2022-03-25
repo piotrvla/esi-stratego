@@ -3,10 +3,7 @@
 
 using namespace Modele;
 
-
-
 TEST_CASE("Moving"){
-
     Board board(1);
     SECTION("Moving as a flag"){
         Position pos{1,1};

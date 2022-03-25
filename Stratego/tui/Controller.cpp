@@ -31,20 +31,14 @@ void stratego::Controller::start(){
             case State::MOVING:{
             view.displayBoard();
                 std::string moveParams=view.askMove();
-
-
                 Position p = createPosition(moveParams.substr(0, moveParams.find(" ")));
-
                 moveParams=moveParams.erase(0, moveParams.find(" "));
-
                 Direction d=createDirection(moveParams);
-
                 moveParams=moveParams.erase(0, moveParams.find(" "));
                 int dist = 1;
                 try{
                     dist = stoi(moveParams);
                 }catch(exception & e){}
-
                 try{
                 facade.move(p, d, dist);
                 }catch(std::exception & e){

@@ -42,11 +42,19 @@ public:
      * @brief displayHelp displays additional info about the tui game mode.
      */
     void displayHelp();
-
+    /**
+     * @brief displayError displays given errror in the arguments.
+     * @param err error to display.
+     */
     void displayError(string err);
-
+    /**
+     * @brief askSwap asks the player positions to swap in the board.
+     * @return positions to swap.
+     */
     string askSwap();
-
+    /**
+     * @brief printPlayer prints the current player.
+     */
     void printPlayer();
 };
 
