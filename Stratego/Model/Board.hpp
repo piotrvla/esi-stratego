@@ -109,9 +109,16 @@ namespace Modele{
          * @return true if it's a piece, if not false.
          */
         bool isPiece(Position pos);
-
+        /**
+         * @brief getBoardSize returns the board size.
+         * @return board size.
+         */
         int getBoardSize() const;
-
+        /**
+         * @brief swap used to swap 2 pieces between.
+         * @param p1 position 1 to swap from.
+         * @param p2 position 2 to swap to.
+         */
         void swap(Position p1, Position p2);
 
         

@@ -56,7 +56,10 @@ public:
      * @brief printPlayer prints the current player.
      */
     void printPlayer();
-
+    /**
+     * @brief askCheatMode asks the player if he pretends to cheat.
+     * @return char with his answer [y/n]
+     */
     char askCheatMode();
 };
 

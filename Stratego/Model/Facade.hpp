@@ -77,6 +77,10 @@ public:
      * @param p2 position to swap.
      */
     void swap(Position p1, Position p2);
+    /**
+     * @brief setCheatMode sets the chead mode on true.
+     * @param mode answer of the user.
+     */
     void setCheatMode(char mode);
 };
 
