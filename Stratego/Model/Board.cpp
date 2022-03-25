@@ -21,7 +21,7 @@ Modele::Board::Board(bool a){
 void Modele::Board::initializeArmy(unsigned player){
     vector<pair<char, int>> listOfPieces={pair('9',1), pair('8',1),pair('7',2),pair('6',3),pair('5',4),
                 pair('4',4),pair('3',4),pair('2',5),pair('1',8),
-                pair('0',1),pair('D',1),pair('B',6)};
+                pair('0',1),pair('F',1),pair('B',6)};
 
     ifstream fi("player"+std::to_string(player)+".txt");
     if(fi.good()){
@@ -121,7 +121,7 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
     else if(!isInside(pos)){
         throw invalid_argument("Given position is out of bonds");
     }else if(at(pos).value().getSymbole() == 'B'||
-             at(pos)->getSymbole() == 'D' ||
+             at(pos)->getSymbole() == 'F' ||
              at(pos)->getSymbole() == 'W')
         throw invalid_argument("Object impossible to move");
     else if(distance<=0)
@@ -200,9 +200,9 @@ bool Modele::Board::isGameOver(){
     for(int i = 0 ; i<(int)BOARD_SIZE;i++){
         for(int j = 0; j <(int)BOARD_SIZE;j++){
             if(isPiece(Position{i,j})
-                    && at(Position{i,j})->getSymbole()=='D')
+                    && at(Position{i,j})->getSymbole()=='F')
                 flags++;
-            if(at(Position{i,j})->getSymbole()!='D' && at(Position{i,j})->getSymbole()!='B'){
+            if(at(Position{i,j})->getSymbole()!='F' && at(Position{i,j})->getSymbole()!='B'){
                 if(!player1 && at(Position(i,j))->getPlayer()==1){
                     player1=true;
                 }
@@ -213,88 +213,92 @@ bool Modele::Board::isGameOver(){
         }
     }
     return (flags!=2 || !(player1 && player2));
-
 }
 
 
 unsigned Modele::Board::getWinner(){
-
     for(int i = 0 ; i<(int) BOARD_SIZE;i++){
         for(int j = 0; j <(int) BOARD_SIZE;j++){
-            if(isPiece(Position{i,j}) && at(Position{i,j})->getSymbole()=='F')
+            if(isPiece(Position{i,j}) && at(Position{i,j})->getSymbole()=='F'  && at(Position{i,j})->getPlayer()==1 && player1)
                 return at(Position{i,j})->getPlayer();
+            else if(isPiece(Position{i,j}) && at(Position{i,j})->getSymbole()=='F'  && at(Position{i,j})->getPlayer()==2 && player2)
+                return at(Position{i,j})->getPlayer();
+
         }
+
     }
     return -1;
-}
 
+}
 string Modele::Board::to_string(unsigned player){
     string result = "";
-    result.append("     ");
-    for(unsigned i=0;i<board.size();i++){
-        result+=char('A'+i);
-        result.append(" ");
-    }
-    result.append("\n");
-    result.append("  ");
-    for(unsigned i=0; i<(board.size()*2)+2; i++)
-        result.append("-");
-    result.append("\n");
-    if(player==2){
-    for(unsigned i=0; i<board.size(); i++){
+       result.append("     ");
+       for(unsigned i=0;i<board.size();i++){
+           result+=char('A'+i);
+           result.append(" ");
+       }
+       result.append("\n");
+       result.append("  ");
+       for(unsigned i=0; i<(board.size()*2)+2; i++)
+           result.append("-");
+       result.append("\n");
+       if(player==2){
+       for(unsigned i=0; i<board.size(); i++){
 
-        result.append(std::to_string(i)+" |  ");
+           result.append(std::to_string(i)+" |  ");
 
-        for(unsigned j=0; j<board.size(); j++){
+           for(unsigned j=0; j<board.size(); j++){
 
-            if(board[i][j].has_value()){
-                if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
-            result.push_back(board[i][j]->getSymbole());
-                }else{
-                    result.append("?");
-                }
-            result.append(" ");
-            }else{
-                result.append("  ");
-            }
-        }
-        result.append("\n");
-    }
-    }else if(player==1){
-        for(int i=board.size()-1; i>=0; i--){ 
+               if(board[i][j].has_value()){
+                   if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
+               result.push_back(board[i][j]->getSymbole());
+                   }else{
+                       result.append("?");
+                   }
+               result.append(" ");
+               }else{
+                   result.append("  ");
+               }
+           }
+           result.append("\n");
+       }
+       }else if(player==1){
+           for(int i=board.size()-1; i>=0; i--){
 
-            result.append(std::to_string(9-i)+" |  ");
-            for(int j=board.size()-1; j>=0; j--){
-                if(board[i][j].has_value()){
-                    if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
-                result.push_back(board[i][j]->getSymbole());
-                    }else{
-                        result.append("?");
-                    }
-                result.append(" ");
-                }else{
-                    result.append("  ");
-                }
-            }
-            result.append("\n");
-        }
-    }else{
-        for(int i=board.size()-1; i>=0; i--){
+               result.append(std::to_string(9-i)+" |  ");
+               for(int j=board.size()-1; j>=0; j--){
+                   if(board[i][j].has_value()){
+                       if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
+                   result.push_back(board[i][j]->getSymbole());
+                       }else{
+                           result.append("?");
+                       }
+                   result.append(" ");
+                   }else{
+                       result.append("  ");
+                   }
+               }
+               result.append("\n");
+           }
+       }else{
+           for(int i=board.size()-1; i>=0; i--){
 
-            result.append(std::to_string(9-i)+" |  ");
-            for(int j=board.size()-1; j>=0; j--){
-                if(board[i][j].has_value()){
-                result.push_back(board[i][j]->getSymbole());
-                result.append(" ");
-                }else{
-                    result.append("  ");
-                }
-            }
-            result.append("\n");
-        }
-    }
-    return result;
-}
+               result.append(std::to_string(9-i)+" |  ");
+               for(int j=board.size()-1; j>=0; j--){
+                   if(board[i][j].has_value()){
+                   result.push_back(board[i][j]->getSymbole());
+                   result.append(" ");
+                   }else{
+                       result.append("  ");
+                   }
+               }
+               result.append("\n");
+           }
+       }
+       return result;
+   }
+
+
 
 int Modele::Board::getBoardSize() const{
     return BOARD_SIZE;
