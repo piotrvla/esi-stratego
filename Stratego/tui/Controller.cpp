@@ -3,6 +3,8 @@
 #include <algorithm>
 
 void stratego::Controller::start(){
+    char cheatMode = view.askCheatMode();
+    facade.setCheatMode(cheatMode);
     while(true){
         view.printPlayer();
         switch(facade.getState()){
@@ -21,7 +23,7 @@ void stratego::Controller::start(){
                 try{
                 facade.swap(p1, createPosition(swapParams));
                 }catch(std::exception & e){
-                    view.displayError("Swap interdit.");
+                    view.displayError("Cannot swap.");
                 }
                 view.displayBoard();
             }
@@ -43,7 +45,7 @@ void stratego::Controller::start(){
                 try{
                 facade.move(p, d, dist);
                 }catch(std::exception & e){
-                    view.displayError("Deplacement interdit.");
+                    view.displayError("Cannot move.");
                 }
 
                 facade.isGameOver();
@@ -55,7 +57,6 @@ void stratego::Controller::start(){
             }
 
             case State::GAME_OVER:{
-                //possibilité de jouer une autre partie ou pas?
                 view.displayWinner();
                 break;
             }
@@ -69,7 +70,6 @@ void stratego::Controller::start(){
 
 Position stratego::Controller::createPosition(std::string position){
     Position p = Position{position.at(1)-48, position.at(0)-65};
-
     if(facade.getCurrentPlayer()==1){
         return Position(facade.getBoardSize()-1-p.getX(), facade.getBoardSize()-1-p.getY());
     }else{

@@ -49,7 +49,10 @@ void Facade::nextPlayer(){
     }
 }
 std::string Facade::to_string(){
-    return board.to_string(currentPlayer);
+    if(cheatMode)
+        return board.to_string(0);
+    else
+        return board.to_string(currentPlayer);
 }
 
 void Facade::start(){
@@ -67,6 +70,10 @@ void Facade::swap(Position p1, Position p2){
     if(at(p1).getPlayer()!=currentPlayer || at(p2).getPlayer()!=currentPlayer)
         throw std::invalid_argument("That's not your piece");
     board.swap(p1, p2);
+}
+void Facade::setCheatMode(char chMode){
+    if(chMode=='y')
+        cheatMode=true;
 }
 
 

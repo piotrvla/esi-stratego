@@ -56,9 +56,9 @@ public:
      * @brief printPlayer prints the current player.
      */
     void printPlayer();
+
+    char askCheatMode();
 };
-
-
 
 }
 

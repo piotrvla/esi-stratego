@@ -13,8 +13,6 @@ Modele::Board::Board(){
     at(Position{5,6})=std::optional{Piece{'W'}};
     at(Position{4,6})=std::optional{Piece{'W'}};
     at(Position{4,7})=std::optional{Piece{'W'}};
-
-    cheatMode=true;
 }
 Modele::Board::Board(bool a){
 
@@ -98,11 +96,6 @@ inline bool Modele::Board::isPiece(Position pos){
 }
 
 optional<Piece> Modele::Board::attack(optional<Piece> &piece, optional<Piece> &piece2){
-    if(cheatMode){
-        piece->setCheated(true);
-        piece2->setCheated(true);
-    }
-
     if(piece->getPlayer()==piece2->getPlayer())
         throw invalid_argument("Cannot attack own piece! Attacking piece is of player " + std::to_string(piece->getSymbole()) + " while defender's is of " + piece2->getSymbole());
     else if(piece2->getSymbole()=='W')
@@ -137,36 +130,37 @@ bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
         throw invalid_argument("Only scout can move more than 1 case");
     }
     for(int i =1; i <= distance-1;i++ )
-        switch(direction){
-            case Direction::TOP:{
-                if(!isInside(Position{pos.getX()+i,pos.getY()}))
-                    throw invalid_argument("Cannot move there");
-                else if(isPiece(Position{pos.getX()+i,pos.getY()}))
-                    throw invalid_argument("There's an obstacle in the way");
-                break;
-            }
-            case Direction::RIGHT:{
-                if(!isInside(Position{pos.getX()-i,pos.getY()}))
-                    return false;
-                else if(isPiece(Position{pos.getX()-i,pos.getY()}))
-                    throw invalid_argument("There's an obstacle in the way");
-                break;
-            }
-            case Direction::BOTTOM:{
-                if(!isInside(Position{pos.getX(),pos.getY()+i}))
-                    throw invalid_argument("Cannot move there");
-                else if(isPiece(Position{pos.getX(),pos.getY()+i}))
-                    throw invalid_argument("There's an obstacle in the way");
-                break;
-            }
-            case Direction::LEFT:{
-                if(!isInside(Position{pos.getX(),pos.getY()-i}))
-                    throw invalid_argument("Cannot move there");
-                else if(isPiece(Position{pos.getX(),pos.getY()-i}))
-                    throw invalid_argument("There's an obstacle in the way");
-                break;
-            }
-    }
+         switch(direction){
+             case Direction::BOTTOM:{
+                 if(!isInside(Position{pos.getX()+i,pos.getY()}))
+                     throw invalid_argument("Cannot move there");
+                 else if(isPiece(Position{pos.getX()+i,pos.getY()}))
+                     throw invalid_argument("There's an obstacle in the way");
+                 break;
+             }
+             case Direction::TOP:{
+                 if(!isInside(Position{pos.getX()-i,pos.getY()}))
+                     return false;
+                 else if(isPiece(Position{pos.getX()-i,pos.getY()}))
+                     throw invalid_argument("There's an obstacle in the way");
+                 break;
+             }
+             case Direction::RIGHT:{
+                 if(!isInside(Position{pos.getX(),pos.getY()+i}))
+                     throw invalid_argument("Cannot move there");
+                 else if(isPiece(Position{pos.getX(),pos.getY()+i}))
+                     throw invalid_argument("There's an obstacle in the way");
+                 break;
+             }
+             case Direction::LEFT:{
+                 if(!isInside(Position{pos.getX(),pos.getY()-i}))
+                     throw invalid_argument("Cannot move there");
+                 else if(isPiece(Position{pos.getX(),pos.getY()-i}))
+                     throw invalid_argument("There's an obstacle in the way");
+                 break;
+             }
+     }
+
     return true;
 }
 
@@ -206,9 +200,9 @@ bool Modele::Board::isGameOver(){
     for(int i = 0 ; i<(int)BOARD_SIZE;i++){
         for(int j = 0; j <(int)BOARD_SIZE;j++){
             if(isPiece(Position{i,j})
-                    && at(Position{i,j})->getSymbole()=='F')
+                    && at(Position{i,j})->getSymbole()=='D')
                 flags++;
-            if(at(Position{i,j})->getSymbole()!='F' && at(Position{i,j})->getSymbole()!='B'){
+            if(at(Position{i,j})->getSymbole()!='D' && at(Position{i,j})->getSymbole()!='B'){
                 if(!player1 && at(Position(i,j))->getPlayer()==1){
                     player1=true;
                 }
@@ -221,6 +215,7 @@ bool Modele::Board::isGameOver(){
     return (flags!=2 || !(player1 && player2));
 
 }
+
 
 unsigned Modele::Board::getWinner(){
 
@@ -240,12 +235,10 @@ string Modele::Board::to_string(unsigned player){
         result+=char('A'+i);
         result.append(" ");
     }
-
     result.append("\n");
     result.append("  ");
     for(unsigned i=0; i<(board.size()*2)+2; i++)
         result.append("-");
-
     result.append("\n");
     if(player==2){
     for(unsigned i=0; i<board.size(); i++){
@@ -267,17 +260,31 @@ string Modele::Board::to_string(unsigned player){
         }
         result.append("\n");
     }
-    }else{
+    }else if(player==1){
         for(int i=board.size()-1; i>=0; i--){ 
 
             result.append(std::to_string(9-i)+" |  ");
             for(int j=board.size()-1; j>=0; j--){
                 if(board[i][j].has_value()){
-                    if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0 || board[i][j]->getCheated()){
+                    if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
                 result.push_back(board[i][j]->getSymbole());
                     }else{
                         result.append("?");
                     }
+                result.append(" ");
+                }else{
+                    result.append("  ");
+                }
+            }
+            result.append("\n");
+        }
+    }else{
+        for(int i=board.size()-1; i>=0; i--){
+
+            result.append(std::to_string(9-i)+" |  ");
+            for(int j=board.size()-1; j>=0; j--){
+                if(board[i][j].has_value()){
+                result.push_back(board[i][j]->getSymbole());
                 result.append(" ");
                 }else{
                     result.append("  ");

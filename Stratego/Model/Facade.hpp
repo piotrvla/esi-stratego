@@ -12,7 +12,7 @@ class Facade{
     Modele::Board board;
     unsigned currentPlayer;
     State state;
-
+    bool cheatMode;
 
 public:
     /**
@@ -77,6 +77,7 @@ public:
      * @param p2 position to swap.
      */
     void swap(Position p1, Position p2);
+    void setCheatMode(char mode);
 };
 
 #endif // FACADE_H

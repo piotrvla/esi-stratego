@@ -7,7 +7,6 @@ class Piece{
 private:
     char symbole;
     unsigned player;
-    bool cheated;
 
 public:
     /**
@@ -26,9 +25,5 @@ public:
      * @return player's id.
     */
     unsigned getPlayer() const;
-
-    unsigned getCheated() const;
-
-    void setCheated(bool cheated);
 };
 #endif // PIECE_H

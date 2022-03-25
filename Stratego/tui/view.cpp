@@ -11,7 +11,7 @@ string View::askSwap(){
     transform(swapParams.begin(), swapParams.end(), swapParams.begin(), ::toupper);
     while(!regex_match(swapParams,paramRule)){
         cout<<"Wrong, try again!"<<endl;
-        cout<<"To swap pieces, type the two piece positions like this : A7 C7"<<endl;
+        cout<<"To swap pieces, type the two piece positions like this : A7 C7 or E5 RIGHT 3"<<endl;
         cout<<"Type END to start the game"<<endl;
         getline(cin, swapParams);
         transform(swapParams.begin(), swapParams.end(), swapParams.begin(), ::toupper);
@@ -35,6 +35,19 @@ string View::askMove(){
     }
     return moveParams;
 }
+char View::askCheatMode(){
+    string cheatMode;
+    cout<<"Do you want to use the cheat mode? [y/n]"<<endl;
+    regex cheatAnswer("(^[y].*){1}|(^[n].*){1}");
+    getline(cin, cheatMode);
+    transform(cheatMode.begin(), cheatMode.end(), cheatMode.begin(), ::tolower);
+    while(!regex_match(cheatMode,cheatAnswer)){
+        cout<<"Answer is y or n, try again."<<endl;
+        getline(cin, cheatMode);
+
+    }
+    return cheatMode.at(0);
+}
 void View::displayBoard(){
     cout<<facade.to_string()<<endl;
 }
@@ -50,6 +63,5 @@ void View::displayError(string err){
 }
 
 void View::printPlayer(){
-    system("CLS");
     cout<<"########PLAYER "<<facade.getCurrentPlayer()<<"########\n\n"<<endl;
 }
