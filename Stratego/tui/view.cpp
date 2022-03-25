@@ -50,6 +50,6 @@ void View::displayError(string err){
 }
 
 void View::printPlayer(){
-    system("clear");
+    system("CLS");
     cout<<"########PLAYER "<<facade.getCurrentPlayer()<<"########\n\n"<<endl;
 }

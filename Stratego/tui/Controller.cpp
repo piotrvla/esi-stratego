@@ -37,8 +37,16 @@ void stratego::Controller::start(){
 
                 moveParams=moveParams.erase(0, moveParams.find(" "));
 
+                Direction d=createDirection(moveParams);
+
+                moveParams=moveParams.erase(0, moveParams.find(" "));
+                int dist = 1;
                 try{
-                facade.move(p, createDirection(moveParams));
+                    dist = stoi(moveParams);
+                }catch(exception & e){}
+
+                try{
+                facade.move(p, d, dist);
                 }catch(std::exception & e){
                     view.displayError("Deplacement interdit.");
                 }
