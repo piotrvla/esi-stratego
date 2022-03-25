@@ -49,6 +49,7 @@ Insert position from where you'd like to move, then direction, then the distance
 Example: A7 TOP
 
 ```
+So the game continues on ;)
 
 ## Technical informations :
 The project respects the MVP architecture structure.
