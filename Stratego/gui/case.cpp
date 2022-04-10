@@ -40,7 +40,7 @@ void Case::paintEvent(QPaintEvent *e) {
         painter.drawRect(QRect(0,0,130,72));
     }else{
         QBrush brush;
-        brush.setColor(Qt::gray);
+        brush.setColor(Qt::white);
         brush.setStyle(Qt::SolidPattern);
         painter.setBrush(brush);
         painter.drawRect(QRect(0,0,130,72));

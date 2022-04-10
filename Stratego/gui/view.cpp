@@ -19,6 +19,7 @@ View::View(Facade &f, QWidget *parent)
     ui->gridLayout->setHorizontalSpacing(0);
     ui->gridLayout->setVerticalSpacing(0);
     this->setWindowTitle("Stratego - Smolinski Piotr & Noé Delcroix");
+    facade.addObserver(this);
     updateBoard();
 }
 
@@ -50,7 +51,7 @@ void View::eventHandler(Position pos){
     if(buttonsClicked.size()>=2){
         ctrl_->move(buttonsClicked.at(0),buttonsClicked.at(1));
         buttonsClicked.clear();
-        updateBoard();
+
     }
 }
 void View::updateGameStatus(QString text){
@@ -58,6 +59,13 @@ void View::updateGameStatus(QString text){
 }
 void View::updateCurrentPlayer(QString text){
     ui->player->setText(text);
+
+}
+void View::update(const std::string & propertyName){
+
+    if(propertyName=="move"){
+        updateBoard();
+    }
 
 }
 

@@ -11,7 +11,8 @@ SOURCES += \
         Board.cpp \
         Facade.cpp \
         Piece.cpp \
-        Position.cpp
+        Position.cpp \
+
 
 HEADERS += \
     Board.hpp \
@@ -19,5 +20,9 @@ HEADERS += \
     Facade.hpp \
     Piece.hpp \
     Position.hpp \
-    State.hpp
+    State.hpp \
+    observable.h \
+    observer.h
+
+
 

@@ -2,17 +2,23 @@
 #define FACADE_H
 #include "Board.hpp"
 #include "State.hpp"
+#include "observable.h"
+#include "observer.h"
+
+#include <list>
 
 
 /**
  * @brief The Facade class
  */
-class Facade{
+class Facade : public Observable{
 
     Modele::Board board;
     unsigned currentPlayer;
     State state;
     bool cheatMode;
+    std::list<Observer *> observers_;
+
 
 public:
     /**
@@ -83,6 +89,22 @@ public:
      */
     void setCheatMode(char mode);
     bool isPiece(Position pos);
+    // Subject interface
+
+    void addObserver(Observer * o)override
+    {
+        observers_.push_back(o);
+    }
+    void removeObserver(Observer * o)override
+    {
+        observers_.remove(o);
+    }
+    void notify(const std::string &propertyName)override
+    {
+        for (auto const & o : observers_) {
+            o->update(propertyName);
+        }
+    }
 };
 
 #endif // FACADE_H

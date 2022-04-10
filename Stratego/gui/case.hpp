@@ -1,7 +1,7 @@
 #ifndef CASE_HPP
 #define CASE_HPP
 
-#include <Position.hpp>
+#include "Position.hpp"
 #include <QPushButton>
 #include <QDebug>
 #include <QMouseEvent>

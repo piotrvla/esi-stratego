@@ -46,6 +46,7 @@ void Facade::nextPlayer(){
         state=State::SWAPING;
     }else{
         state=State::MOVING;
+        notify("move");
     }
 }
 std::string Facade::to_string(){
