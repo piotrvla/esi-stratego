@@ -14,14 +14,20 @@
 
 
 class Case : public QWidget , public QGraphicsPolygonItem{
-
+    Q_OBJECT
     Position pos;
     char role;
     int player;
+    bool hidden;
 public:
-    Case(int player, char role, Position pos, QWidget * parent =nullptr);
+    Case(int player, char role, Position pos,bool hidden, QWidget * parent =nullptr);
 private:
     void paintEvent(QPaintEvent *e);
+    void mousePressEvent(QMouseEvent *event);
+protected:
+
+signals:
+    void sendValue(Position pos);
 };
 
 #endif // CASE_HPP

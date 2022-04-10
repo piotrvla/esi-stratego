@@ -32,5 +32,3 @@ DEPENDPATH += $$PWD/../Model
 
 FORMS += \
     resources/stratego.ui
-OTHER_FILES += \
-    resources/background_picture

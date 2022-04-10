@@ -1,6 +1,7 @@
 #include <QApplication>
 #include "Facade.hpp"
 #include "view.hpp"
+#include "controller.hpp"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

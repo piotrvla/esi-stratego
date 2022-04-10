@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1370</width>
-    <height>838</height>
+    <width>1660</width>
+    <height>780</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,40 +23,132 @@
       <height>741</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout"/>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+    </layout>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>760</y>
-      <width>381</width>
-      <height>31</height>
+      <x>1410</x>
+      <y>10</y>
+      <width>421</width>
+      <height>101</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Niagara Solid</family>
+      <pointsize>72</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>xD</string>
+     <string>Stratego</string>
     </property>
     <property name="scaledContents">
      <bool>false</bool>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1370</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuStratego">
-    <property name="title">
-     <string>Stratego</string>
+   <widget class="QLabel" name="gamestatus">
+    <property name="geometry">
+     <rect>
+      <x>1370</x>
+      <y>180</y>
+      <width>261</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Impact</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
-   <addaction name="menuStratego"/>
+   <widget class="QLabel" name="player">
+    <property name="geometry">
+     <rect>
+      <x>1440</x>
+      <y>100</y>
+      <width>151</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Niagara Solid</family>
+      <pointsize>28</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Player X turn</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>1440</x>
+      <y>720</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Niagara Solid</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Noé Delcroix - 55990</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>1430</x>
+      <y>690</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Niagara Solid</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Smolinski Piotr - 56212</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>1470</x>
+      <y>650</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Niagara Solid</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Authors:</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
