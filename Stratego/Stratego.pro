@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     Model \
+    gui \
     tests \
     tui
 

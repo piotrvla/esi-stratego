@@ -82,6 +82,7 @@ public:
      * @param mode answer of the user.
      */
     void setCheatMode(char mode);
+    bool isPiece(Position pos);
 };
 
 #endif // FACADE_H

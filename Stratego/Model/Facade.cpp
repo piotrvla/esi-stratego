@@ -75,5 +75,8 @@ void Facade::setCheatMode(char chMode){
     if(chMode=='y')
         cheatMode=true;
 }
+bool Facade::isPiece(Position pos){
+    return board.isPiece(pos);
+}
 
 
