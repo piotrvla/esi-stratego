@@ -1,0 +1,1972 @@
+Checking Stratego/Model/Board.cpp ...
+Stratego/Model/Board.hpp:49:14: performance:inconclusive: Technically the member function 'Modele::Board::isInside' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+        bool isInside(Position pos);
+             ^
+Stratego/Model/Board.cpp:83:21: note: Technically the member function 'Modele::Board::isInside' can be static (but you may consider moving to unnamed namespace).
+bool Modele::Board::isInside(Position pos){
+                    ^
+Stratego/Model/Board.hpp:49:14: note: Technically the member function 'Modele::Board::isInside' can be static (but you may consider moving to unnamed namespace).
+        bool isInside(Position pos);
+             ^
+Stratego/Model/Board.hpp:118:13: performance:inconclusive: Technically the member function 'Modele::Board::getBoardSize' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+        int getBoardSize() const;
+            ^
+Stratego/Model/Board.cpp:306:20: note: Technically the member function 'Modele::Board::getBoardSize' can be static (but you may consider moving to unnamed namespace).
+int Modele::Board::getBoardSize() const{
+                   ^
+Stratego/Model/Board.hpp:118:13: note: Technically the member function 'Modele::Board::getBoardSize' can be static (but you may consider moving to unnamed namespace).
+        int getBoardSize() const;
+            ^
+Stratego/Model/Piece.hpp:17:5: style: Class 'Piece' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+    Piece (char symbole,unsigned player=0);
+    ^
+Stratego/Model/Board.hpp:59:9: style: Class 'Board' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Board(bool a);
+        ^
+1/17 files checked 26% done
+Checking Stratego/Model/Board.hpp ...
+2/17 files checked 37% done
+Checking Stratego/Model/Direction.hpp ...
+3/17 files checked 38% done
+Checking Stratego/Model/Facade.cpp ...
+Stratego/Model/Facade.cpp:43:34: style:inconclusive: Boolean expression 'state==State::NEXT_PLAYER' is used in bitwise operation. Did you mean '||'? [bitwiseOnBoolean]
+    if(state==State::NEXT_PLAYER | state==State::SWAPING)
+                                 ^
+Stratego/Model/Facade.cpp:3:9: warning: Member variable 'Facade::cheatMode' is not initialized in the constructor. [uninitMemberVar]
+Facade::Facade():board{Modele::Board()},currentPlayer{1},state{State::NOT_STARTED}{
+        ^
+Stratego/Model/Facade.cpp:43:34: style: Boolean result is used in bitwise operation. Clarify expression with parentheses. [clarifyCondition]
+    if(state==State::NEXT_PLAYER | state==State::SWAPING)
+                                 ^
+Stratego/Model/Facade.cpp:17:9: style: Statements following return, break, continue, goto or throw will never be executed. [unreachableCode]
+        state=State::MOVING;
+        ^
+Stratego/Model/Facade.cpp:74:32: style:inconclusive: Function 'setCheatMode' argument 1 names different: declaration 'mode' definition 'chMode'. [funcArgNamesDifferent]
+void Facade::setCheatMode(char chMode){
+                               ^
+Stratego/Model/Facade.hpp:84:28: note: Function 'setCheatMode' argument 1 names different: declaration 'mode' definition 'chMode'.
+    void setCheatMode(char mode);
+                           ^
+Stratego/Model/Facade.cpp:74:32: note: Function 'setCheatMode' argument 1 names different: declaration 'mode' definition 'chMode'.
+void Facade::setCheatMode(char chMode){
+                               ^
+4/17 files checked 43% done
+Checking Stratego/Model/Facade.hpp ...
+5/17 files checked 48% done
+Checking Stratego/Model/Piece.cpp ...
+6/17 files checked 48% done
+Checking Stratego/Model/Piece.hpp ...
+7/17 files checked 50% done
+Checking Stratego/Model/Position.cpp ...
+Stratego/Model/Position.hpp:21:9: style:inconclusive: Technically the member function 'Position::getX' can be const. [functionConst]
+    int getX();
+        ^
+Stratego/Model/Position.cpp:6:15: note: Technically the member function 'Position::getX' can be const.
+int Position::getX(){
+              ^
+Stratego/Model/Position.hpp:21:9: note: Technically the member function 'Position::getX' can be const.
+    int getX();
+        ^
+Stratego/Model/Position.hpp:26:9: style:inconclusive: Technically the member function 'Position::getY' can be const. [functionConst]
+    int getY();
+        ^
+Stratego/Model/Position.cpp:9:15: note: Technically the member function 'Position::getY' can be const.
+int Position::getY(){
+              ^
+Stratego/Model/Position.hpp:26:9: note: Technically the member function 'Position::getY' can be const.
+    int getY();
+        ^
+8/17 files checked 50% done
+Checking Stratego/Model/Position.hpp ...
+9/17 files checked 52% done
+Checking Stratego/Model/State.hpp ...
+10/17 files checked 52% done
+Checking Stratego/tests/main.cpp ...
+Stratego/tests/main.cpp:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 46 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+Stratego/tests/catch.hpp:404:9: warning:inconclusive: Member variable 'NotImplementedException::m_what' is not assigned in the copy constructor. Should it be copied? [uninitMemberVar]
+        NotImplementedException( NotImplementedException const& ) {}
+        ^
+Stratego/tests/catch.hpp:791:9: warning:inconclusive: Member variable 'AssertionInfo::resultDisposition' is not initialized in the constructor. [uninitMemberVar]
+        AssertionInfo() {}
+        ^
+Stratego/tests/catch.hpp:1171:9: warning:inconclusive: Member variable 'CopyableStream::oss' is not assigned in the copy constructor. Should it be copied? [uninitMemberVar]
+        CopyableStream( CopyableStream const& other ) {
+        ^
+Stratego/tests/catch.hpp:3220:9: warning: Member variable 'TestSpecParser::m_mode' is not initialized in the constructor. [uninitMemberVar]
+        TestSpecParser( ITagAliasRegistry const& tagAliases ) : m_tagAliases( &tagAliases ) {}
+        ^
+Stratego/tests/catch.hpp:3220:9: warning: Member variable 'TestSpecParser::m_exclusion' is not initialized in the constructor. [uninitMemberVar]
+        TestSpecParser( ITagAliasRegistry const& tagAliases ) : m_tagAliases( &tagAliases ) {}
+        ^
+Stratego/tests/catch.hpp:3220:9: warning: Member variable 'TestSpecParser::m_start' is not initialized in the constructor. [uninitMemberVar]
+        TestSpecParser( ITagAliasRegistry const& tagAliases ) : m_tagAliases( &tagAliases ) {}
+        ^
+Stratego/tests/catch.hpp:3220:9: warning: Member variable 'TestSpecParser::m_pos' is not initialized in the constructor. [uninitMemberVar]
+        TestSpecParser( ITagAliasRegistry const& tagAliases ) : m_tagAliases( &tagAliases ) {}
+        ^
+Stratego/tests/catch.hpp:9029:9: warning: Member variable 'JunitReporter::unexpectedExceptions' is not initialized in the constructor. [uninitMemberVar]
+        JunitReporter( ReporterConfig const& _config )
+        ^
+Stratego/tests/catch.hpp:2685:9: warning: Member variable 'Option < TagAlias >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option() : nullableValue( CATCH_NULL ) {}
+        ^
+Stratego/tests/catch.hpp:2686:9: warning: Member variable 'Option < TagAlias >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:2689:9: warning: Member variable 'Option < TagAlias >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( Option const& _other )
+        ^
+Stratego/tests/catch.hpp:2685:9: warning: Member variable 'Option < unsigned long >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option() : nullableValue( CATCH_NULL ) {}
+        ^
+Stratego/tests/catch.hpp:2686:9: warning: Member variable 'Option < unsigned long >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:2689:9: warning: Member variable 'Option < unsigned long >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( Option const& _other )
+        ^
+Stratego/tests/catch.hpp:2685:9: warning: Member variable 'Option < TestRunInfo >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option() : nullableValue( CATCH_NULL ) {}
+        ^
+Stratego/tests/catch.hpp:2686:9: warning: Member variable 'Option < TestRunInfo >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:2689:9: warning: Member variable 'Option < TestRunInfo >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( Option const& _other )
+        ^
+Stratego/tests/catch.hpp:2685:9: warning: Member variable 'Option < GroupInfo >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option() : nullableValue( CATCH_NULL ) {}
+        ^
+Stratego/tests/catch.hpp:2686:9: warning: Member variable 'Option < GroupInfo >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:2689:9: warning: Member variable 'Option < GroupInfo >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( Option const& _other )
+        ^
+Stratego/tests/catch.hpp:2685:9: warning: Member variable 'Option < TestCaseInfo >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option() : nullableValue( CATCH_NULL ) {}
+        ^
+Stratego/tests/catch.hpp:2686:9: warning: Member variable 'Option < TestCaseInfo >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:2689:9: warning: Member variable 'Option < TestCaseInfo >::storage' is not initialized in the constructor. [uninitMemberVar]
+        Option( Option const& _other )
+        ^
+Stratego/tests/catch.hpp:313:14: performance:inconclusive: Technically the member function 'Catch::SafeBool::trueValue' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+        void trueValue() const {}
+             ^
+Stratego/tests/catch.hpp:383:21: style:inconclusive: Technically the member function 'Catch::StreamEndStop::operator+' can be const. [functionConst]
+        std::string operator+() {
+                    ^
+Stratego/tests/catch.hpp:1220:14: style:inconclusive: Technically the member function 'Catch::ResultBuilder::react' can be const. [functionConst]
+        void react();
+             ^
+Stratego/tests/catch.hpp:8003:25: note: Technically the member function 'Catch::ResultBuilder::react' can be const.
+    void ResultBuilder::react() {
+                        ^
+Stratego/tests/catch.hpp:1220:14: note: Technically the member function 'Catch::ResultBuilder::react' can be const.
+        void react();
+             ^
+Stratego/tests/catch.hpp:1222:14: performance:inconclusive: Technically the member function 'Catch::ResultBuilder::allowThrows' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+        bool allowThrows() const;
+             ^
+Stratego/tests/catch.hpp:8009:25: note: Technically the member function 'Catch::ResultBuilder::allowThrows' can be static (but you may consider moving to unnamed namespace).
+    bool ResultBuilder::allowThrows() const { return getCurrentContext().getConfig()->allowThrows(); }
+                        ^
+Stratego/tests/catch.hpp:1222:14: note: Technically the member function 'Catch::ResultBuilder::allowThrows' can be static (but you may consider moving to unnamed namespace).
+        bool allowThrows() const;
+             ^
+Stratego/tests/catch.hpp:5331:18: style:inconclusive: Technically the member function 'Catch::TestCaseTracking::TrackerBase::TrackerHasName::operator()' can be const. [functionConst]
+            bool operator ()( Ptr<ITracker> const& tracker ) {
+                 ^
+Stratego/tests/catch.hpp:5889:14: style:inconclusive: Technically the member function 'Catch::RunContext::invokeActiveTestCase' can be const. [functionConst]
+        void invokeActiveTestCase() {
+             ^
+Stratego/tests/catch.hpp:6079:14: style:inconclusive: Technically the member function 'Catch::Session::showHelp' can be const. [functionConst]
+        void showHelp( std::string const& processName ) {
+             ^
+Stratego/tests/catch.hpp:6609:14: style:inconclusive: Technically the member function 'Catch::OutputDebugWriter::operator()' can be const. [functionConst]
+        void operator()( std::string const&str ) {
+             ^
+Stratego/tests/catch.hpp:9904:21: performance:inconclusive: Technically the member function 'Catch::CompactReporter::bothOrAll' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+        std::string bothOrAll( std::size_t count ) const {
+                    ^
+Stratego/tests/catch.hpp:403:9: style: Class 'NotImplementedException' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        NotImplementedException( SourceLineInfo const& lineInfo );
+        ^
+Stratego/tests/catch.hpp:608:5: style: Class 'MethodTestCase' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+    MethodTestCase( void (C::*method)() ) : m_method( method ) {}
+    ^
+Stratego/tests/catch.hpp:1029:13: style: Struct 'Equals' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            Equals( std::string const& str, CaseSensitive::Choice caseSensitivity = CaseSensitive::Yes )
+            ^
+Stratego/tests/catch.hpp:1047:13: style: Struct 'Contains' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            Contains( std::string const& substr, CaseSensitive::Choice caseSensitivity = CaseSensitive::Yes )
+            ^
+Stratego/tests/catch.hpp:1064:13: style: Struct 'StartsWith' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            StartsWith( std::string const& substr, CaseSensitive::Choice caseSensitivity = CaseSensitive::Yes )
+            ^
+Stratego/tests/catch.hpp:1082:13: style: Struct 'EndsWith' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            EndsWith( std::string const& substr, CaseSensitive::Choice caseSensitivity = CaseSensitive::Yes )
+            ^
+Stratego/tests/catch.hpp:1560:30: style: Struct 'BorgType' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        template<typename T> BorgType( T const& );
+                             ^
+Stratego/tests/catch.hpp:1902:9: style: Class 'ScopedMessage' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        ScopedMessage( MessageBuilder const& builder );
+        ^
+Stratego/tests/catch.hpp:2265:9: style: Class 'Section' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Section( SectionInfo const& info );
+        ^
+Stratego/tests/catch.hpp:2558:9: style: Class 'ExceptionTranslatorRegistrar' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        ExceptionTranslatorRegistrar( std::string(*translateFunction)( T& ) ) {
+        ^
+Stratego/tests/catch.hpp:2536:13: style: Class 'ExceptionTranslator' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            ExceptionTranslator( std::string(*translateFunction)( T& ) )
+            ^
+Stratego/tests/catch.hpp:3141:13: style: Class 'NamePattern' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            NamePattern( std::string const& name )
+            ^
+Stratego/tests/catch.hpp:3154:13: style: Class 'TagPattern' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            TagPattern( std::string const& tag ) : m_tag( toLower( tag ) ) {}
+            ^
+Stratego/tests/catch.hpp:3165:13: style: Class 'ExcludedPattern' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            ExcludedPattern( Ptr<Pattern> const& underlyingPattern ) : m_underlyingPattern( underlyingPattern ) {}
+            ^
+Stratego/tests/catch.hpp:3220:9: style: Class 'TestSpecParser' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        TestSpecParser( ITagAliasRegistry const& tagAliases ) : m_tagAliases( &tagAliases ) {}
+        ^
+Stratego/tests/catch.hpp:3390:9: style: Class 'FileStream' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        FileStream( std::string const& filename );
+        ^
+Stratego/tests/catch.hpp:3491:9: style: Class 'Config' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Config( ConfigData const& data )
+        ^
+Stratego/tests/catch.hpp:3634:9: style: Class 'Text' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Text( std::string const& _str, TextAttributes const& _attr = TextAttributes() )
+        ^
+Stratego/tests/catch.hpp:3860:13: style: Struct 'BoundDataMember' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            BoundDataMember( M C::* _member ) : member( _member ) {}
+            ^
+Stratego/tests/catch.hpp:3873:13: style: Struct 'BoundUnaryMethod' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            BoundUnaryMethod( void (C::*_member)( M ) ) : member( _member ) {}
+            ^
+Stratego/tests/catch.hpp:3890:13: style: Struct 'BoundNullaryMethod' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            BoundNullaryMethod( void (C::*_member)() ) : member( _member ) {}
+            ^
+Stratego/tests/catch.hpp:3907:13: style: Struct 'BoundUnaryFunction' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            BoundUnaryFunction( void (*_function)( C& ) ) : function( _function ) {}
+            ^
+Stratego/tests/catch.hpp:3924:13: style: Struct 'BoundBinaryFunction' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            BoundBinaryFunction( void (*_function)( C&, T ) ) : function( _function ) {}
+            ^
+Stratego/tests/catch.hpp:4655:9: style: Class 'Text' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Text( std::string const& _str, TextAttributes const& _attr = TextAttributes() )
+        ^
+Stratego/tests/catch.hpp:4801:9: style: Struct 'Colour' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Colour( Code _colourCode );
+        ^
+Stratego/tests/catch.hpp:4865:9: style: Struct 'TestRunInfo' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        TestRunInfo( std::string const& _name ) : name( _name ) {}
+        ^
+Stratego/tests/catch.hpp:4974:9: style: Struct 'TestGroupStats' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        TestGroupStats( GroupInfo const& _groupInfo )
+        ^
+Stratego/tests/catch.hpp:5330:13: style: Class 'TrackerHasName' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            TrackerHasName( std::string const& name ) : m_name( name ) {}
+            ^
+Stratego/tests/catch.hpp:6294:9: style: Class 'FreeFunctionTestCase' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        FreeFunctionTestCase( TestFunction fun ) : m_fun( fun ) {}
+        ^
+Stratego/tests/catch.hpp:6913:9: style: Struct 'GeneratorInfo' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        GeneratorInfo( std::size_t size )
+        ^
+Stratego/tests/catch.hpp:7343:9: style: Class 'LegacyReporterAdapter' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        LegacyReporterAdapter( Ptr<IReporter> const& legacyReporter );
+        ^
+Stratego/tests/catch.hpp:8289:9: style: Struct 'StreamingReporterBase' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        StreamingReporterBase( ReporterConfig const& _config )
+        ^
+Stratego/tests/catch.hpp:8380:13: style: Struct 'BySectionInfo' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            BySectionInfo( SectionInfo const& other ) : m_other( other ) {}
+            ^
+Stratego/tests/catch.hpp:8503:9: style: Struct 'TestEventListenerBase' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        TestEventListenerBase( ReporterConfig const& _config )
+        ^
+Stratego/tests/catch.hpp:8535:9: style: Class 'LegacyReporterRegistrar' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        LegacyReporterRegistrar( std::string const& name ) {
+        ^
+Stratego/tests/catch.hpp:8616:9: style: Class 'XmlEncode' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        XmlEncode( std::string const& str, ForWhat forWhat = ForTextNodes )
+        ^
+Stratego/tests/catch.hpp:8707:9: style: Class 'XmlWriter' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        XmlWriter( std::ostream& os )
+        ^
+Stratego/tests/catch.hpp:8672:13: style: Class 'ScopedElement' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            ScopedElement( XmlWriter* writer )
+            ^
+Stratego/tests/catch.hpp:8843:9: style: Class 'XmlReporter' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        XmlReporter( ReporterConfig const& _config )
+        ^
+Stratego/tests/catch.hpp:9029:9: style: Class 'JunitReporter' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        JunitReporter( ReporterConfig const& _config )
+        ^
+Stratego/tests/catch.hpp:9235:9: style: Struct 'ConsoleReporter' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        ConsoleReporter( ReporterConfig const& _config )
+        ^
+Stratego/tests/catch.hpp:9668:9: style: Struct 'CompactReporter' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        CompactReporter( ReporterConfig const& _config )
+        ^
+Stratego/tests/catch.hpp:8567:9: style: Class 'ReporterRegistrar < XmlReporter >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        ReporterRegistrar( std::string const& name ) {
+        ^
+Stratego/tests/catch.hpp:8567:9: style: Class 'ReporterRegistrar < JunitReporter >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        ReporterRegistrar( std::string const& name ) {
+        ^
+Stratego/tests/catch.hpp:8567:9: style: Class 'ReporterRegistrar < ConsoleReporter >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        ReporterRegistrar( std::string const& name ) {
+        ^
+Stratego/tests/catch.hpp:8567:9: style: Class 'ReporterRegistrar < CompactReporter >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        ReporterRegistrar( std::string const& name ) {
+        ^
+Stratego/tests/catch.hpp:4029:13: style: Struct 'Arg' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            Arg( Detail::BoundArgFunction<ConfigT> const& _boundField ) : CommonArgProperties<ConfigT>( _boundField ) {}
+            ^
+Stratego/tests/catch.hpp:4088:13: style: Class 'ArgBuilder' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            ArgBuilder( Arg* arg ) : m_arg( arg ) {}
+            ^
+Stratego/tests/catch.hpp:4149:13: style: Class 'OptBuilder' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            OptBuilder( Arg* arg ) : ArgBuilder( arg ) {}
+            ^
+Stratego/tests/catch.hpp:2686:9: style: Class 'Option < TagAlias >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:2686:9: style: Class 'Option < unsigned long >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:2686:9: style: Class 'Option < TestRunInfo >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:2686:9: style: Class 'Option < GroupInfo >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:2686:9: style: Class 'Option < TestCaseInfo >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Option( T const& _value )
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < IConfig const >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < IReporterFactory >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < ITestCase >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < Pattern >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < IStreamingReporter >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < ITracker >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < Config >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < IReporter >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < SectionNode >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < Node < TestCaseStats , SectionNode > >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < Node < TestGroupStats , Node < TestCaseStats , SectionNode > > >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:464:9: style: Class 'Ptr < Node < TestRunStats , Node < TestGroupStats , Node < TestCaseStats , SectionNode > > > >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        Ptr( T* p ) : m_p( p ){
+        ^
+Stratego/tests/catch.hpp:3989:9: style: Struct 'CommonArgProperties < ConfigData >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+        CommonArgProperties( Detail::BoundArgFunction<ConfigT> const& _boundField ) : boundField( _boundField ) {}
+        ^
+Stratego/tests/catch.hpp:3825:13: style: Class 'BoundArgFunction < ConfigData >' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+            BoundArgFunction( IArgFunction<ConfigT>* _functionObj ) : functionObj( _functionObj ) {}
+            ^
+Stratego/tests/catch.hpp:610:18: style: The function 'invoke' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void invoke() const {
+                 ^
+Stratego/tests/catch.hpp:582:22: note: Virtual function in base class
+        virtual void invoke () const = 0;
+                     ^
+Stratego/tests/catch.hpp:610:18: note: Function in derived class
+    virtual void invoke() const {
+                 ^
+Stratego/tests/catch.hpp:2312:15: style: The function 'getValue' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual T getValue( std::size_t index ) const {
+              ^
+Stratego/tests/catch.hpp:2303:15: note: Virtual function in base class
+    virtual T getValue( std::size_t index ) const = 0;
+              ^
+Stratego/tests/catch.hpp:2312:15: note: Function in derived class
+    virtual T getValue( std::size_t index ) const {
+              ^
+Stratego/tests/catch.hpp:2316:25: style: The function 'size' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual std::size_t size() const {
+                        ^
+Stratego/tests/catch.hpp:2304:25: note: Virtual function in base class
+    virtual std::size_t size () const = 0;
+                        ^
+Stratego/tests/catch.hpp:2316:25: note: Function in derived class
+    virtual std::size_t size() const {
+                        ^
+Stratego/tests/catch.hpp:2335:15: style: The function 'getValue' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual T getValue( std::size_t index ) const {
+              ^
+Stratego/tests/catch.hpp:2303:15: note: Virtual function in base class
+    virtual T getValue( std::size_t index ) const = 0;
+              ^
+Stratego/tests/catch.hpp:2335:15: note: Function in derived class
+    virtual T getValue( std::size_t index ) const {
+              ^
+Stratego/tests/catch.hpp:2339:25: style: The function 'size' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual std::size_t size() const {
+                        ^
+Stratego/tests/catch.hpp:2304:25: note: Virtual function in base class
+    virtual std::size_t size () const = 0;
+                        ^
+Stratego/tests/catch.hpp:2339:25: note: Function in derived class
+    virtual std::size_t size() const {
+                        ^
+Stratego/tests/catch.hpp:3145:26: style: The function 'matches' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+            virtual bool matches( TestCaseInfo const& testCase ) const {
+                         ^
+Stratego/tests/catch.hpp:3137:26: note: Virtual function in base class
+            virtual bool matches( TestCaseInfo const& testCase ) const = 0;
+                         ^
+Stratego/tests/catch.hpp:3145:26: note: Function in derived class
+            virtual bool matches( TestCaseInfo const& testCase ) const {
+                         ^
+Stratego/tests/catch.hpp:3156:26: style: The function 'matches' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+            virtual bool matches( TestCaseInfo const& testCase ) const {
+                         ^
+Stratego/tests/catch.hpp:3137:26: note: Virtual function in base class
+            virtual bool matches( TestCaseInfo const& testCase ) const = 0;
+                         ^
+Stratego/tests/catch.hpp:3156:26: note: Function in derived class
+            virtual bool matches( TestCaseInfo const& testCase ) const {
+                         ^
+Stratego/tests/catch.hpp:3167:26: style: The function 'matches' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+            virtual bool matches( TestCaseInfo const& testCase ) const { return !m_underlyingPattern->matches( testCase ); }
+                         ^
+Stratego/tests/catch.hpp:3137:26: note: Virtual function in base class
+            virtual bool matches( TestCaseInfo const& testCase ) const = 0;
+                         ^
+Stratego/tests/catch.hpp:3167:26: note: Function in derived class
+            virtual bool matches( TestCaseInfo const& testCase ) const { return !m_underlyingPattern->matches( testCase ); }
+                         ^
+Stratego/tests/catch.hpp:3393:31: style: The function 'stream' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::ostream& stream() const CATCH_OVERRIDE;
+                              ^
+Stratego/tests/catch.hpp:3384:31: note: Virtual function in base class
+        virtual std::ostream& stream() const = 0;
+                              ^
+Stratego/tests/catch.hpp:3393:31: note: Function in derived class
+        virtual std::ostream& stream() const CATCH_OVERRIDE;
+                              ^
+Stratego/tests/catch.hpp:3403:31: style: The function 'stream' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::ostream& stream() const CATCH_OVERRIDE;
+                              ^
+Stratego/tests/catch.hpp:3384:31: note: Virtual function in base class
+        virtual std::ostream& stream() const = 0;
+                              ^
+Stratego/tests/catch.hpp:3403:31: note: Function in derived class
+        virtual std::ostream& stream() const CATCH_OVERRIDE;
+                              ^
+Stratego/tests/catch.hpp:3414:31: style: The function 'stream' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::ostream& stream() const CATCH_OVERRIDE;
+                              ^
+Stratego/tests/catch.hpp:3384:31: note: Virtual function in base class
+        virtual std::ostream& stream() const = 0;
+                              ^
+Stratego/tests/catch.hpp:3414:31: note: Function in derived class
+        virtual std::ostream& stream() const CATCH_OVERRIDE;
+                              ^
+Stratego/tests/catch.hpp:3517:14: style: The function 'shouldDebugBreak' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        bool shouldDebugBreak() const { return m_data.shouldDebugBreak; }
+             ^
+Stratego/tests/catch.hpp:3345:22: note: Virtual function in base class
+        virtual bool shouldDebugBreak() const = 0;
+                     ^
+Stratego/tests/catch.hpp:3517:14: note: Function in derived class
+        bool shouldDebugBreak() const { return m_data.shouldDebugBreak; }
+             ^
+Stratego/tests/catch.hpp:3521:13: style: The function 'abortAfter' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        int abortAfter() const { return m_data.abortAfter; }
+            ^
+Stratego/tests/catch.hpp:3347:21: note: Virtual function in base class
+        virtual int abortAfter() const = 0;
+                    ^
+Stratego/tests/catch.hpp:3521:13: note: Function in derived class
+        int abortAfter() const { return m_data.abortAfter; }
+            ^
+Stratego/tests/catch.hpp:3523:25: style: The function 'testSpec' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        TestSpec const& testSpec() const { return m_testSpec; }
+                        ^
+Stratego/tests/catch.hpp:3350:33: note: Virtual function in base class
+        virtual TestSpec const& testSpec() const = 0;
+                                ^
+Stratego/tests/catch.hpp:3523:25: note: Function in derived class
+        TestSpec const& testSpec() const { return m_testSpec; }
+                        ^
+Stratego/tests/catch.hpp:3526:14: style: The function 'showInvisibles' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        bool showInvisibles() const { return m_data.showInvisibles; }
+             ^
+Stratego/tests/catch.hpp:3348:22: note: Virtual function in base class
+        virtual bool showInvisibles() const = 0;
+                     ^
+Stratego/tests/catch.hpp:3526:14: note: Function in derived class
+        bool showInvisibles() const { return m_data.showInvisibles; }
+             ^
+Stratego/tests/catch.hpp:3529:22: style: The function 'allowThrows' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool allowThrows() const        { return !m_data.noThrow; }
+                     ^
+Stratego/tests/catch.hpp:3341:22: note: Virtual function in base class
+        virtual bool allowThrows() const = 0;
+                     ^
+Stratego/tests/catch.hpp:3529:22: note: Function in derived class
+        virtual bool allowThrows() const        { return !m_data.noThrow; }
+                     ^
+Stratego/tests/catch.hpp:3530:31: style: The function 'stream' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::ostream& stream() const    { return m_stream->stream(); }
+                              ^
+Stratego/tests/catch.hpp:3342:31: note: Virtual function in base class
+        virtual std::ostream& stream() const = 0;
+                              ^
+Stratego/tests/catch.hpp:3530:31: note: Function in derived class
+        virtual std::ostream& stream() const    { return m_stream->stream(); }
+                              ^
+Stratego/tests/catch.hpp:3531:29: style: The function 'name' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::string name() const        { return m_data.name.empty() ? m_data.processName : m_data.name; }
+                            ^
+Stratego/tests/catch.hpp:3343:29: note: Virtual function in base class
+        virtual std::string name() const = 0;
+                            ^
+Stratego/tests/catch.hpp:3531:29: note: Function in derived class
+        virtual std::string name() const        { return m_data.name.empty() ? m_data.processName : m_data.name; }
+                            ^
+Stratego/tests/catch.hpp:3532:22: style: The function 'includeSuccessfulResults' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool includeSuccessfulResults() const   { return m_data.showSuccessfulTests; }
+                     ^
+Stratego/tests/catch.hpp:3344:22: note: Virtual function in base class
+        virtual bool includeSuccessfulResults() const = 0;
+                     ^
+Stratego/tests/catch.hpp:3532:22: note: Function in derived class
+        virtual bool includeSuccessfulResults() const   { return m_data.showSuccessfulTests; }
+                     ^
+Stratego/tests/catch.hpp:3533:22: style: The function 'warnAboutMissingAssertions' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool warnAboutMissingAssertions() const { return m_data.warnings & WarnAbout::NoAssertions; }
+                     ^
+Stratego/tests/catch.hpp:3346:22: note: Virtual function in base class
+        virtual bool warnAboutMissingAssertions() const = 0;
+                     ^
+Stratego/tests/catch.hpp:3533:22: note: Function in derived class
+        virtual bool warnAboutMissingAssertions() const { return m_data.warnings & WarnAbout::NoAssertions; }
+                     ^
+Stratego/tests/catch.hpp:3534:38: style: The function 'showDurations' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual ShowDurations::OrNot showDurations() const { return m_data.showDurations; }
+                                     ^
+Stratego/tests/catch.hpp:3349:38: note: Virtual function in base class
+        virtual ShowDurations::OrNot showDurations() const = 0;
+                                     ^
+Stratego/tests/catch.hpp:3534:38: note: Function in derived class
+        virtual ShowDurations::OrNot showDurations() const { return m_data.showDurations; }
+                                     ^
+Stratego/tests/catch.hpp:3535:39: style: The function 'runOrder' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual RunTests::InWhatOrder runOrder() const  { return m_data.runOrder; }
+                                      ^
+Stratego/tests/catch.hpp:3351:39: note: Virtual function in base class
+        virtual RunTests::InWhatOrder runOrder() const = 0;
+                                      ^
+Stratego/tests/catch.hpp:3535:39: note: Function in derived class
+        virtual RunTests::InWhatOrder runOrder() const  { return m_data.runOrder; }
+                                      ^
+Stratego/tests/catch.hpp:3536:30: style: The function 'rngSeed' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual unsigned int rngSeed() const    { return m_data.rngSeed; }
+                             ^
+Stratego/tests/catch.hpp:3352:30: note: Virtual function in base class
+        virtual unsigned int rngSeed() const = 0;
+                             ^
+Stratego/tests/catch.hpp:3536:30: note: Function in derived class
+        virtual unsigned int rngSeed() const    { return m_data.rngSeed; }
+                             ^
+Stratego/tests/catch.hpp:3537:22: style: The function 'forceColour' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool forceColour() const { return m_data.forceColour; }
+                     ^
+Stratego/tests/catch.hpp:3353:22: note: Virtual function in base class
+        virtual bool forceColour() const = 0;
+                     ^
+Stratego/tests/catch.hpp:3537:22: note: Function in derived class
+        virtual bool forceColour() const { return m_data.forceColour; }
+                     ^
+Stratego/tests/catch.hpp:5350:29: style: The function 'name' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::string name() const CATCH_OVERRIDE {
+                            ^
+Stratego/tests/catch.hpp:5246:29: note: Virtual function in base class
+        virtual std::string name() const = 0;
+                            ^
+Stratego/tests/catch.hpp:5350:29: note: Function in derived class
+        virtual std::string name() const CATCH_OVERRIDE {
+                            ^
+Stratego/tests/catch.hpp:5353:22: style: The function 'isComplete' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool isComplete() const CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5249:22: note: Virtual function in base class
+        virtual bool isComplete() const = 0; // Successfully completed or failed
+                     ^
+Stratego/tests/catch.hpp:5353:22: note: Function in derived class
+        virtual bool isComplete() const CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5356:22: style: The function 'isSuccessfullyCompleted' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool isSuccessfullyCompleted() const CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5250:22: note: Virtual function in base class
+        virtual bool isSuccessfullyCompleted() const = 0;
+                     ^
+Stratego/tests/catch.hpp:5356:22: note: Function in derived class
+        virtual bool isSuccessfullyCompleted() const CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5359:22: style: The function 'isOpen' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool isOpen() const CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5251:22: note: Virtual function in base class
+        virtual bool isOpen() const = 0; // Started but not complete
+                     ^
+Stratego/tests/catch.hpp:5359:22: note: Function in derived class
+        virtual bool isOpen() const CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5362:22: style: The function 'hasChildren' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool hasChildren() const CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5252:22: note: Virtual function in base class
+        virtual bool hasChildren() const = 0;
+                     ^
+Stratego/tests/catch.hpp:5362:22: note: Function in derived class
+        virtual bool hasChildren() const CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5366:22: style: The function 'addChild' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void addChild( Ptr<ITracker> const& child ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5261:22: note: Virtual function in base class
+        virtual void addChild( Ptr<ITracker> const& child ) = 0;
+                     ^
+Stratego/tests/catch.hpp:5366:22: note: Function in derived class
+        virtual void addChild( Ptr<ITracker> const& child ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5370:27: style: The function 'findChild' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual ITracker* findChild( std::string const& name ) CATCH_OVERRIDE {
+                          ^
+Stratego/tests/catch.hpp:5262:27: note: Virtual function in base class
+        virtual ITracker* findChild( std::string const& name ) = 0;
+                          ^
+Stratego/tests/catch.hpp:5370:27: note: Function in derived class
+        virtual ITracker* findChild( std::string const& name ) CATCH_OVERRIDE {
+                          ^
+Stratego/tests/catch.hpp:5376:27: style: The function 'parent' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual ITracker& parent() CATCH_OVERRIDE {
+                          ^
+Stratego/tests/catch.hpp:5254:27: note: Virtual function in base class
+        virtual ITracker& parent() = 0;
+                          ^
+Stratego/tests/catch.hpp:5376:27: note: Function in derived class
+        virtual ITracker& parent() CATCH_OVERRIDE {
+                          ^
+Stratego/tests/catch.hpp:5381:22: style: The function 'openChild' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void openChild() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5263:22: note: Virtual function in base class
+        virtual void openChild() = 0;
+                     ^
+Stratego/tests/catch.hpp:5381:22: note: Function in derived class
+        virtual void openChild() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5395:22: style: The function 'close' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void close() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5257:22: note: Virtual function in base class
+        virtual void close() = 0; // Successfully complete
+                     ^
+Stratego/tests/catch.hpp:5395:22: note: Function in derived class
+        virtual void close() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5424:22: style: The function 'fail' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void fail() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5258:22: note: Virtual function in base class
+        virtual void fail() = 0;
+                     ^
+Stratego/tests/catch.hpp:5424:22: note: Function in derived class
+        virtual void fail() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5431:22: style: The function 'markAsNeedingAnotherRun' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void markAsNeedingAnotherRun() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5259:22: note: Virtual function in base class
+        virtual void markAsNeedingAnotherRun() = 0;
+                     ^
+Stratego/tests/catch.hpp:5431:22: note: Function in derived class
+        virtual void markAsNeedingAnotherRun() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5511:22: style: The function 'close' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void close() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5395:22: note: Virtual function in base class
+        virtual void close() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5511:22: note: Function in derived class
+        virtual void close() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5714:22: style: The function 'assertionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void assertionEnded( AssertionResult const& result ) {
+                     ^
+Stratego/tests/catch.hpp:1931:22: note: Virtual function in base class
+        virtual void assertionEnded( AssertionResult const& result ) = 0;
+                     ^
+Stratego/tests/catch.hpp:5714:22: note: Function in derived class
+        virtual void assertionEnded( AssertionResult const& result ) {
+                     ^
+Stratego/tests/catch.hpp:5730:22: style: The function 'sectionStarted' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool sectionStarted (
+                     ^
+Stratego/tests/catch.hpp:1932:22: note: Virtual function in base class
+        virtual bool sectionStarted(    SectionInfo const& sectionInfo,
+                     ^
+Stratego/tests/catch.hpp:5730:22: note: Function in derived class
+        virtual bool sectionStarted (
+                     ^
+Stratego/tests/catch.hpp:5763:22: style: The function 'sectionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionEnded( SectionEndInfo const& endInfo ) {
+                     ^
+Stratego/tests/catch.hpp:1934:22: note: Virtual function in base class
+        virtual void sectionEnded( SectionEndInfo const& endInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:5763:22: note: Function in derived class
+        virtual void sectionEnded( SectionEndInfo const& endInfo ) {
+                     ^
+Stratego/tests/catch.hpp:5776:22: style: The function 'sectionEndedEarly' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionEndedEarly( SectionEndInfo const& endInfo ) {
+                     ^
+Stratego/tests/catch.hpp:1935:22: note: Virtual function in base class
+        virtual void sectionEndedEarly( SectionEndInfo const& endInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:5776:22: note: Function in derived class
+        virtual void sectionEndedEarly( SectionEndInfo const& endInfo ) {
+                     ^
+Stratego/tests/catch.hpp:5786:22: style: The function 'pushScopedMessage' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void pushScopedMessage( MessageInfo const& message ) {
+                     ^
+Stratego/tests/catch.hpp:1936:22: note: Virtual function in base class
+        virtual void pushScopedMessage( MessageInfo const& message ) = 0;
+                     ^
+Stratego/tests/catch.hpp:5786:22: note: Function in derived class
+        virtual void pushScopedMessage( MessageInfo const& message ) {
+                     ^
+Stratego/tests/catch.hpp:5790:22: style: The function 'popScopedMessage' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void popScopedMessage( MessageInfo const& message ) {
+                     ^
+Stratego/tests/catch.hpp:1937:22: note: Virtual function in base class
+        virtual void popScopedMessage( MessageInfo const& message ) = 0;
+                     ^
+Stratego/tests/catch.hpp:5790:22: note: Function in derived class
+        virtual void popScopedMessage( MessageInfo const& message ) {
+                     ^
+Stratego/tests/catch.hpp:5794:29: style: The function 'getCurrentTestName' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::string getCurrentTestName() const {
+                            ^
+Stratego/tests/catch.hpp:1939:29: note: Virtual function in base class
+        virtual std::string getCurrentTestName() const = 0;
+                            ^
+Stratego/tests/catch.hpp:5794:29: note: Function in derived class
+        virtual std::string getCurrentTestName() const {
+                            ^
+Stratego/tests/catch.hpp:5800:40: style: The function 'getLastResult' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual const AssertionResult* getLastResult() const {
+                                       ^
+Stratego/tests/catch.hpp:1940:40: note: Virtual function in base class
+        virtual const AssertionResult* getLastResult() const = 0;
+                                       ^
+Stratego/tests/catch.hpp:5800:40: note: Function in derived class
+        virtual const AssertionResult* getLastResult() const {
+                                       ^
+Stratego/tests/catch.hpp:5804:22: style: The function 'handleFatalErrorCondition' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void handleFatalErrorCondition( std::string const& message ) {
+                     ^
+Stratego/tests/catch.hpp:1942:22: note: Virtual function in base class
+        virtual void handleFatalErrorCondition( std::string const& message ) = 0;
+                     ^
+Stratego/tests/catch.hpp:5804:22: note: Function in derived class
+        virtual void handleFatalErrorCondition( std::string const& message ) {
+                     ^
+Stratego/tests/catch.hpp:5837:14: style: The function 'aborting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        bool aborting() const {
+             ^
+Stratego/tests/catch.hpp:2005:22: note: Virtual function in base class
+        virtual bool aborting() const = 0;
+                     ^
+Stratego/tests/catch.hpp:5837:14: note: Function in derived class
+        bool aborting() const {
+             ^
+Stratego/tests/catch.hpp:6267:46: style: The function 'getAllTests' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::vector<TestCase> const& getAllTests() const {
+                                             ^
+Stratego/tests/catch.hpp:592:46: note: Virtual function in base class
+        virtual std::vector<TestCase> const& getAllTests() const = 0;
+                                             ^
+Stratego/tests/catch.hpp:6267:46: note: Function in derived class
+        virtual std::vector<TestCase> const& getAllTests() const {
+                                             ^
+Stratego/tests/catch.hpp:6270:46: style: The function 'getAllTestsSorted' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::vector<TestCase> const& getAllTestsSorted( IConfig const& config ) const {
+                                             ^
+Stratego/tests/catch.hpp:593:46: note: Virtual function in base class
+        virtual std::vector<TestCase> const& getAllTestsSorted( IConfig const& config ) const = 0;
+                                             ^
+Stratego/tests/catch.hpp:6270:46: note: Function in derived class
+        virtual std::vector<TestCase> const& getAllTestsSorted( IConfig const& config ) const {
+                                             ^
+Stratego/tests/catch.hpp:6296:22: style: The function 'invoke' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void invoke() const {
+                     ^
+Stratego/tests/catch.hpp:582:22: note: Virtual function in base class
+        virtual void invoke () const = 0;
+                     ^
+Stratego/tests/catch.hpp:6296:22: note: Function in derived class
+        virtual void invoke() const {
+                     ^
+Stratego/tests/catch.hpp:6366:37: style: The function 'create' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual IStreamingReporter* create( std::string const& name, Ptr<IConfig const> const& config ) const CATCH_OVERRIDE {
+                                    ^
+Stratego/tests/catch.hpp:5060:37: note: Virtual function in base class
+        virtual IStreamingReporter* create( std::string const& name, Ptr<IConfig const> const& config ) const = 0;
+                                    ^
+Stratego/tests/catch.hpp:6366:37: note: Function in derived class
+        virtual IStreamingReporter* create( std::string const& name, Ptr<IConfig const> const& config ) const CATCH_OVERRIDE {
+                                    ^
+Stratego/tests/catch.hpp:6412:29: style: The function 'translateActiveException' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::string translateActiveException() const {
+                            ^
+Stratego/tests/catch.hpp:2528:29: note: Virtual function in base class
+        virtual std::string translateActiveException() const = 0;
+                            ^
+Stratego/tests/catch.hpp:6412:29: note: Function in derived class
+        virtual std::string translateActiveException() const {
+                            ^
+Stratego/tests/catch.hpp:6652:33: style: The function 'getResultCapture' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual IResultCapture* getResultCapture() {
+                                ^
+Stratego/tests/catch.hpp:547:33: note: Virtual function in base class
+        virtual IResultCapture* getResultCapture() = 0;
+                                ^
+Stratego/tests/catch.hpp:6652:33: note: Function in derived class
+        virtual IResultCapture* getResultCapture() {
+                                ^
+Stratego/tests/catch.hpp:6655:26: style: The function 'getRunner' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual IRunner* getRunner() {
+                         ^
+Stratego/tests/catch.hpp:548:26: note: Virtual function in base class
+        virtual IRunner* getRunner() = 0;
+                         ^
+Stratego/tests/catch.hpp:6655:26: note: Function in derived class
+        virtual IRunner* getRunner() {
+                         ^
+Stratego/tests/catch.hpp:6658:24: style: The function 'getGeneratorIndex' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual size_t getGeneratorIndex( std::string const& fileInfo, size_t totalSize ) {
+                       ^
+Stratego/tests/catch.hpp:549:24: note: Virtual function in base class
+        virtual size_t getGeneratorIndex( std::string const& fileInfo, size_t totalSize ) = 0;
+                       ^
+Stratego/tests/catch.hpp:6658:24: note: Function in derived class
+        virtual size_t getGeneratorIndex( std::string const& fileInfo, size_t totalSize ) {
+                       ^
+Stratego/tests/catch.hpp:6663:22: style: The function 'advanceGeneratorsForCurrentTest' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool advanceGeneratorsForCurrentTest() {
+                     ^
+Stratego/tests/catch.hpp:550:22: note: Virtual function in base class
+        virtual bool advanceGeneratorsForCurrentTest() = 0;
+                     ^
+Stratego/tests/catch.hpp:6663:22: note: Function in derived class
+        virtual bool advanceGeneratorsForCurrentTest() {
+                     ^
+Stratego/tests/catch.hpp:6668:36: style: The function 'getConfig' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual Ptr<IConfig const> getConfig() const {
+                                   ^
+Stratego/tests/catch.hpp:551:36: note: Virtual function in base class
+        virtual Ptr<IConfig const> getConfig() const = 0;
+                                   ^
+Stratego/tests/catch.hpp:6668:36: note: Function in derived class
+        virtual Ptr<IConfig const> getConfig() const {
+                                   ^
+Stratego/tests/catch.hpp:6673:22: style: The function 'setResultCapture' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void setResultCapture( IResultCapture* resultCapture ) {
+                     ^
+Stratego/tests/catch.hpp:557:22: note: Virtual function in base class
+        virtual void setResultCapture( IResultCapture* resultCapture ) = 0;
+                     ^
+Stratego/tests/catch.hpp:6673:22: note: Function in derived class
+        virtual void setResultCapture( IResultCapture* resultCapture ) {
+                     ^
+Stratego/tests/catch.hpp:6676:22: style: The function 'setRunner' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void setRunner( IRunner* runner ) {
+                     ^
+Stratego/tests/catch.hpp:558:22: note: Virtual function in base class
+        virtual void setRunner( IRunner* runner ) = 0;
+                     ^
+Stratego/tests/catch.hpp:6676:22: note: Function in derived class
+        virtual void setRunner( IRunner* runner ) {
+                     ^
+Stratego/tests/catch.hpp:6679:22: style: The function 'setConfig' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void setConfig( Ptr<IConfig const> const& config ) {
+                     ^
+Stratego/tests/catch.hpp:559:22: note: Virtual function in base class
+        virtual void setConfig( Ptr<IConfig const> const& config ) = 0;
+                     ^
+Stratego/tests/catch.hpp:6679:22: note: Function in derived class
+        virtual void setConfig( Ptr<IConfig const> const& config ) {
+                     ^
+Stratego/tests/catch.hpp:6743:18: style: The function 'use' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+            void use( Colour::Code ) {}
+                 ^
+Stratego/tests/catch.hpp:6739:26: note: Virtual function in base class
+            virtual void use( Colour::Code _colourCode ) = 0;
+                         ^
+Stratego/tests/catch.hpp:6743:18: note: Function in derived class
+            void use( Colour::Code ) {}
+                 ^
+Stratego/tests/catch.hpp:6918:14: style: The function 'moveNext' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        bool moveNext() {
+             ^
+Stratego/tests/catch.hpp:432:22: note: Virtual function in base class
+        virtual bool moveNext() = 0;
+                     ^
+Stratego/tests/catch.hpp:6918:14: note: Function in derived class
+        bool moveNext() {
+             ^
+Stratego/tests/catch.hpp:6926:21: style: The function 'getCurrentIndex' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        std::size_t getCurrentIndex() const {
+                    ^
+Stratego/tests/catch.hpp:433:29: note: Virtual function in base class
+        virtual std::size_t getCurrentIndex() const = 0;
+                            ^
+Stratego/tests/catch.hpp:6926:21: note: Function in derived class
+        std::size_t getCurrentIndex() const {
+                    ^
+Stratego/tests/catch.hpp:6943:25: style: The function 'getGeneratorInfo' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        IGeneratorInfo& getGeneratorInfo( std::string const& fileInfo, std::size_t size ) {
+                        ^
+Stratego/tests/catch.hpp:439:33: note: Virtual function in base class
+        virtual IGeneratorInfo& getGeneratorInfo( std::string const& fileInfo, std::size_t size ) = 0;
+                                ^
+Stratego/tests/catch.hpp:6943:25: note: Function in derived class
+        IGeneratorInfo& getGeneratorInfo( std::string const& fileInfo, std::size_t size ) {
+                        ^
+Stratego/tests/catch.hpp:6954:14: style: The function 'moveNext' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        bool moveNext() {
+             ^
+Stratego/tests/catch.hpp:440:22: note: Virtual function in base class
+        virtual bool moveNext() = 0;
+                     ^
+Stratego/tests/catch.hpp:6954:14: note: Function in derived class
+        bool moveNext() {
+             ^
+Stratego/tests/catch.hpp:7346:37: style: The function 'getPreferences' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual ReporterPreferences getPreferences() const;
+                                    ^
+Stratego/tests/catch.hpp:5026:37: note: Virtual function in base class
+        virtual ReporterPreferences getPreferences() const = 0;
+                                    ^
+Stratego/tests/catch.hpp:7346:37: note: Function in derived class
+        virtual ReporterPreferences getPreferences() const;
+                                    ^
+Stratego/tests/catch.hpp:7347:22: style: The function 'noMatchingTestCases' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void noMatchingTestCases( std::string const& );
+                     ^
+Stratego/tests/catch.hpp:5028:22: note: Virtual function in base class
+        virtual void noMatchingTestCases( std::string const& spec ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7347:22: note: Function in derived class
+        virtual void noMatchingTestCases( std::string const& );
+                     ^
+Stratego/tests/catch.hpp:7348:22: style: The function 'testRunStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunStarting( TestRunInfo const& );
+                     ^
+Stratego/tests/catch.hpp:5030:22: note: Virtual function in base class
+        virtual void testRunStarting( TestRunInfo const& testRunInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7348:22: note: Function in derived class
+        virtual void testRunStarting( TestRunInfo const& );
+                     ^
+Stratego/tests/catch.hpp:7349:22: style: The function 'testGroupStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupStarting( GroupInfo const& groupInfo );
+                     ^
+Stratego/tests/catch.hpp:5031:22: note: Virtual function in base class
+        virtual void testGroupStarting( GroupInfo const& groupInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7349:22: note: Function in derived class
+        virtual void testGroupStarting( GroupInfo const& groupInfo );
+                     ^
+Stratego/tests/catch.hpp:7350:22: style: The function 'testCaseStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseStarting( TestCaseInfo const& testInfo );
+                     ^
+Stratego/tests/catch.hpp:5033:22: note: Virtual function in base class
+        virtual void testCaseStarting( TestCaseInfo const& testInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7350:22: note: Function in derived class
+        virtual void testCaseStarting( TestCaseInfo const& testInfo );
+                     ^
+Stratego/tests/catch.hpp:7351:22: style: The function 'sectionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionStarting( SectionInfo const& sectionInfo );
+                     ^
+Stratego/tests/catch.hpp:5034:22: note: Virtual function in base class
+        virtual void sectionStarting( SectionInfo const& sectionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7351:22: note: Function in derived class
+        virtual void sectionStarting( SectionInfo const& sectionInfo );
+                     ^
+Stratego/tests/catch.hpp:7352:22: style: The function 'assertionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void assertionStarting( AssertionInfo const& );
+                     ^
+Stratego/tests/catch.hpp:5036:22: note: Virtual function in base class
+        virtual void assertionStarting( AssertionInfo const& assertionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7352:22: note: Function in derived class
+        virtual void assertionStarting( AssertionInfo const& );
+                     ^
+Stratego/tests/catch.hpp:7353:22: style: The function 'assertionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool assertionEnded( AssertionStats const& assertionStats );
+                     ^
+Stratego/tests/catch.hpp:5039:22: note: Virtual function in base class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7353:22: note: Function in derived class
+        virtual bool assertionEnded( AssertionStats const& assertionStats );
+                     ^
+Stratego/tests/catch.hpp:7354:22: style: The function 'sectionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionEnded( SectionStats const& sectionStats );
+                     ^
+Stratego/tests/catch.hpp:5041:22: note: Virtual function in base class
+        virtual void sectionEnded( SectionStats const& sectionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7354:22: note: Function in derived class
+        virtual void sectionEnded( SectionStats const& sectionStats );
+                     ^
+Stratego/tests/catch.hpp:7355:22: style: The function 'testCaseEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats );
+                     ^
+Stratego/tests/catch.hpp:5042:22: note: Virtual function in base class
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7355:22: note: Function in derived class
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats );
+                     ^
+Stratego/tests/catch.hpp:7356:22: style: The function 'testGroupEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats );
+                     ^
+Stratego/tests/catch.hpp:5043:22: note: Virtual function in base class
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7356:22: note: Function in derived class
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats );
+                     ^
+Stratego/tests/catch.hpp:7357:22: style: The function 'testRunEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunEnded( TestRunStats const& testRunStats );
+                     ^
+Stratego/tests/catch.hpp:5044:22: note: Virtual function in base class
+        virtual void testRunEnded( TestRunStats const& testRunStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7357:22: note: Function in derived class
+        virtual void testRunEnded( TestRunStats const& testRunStats );
+                     ^
+Stratego/tests/catch.hpp:7358:22: style: The function 'skipTest' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void skipTest( TestCaseInfo const& );
+                     ^
+Stratego/tests/catch.hpp:5046:22: note: Virtual function in base class
+        virtual void skipTest( TestCaseInfo const& testInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:7358:22: note: Function in derived class
+        virtual void skipTest( TestCaseInfo const& );
+                     ^
+Stratego/tests/catch.hpp:8067:34: style: The function 'find' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual Option<TagAlias> find( std::string const& alias ) const;
+                                 ^
+Stratego/tests/catch.hpp:2745:34: note: Virtual function in base class
+        virtual Option<TagAlias> find( std::string const& alias ) const = 0;
+                                 ^
+Stratego/tests/catch.hpp:8067:34: note: Function in derived class
+        virtual Option<TagAlias> find( std::string const& alias ) const;
+                                 ^
+Stratego/tests/catch.hpp:8068:29: style: The function 'expandAliases' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual std::string expandAliases( std::string const& unexpandedTestSpec ) const;
+                            ^
+Stratego/tests/catch.hpp:2746:29: note: Virtual function in base class
+        virtual std::string expandAliases( std::string const& unexpandedTestSpec ) const = 0;
+                            ^
+Stratego/tests/catch.hpp:8068:29: note: Function in derived class
+        virtual std::string expandAliases( std::string const& unexpandedTestSpec ) const;
+                            ^
+Stratego/tests/catch.hpp:8162:33: style: The function 'getPreferences' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual ReporterPreferences getPreferences() const CATCH_OVERRIDE {
+                                ^
+Stratego/tests/catch.hpp:5026:37: note: Virtual function in base class
+        virtual ReporterPreferences getPreferences() const = 0;
+                                    ^
+Stratego/tests/catch.hpp:8162:33: note: Function in derived class
+    virtual ReporterPreferences getPreferences() const CATCH_OVERRIDE {
+                                ^
+Stratego/tests/catch.hpp:8166:18: style: The function 'noMatchingTestCases' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void noMatchingTestCases( std::string const& spec ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5028:22: note: Virtual function in base class
+        virtual void noMatchingTestCases( std::string const& spec ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8166:18: note: Function in derived class
+    virtual void noMatchingTestCases( std::string const& spec ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8173:18: style: The function 'testRunStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void testRunStarting( TestRunInfo const& testRunInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5030:22: note: Virtual function in base class
+        virtual void testRunStarting( TestRunInfo const& testRunInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8173:18: note: Function in derived class
+    virtual void testRunStarting( TestRunInfo const& testRunInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8180:18: style: The function 'testGroupStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void testGroupStarting( GroupInfo const& groupInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5031:22: note: Virtual function in base class
+        virtual void testGroupStarting( GroupInfo const& groupInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8180:18: note: Function in derived class
+    virtual void testGroupStarting( GroupInfo const& groupInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8187:18: style: The function 'testCaseStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void testCaseStarting( TestCaseInfo const& testInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5033:22: note: Virtual function in base class
+        virtual void testCaseStarting( TestCaseInfo const& testInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8187:18: note: Function in derived class
+    virtual void testCaseStarting( TestCaseInfo const& testInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8194:18: style: The function 'sectionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void sectionStarting( SectionInfo const& sectionInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5034:22: note: Virtual function in base class
+        virtual void sectionStarting( SectionInfo const& sectionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8194:18: note: Function in derived class
+    virtual void sectionStarting( SectionInfo const& sectionInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8201:18: style: The function 'assertionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void assertionStarting( AssertionInfo const& assertionInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5036:22: note: Virtual function in base class
+        virtual void assertionStarting( AssertionInfo const& assertionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8201:18: note: Function in derived class
+    virtual void assertionStarting( AssertionInfo const& assertionInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8209:18: style: The function 'assertionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual bool assertionEnded( AssertionStats const& assertionStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5039:22: note: Virtual function in base class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8209:18: note: Function in derived class
+    virtual bool assertionEnded( AssertionStats const& assertionStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8218:18: style: The function 'sectionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void sectionEnded( SectionStats const& sectionStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5041:22: note: Virtual function in base class
+        virtual void sectionEnded( SectionStats const& sectionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8218:18: note: Function in derived class
+    virtual void sectionEnded( SectionStats const& sectionStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8225:18: style: The function 'testCaseEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void testCaseEnded( TestCaseStats const& testCaseStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5042:22: note: Virtual function in base class
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8225:18: note: Function in derived class
+    virtual void testCaseEnded( TestCaseStats const& testCaseStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8232:18: style: The function 'testGroupEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void testGroupEnded( TestGroupStats const& testGroupStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5043:22: note: Virtual function in base class
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8232:18: note: Function in derived class
+    virtual void testGroupEnded( TestGroupStats const& testGroupStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8239:18: style: The function 'testRunEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void testRunEnded( TestRunStats const& testRunStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5044:22: note: Virtual function in base class
+        virtual void testRunEnded( TestRunStats const& testRunStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8239:18: note: Function in derived class
+    virtual void testRunEnded( TestRunStats const& testRunStats ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8246:18: style: The function 'skipTest' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+    virtual void skipTest( TestCaseInfo const& testInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:5046:22: note: Virtual function in base class
+        virtual void skipTest( TestCaseInfo const& testInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8246:18: note: Function in derived class
+    virtual void skipTest( TestCaseInfo const& testInfo ) CATCH_OVERRIDE {
+                 ^
+Stratego/tests/catch.hpp:8296:37: style: The function 'getPreferences' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual ReporterPreferences getPreferences() const CATCH_OVERRIDE {
+                                    ^
+Stratego/tests/catch.hpp:5026:37: note: Virtual function in base class
+        virtual ReporterPreferences getPreferences() const = 0;
+                                    ^
+Stratego/tests/catch.hpp:8296:37: note: Function in derived class
+        virtual ReporterPreferences getPreferences() const CATCH_OVERRIDE {
+                                    ^
+Stratego/tests/catch.hpp:8302:22: style: The function 'noMatchingTestCases' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void noMatchingTestCases( std::string const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:5028:22: note: Virtual function in base class
+        virtual void noMatchingTestCases( std::string const& spec ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8302:22: note: Function in derived class
+        virtual void noMatchingTestCases( std::string const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:8304:22: style: The function 'testRunStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunStarting( TestRunInfo const& _testRunInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5030:22: note: Virtual function in base class
+        virtual void testRunStarting( TestRunInfo const& testRunInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8304:22: note: Function in derived class
+        virtual void testRunStarting( TestRunInfo const& _testRunInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8307:22: style: The function 'testGroupStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupStarting( GroupInfo const& _groupInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5031:22: note: Virtual function in base class
+        virtual void testGroupStarting( GroupInfo const& groupInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8307:22: note: Function in derived class
+        virtual void testGroupStarting( GroupInfo const& _groupInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8311:22: style: The function 'testCaseStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseStarting( TestCaseInfo const& _testInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5033:22: note: Virtual function in base class
+        virtual void testCaseStarting( TestCaseInfo const& testInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8311:22: note: Function in derived class
+        virtual void testCaseStarting( TestCaseInfo const& _testInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8314:22: style: The function 'sectionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionStarting( SectionInfo const& _sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5034:22: note: Virtual function in base class
+        virtual void sectionStarting( SectionInfo const& sectionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8314:22: note: Function in derived class
+        virtual void sectionStarting( SectionInfo const& _sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8318:22: style: The function 'sectionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionEnded( SectionStats const& /* _sectionStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5041:22: note: Virtual function in base class
+        virtual void sectionEnded( SectionStats const& sectionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8318:22: note: Function in derived class
+        virtual void sectionEnded( SectionStats const& /* _sectionStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8321:22: style: The function 'testCaseEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseEnded( TestCaseStats const& /* _testCaseStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5042:22: note: Virtual function in base class
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8321:22: note: Function in derived class
+        virtual void testCaseEnded( TestCaseStats const& /* _testCaseStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8324:22: style: The function 'testGroupEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupEnded( TestGroupStats const& /* _testGroupStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5043:22: note: Virtual function in base class
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8324:22: note: Function in derived class
+        virtual void testGroupEnded( TestGroupStats const& /* _testGroupStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8327:22: style: The function 'testRunEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunEnded( TestRunStats const& /* _testRunStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5044:22: note: Virtual function in base class
+        virtual void testRunEnded( TestRunStats const& testRunStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8327:22: note: Function in derived class
+        virtual void testRunEnded( TestRunStats const& /* _testRunStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8333:22: style: The function 'skipTest' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void skipTest( TestCaseInfo const& ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5046:22: note: Virtual function in base class
+        virtual void skipTest( TestCaseInfo const& testInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8333:22: note: Function in derived class
+        virtual void skipTest( TestCaseInfo const& ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8402:37: style: The function 'getPreferences' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual ReporterPreferences getPreferences() const CATCH_OVERRIDE {
+                                    ^
+Stratego/tests/catch.hpp:5026:37: note: Virtual function in base class
+        virtual ReporterPreferences getPreferences() const = 0;
+                                    ^
+Stratego/tests/catch.hpp:8402:37: note: Function in derived class
+        virtual ReporterPreferences getPreferences() const CATCH_OVERRIDE {
+                                    ^
+Stratego/tests/catch.hpp:8406:22: style: The function 'testRunStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunStarting( TestRunInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:5030:22: note: Virtual function in base class
+        virtual void testRunStarting( TestRunInfo const& testRunInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8406:22: note: Function in derived class
+        virtual void testRunStarting( TestRunInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:8407:22: style: The function 'testGroupStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupStarting( GroupInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:5031:22: note: Virtual function in base class
+        virtual void testGroupStarting( GroupInfo const& groupInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8407:22: note: Function in derived class
+        virtual void testGroupStarting( GroupInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:8409:22: style: The function 'testCaseStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseStarting( TestCaseInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:5033:22: note: Virtual function in base class
+        virtual void testCaseStarting( TestCaseInfo const& testInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8409:22: note: Function in derived class
+        virtual void testCaseStarting( TestCaseInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:8411:22: style: The function 'sectionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionStarting( SectionInfo const& sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5034:22: note: Virtual function in base class
+        virtual void sectionStarting( SectionInfo const& sectionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8411:22: note: Function in derived class
+        virtual void sectionStarting( SectionInfo const& sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8436:22: style: The function 'assertionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void assertionStarting( AssertionInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:5036:22: note: Virtual function in base class
+        virtual void assertionStarting( AssertionInfo const& assertionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8436:22: note: Function in derived class
+        virtual void assertionStarting( AssertionInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:8438:22: style: The function 'assertionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) {
+                     ^
+Stratego/tests/catch.hpp:5039:22: note: Virtual function in base class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8438:22: note: Function in derived class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) {
+                     ^
+Stratego/tests/catch.hpp:8444:22: style: The function 'sectionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionEnded( SectionStats const& sectionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5041:22: note: Virtual function in base class
+        virtual void sectionEnded( SectionStats const& sectionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8444:22: note: Function in derived class
+        virtual void sectionEnded( SectionStats const& sectionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8450:22: style: The function 'testCaseEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5042:22: note: Virtual function in base class
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8450:22: note: Function in derived class
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8461:22: style: The function 'testGroupEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5043:22: note: Virtual function in base class
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8461:22: note: Function in derived class
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8466:22: style: The function 'testRunEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunEnded( TestRunStats const& testRunStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5044:22: note: Virtual function in base class
+        virtual void testRunEnded( TestRunStats const& testRunStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8466:22: note: Function in derived class
+        virtual void testRunEnded( TestRunStats const& testRunStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8474:22: style: The function 'skipTest' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void skipTest( TestCaseInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:5046:22: note: Virtual function in base class
+        virtual void skipTest( TestCaseInfo const& testInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8474:22: note: Function in derived class
+        virtual void skipTest( TestCaseInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:8507:22: style: The function 'assertionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void assertionStarting( AssertionInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:5036:22: note: Virtual function in base class
+        virtual void assertionStarting( AssertionInfo const& assertionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8507:22: note: Function in derived class
+        virtual void assertionStarting( AssertionInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:8508:22: style: The function 'assertionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool assertionEnded( AssertionStats const& ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5039:22: note: Virtual function in base class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8508:22: note: Function in derived class
+        virtual bool assertionEnded( AssertionStats const& ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8858:22: style: The function 'noMatchingTestCases' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void noMatchingTestCases( std::string const& s ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8302:22: note: Virtual function in base class
+        virtual void noMatchingTestCases( std::string const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:8858:22: note: Function in derived class
+        virtual void noMatchingTestCases( std::string const& s ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8862:22: style: The function 'testRunStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunStarting( TestRunInfo const& testInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8304:22: note: Virtual function in base class
+        virtual void testRunStarting( TestRunInfo const& _testRunInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8862:22: note: Function in derived class
+        virtual void testRunStarting( TestRunInfo const& testInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8870:22: style: The function 'testGroupStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupStarting( GroupInfo const& groupInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8307:22: note: Virtual function in base class
+        virtual void testGroupStarting( GroupInfo const& _groupInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8870:22: note: Function in derived class
+        virtual void testGroupStarting( GroupInfo const& groupInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8876:22: style: The function 'testCaseStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseStarting( TestCaseInfo const& testInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8311:22: note: Virtual function in base class
+        virtual void testCaseStarting( TestCaseInfo const& _testInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8876:22: note: Function in derived class
+        virtual void testCaseStarting( TestCaseInfo const& testInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8884:22: style: The function 'sectionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionStarting( SectionInfo const& sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8314:22: note: Virtual function in base class
+        virtual void sectionStarting( SectionInfo const& _sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8884:22: note: Function in derived class
+        virtual void sectionStarting( SectionInfo const& sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8893:22: style: The function 'assertionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void assertionStarting( AssertionInfo const& ) CATCH_OVERRIDE { }
+                     ^
+Stratego/tests/catch.hpp:5036:22: note: Virtual function in base class
+        virtual void assertionStarting( AssertionInfo const& assertionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8893:22: note: Function in derived class
+        virtual void assertionStarting( AssertionInfo const& ) CATCH_OVERRIDE { }
+                     ^
+Stratego/tests/catch.hpp:8895:22: style: The function 'assertionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5039:22: note: Virtual function in base class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:8895:22: note: Function in derived class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8966:22: style: The function 'sectionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionEnded( SectionStats const& sectionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8318:22: note: Virtual function in base class
+        virtual void sectionEnded( SectionStats const& /* _sectionStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8966:22: note: Function in derived class
+        virtual void sectionEnded( SectionStats const& sectionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8981:22: style: The function 'testCaseEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8321:22: note: Virtual function in base class
+        virtual void testCaseEnded( TestCaseStats const& /* _testCaseStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8981:22: note: Function in derived class
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8992:22: style: The function 'testGroupEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8324:22: note: Virtual function in base class
+        virtual void testGroupEnded( TestGroupStats const& /* _testGroupStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8992:22: note: Function in derived class
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9001:22: style: The function 'testRunEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunEnded( TestRunStats const& testRunStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8327:22: note: Virtual function in base class
+        virtual void testRunEnded( TestRunStats const& /* _testRunStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9001:22: note: Function in derived class
+        virtual void testRunEnded( TestRunStats const& testRunStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9042:22: style: The function 'noMatchingTestCases' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void noMatchingTestCases( std::string const& /*spec*/ ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:5028:22: note: Virtual function in base class
+        virtual void noMatchingTestCases( std::string const& spec ) = 0;
+                     ^
+Stratego/tests/catch.hpp:9042:22: note: Function in derived class
+        virtual void noMatchingTestCases( std::string const& /*spec*/ ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:9044:22: style: The function 'testRunStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunStarting( TestRunInfo const& runInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8406:22: note: Virtual function in base class
+        virtual void testRunStarting( TestRunInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:9044:22: note: Function in derived class
+        virtual void testRunStarting( TestRunInfo const& runInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9049:22: style: The function 'testGroupStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupStarting( GroupInfo const& groupInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8407:22: note: Virtual function in base class
+        virtual void testGroupStarting( GroupInfo const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:9049:22: note: Function in derived class
+        virtual void testGroupStarting( GroupInfo const& groupInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9057:22: style: The function 'assertionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8438:22: note: Virtual function in base class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) {
+                     ^
+Stratego/tests/catch.hpp:9057:22: note: Function in derived class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9063:22: style: The function 'testCaseEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8450:22: note: Virtual function in base class
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9063:22: note: Function in derived class
+        virtual void testCaseEnded( TestCaseStats const& testCaseStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9069:22: style: The function 'testGroupEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8461:22: note: Virtual function in base class
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9069:22: note: Function in derived class
+        virtual void testGroupEnded( TestGroupStats const& testGroupStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9075:22: style: The function 'testRunEndedCumulative' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunEndedCumulative() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8472:22: note: Virtual function in base class
+        virtual void testRunEndedCumulative() = 0;
+                     ^
+Stratego/tests/catch.hpp:9075:22: note: Function in derived class
+        virtual void testRunEndedCumulative() CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9245:22: style: The function 'noMatchingTestCases' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void noMatchingTestCases( std::string const& spec ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8302:22: note: Virtual function in base class
+        virtual void noMatchingTestCases( std::string const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:9245:22: note: Function in derived class
+        virtual void noMatchingTestCases( std::string const& spec ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9249:22: style: The function 'assertionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void assertionStarting( AssertionInfo const& ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5036:22: note: Virtual function in base class
+        virtual void assertionStarting( AssertionInfo const& assertionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:9249:22: note: Function in derived class
+        virtual void assertionStarting( AssertionInfo const& ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9252:22: style: The function 'assertionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool assertionEnded( AssertionStats const& _assertionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:5039:22: note: Virtual function in base class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:9252:22: note: Function in derived class
+        virtual bool assertionEnded( AssertionStats const& _assertionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9272:22: style: The function 'sectionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionStarting( SectionInfo const& _sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8314:22: note: Virtual function in base class
+        virtual void sectionStarting( SectionInfo const& _sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9272:22: note: Function in derived class
+        virtual void sectionStarting( SectionInfo const& _sectionInfo ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9276:22: style: The function 'sectionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void sectionEnded( SectionStats const& _sectionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8318:22: note: Virtual function in base class
+        virtual void sectionEnded( SectionStats const& /* _sectionStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9276:22: note: Function in derived class
+        virtual void sectionEnded( SectionStats const& _sectionStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9298:22: style: The function 'testCaseEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testCaseEnded( TestCaseStats const& _testCaseStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8321:22: note: Virtual function in base class
+        virtual void testCaseEnded( TestCaseStats const& /* _testCaseStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9298:22: note: Function in derived class
+        virtual void testCaseEnded( TestCaseStats const& _testCaseStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9302:22: style: The function 'testGroupEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testGroupEnded( TestGroupStats const& _testGroupStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8324:22: note: Virtual function in base class
+        virtual void testGroupEnded( TestGroupStats const& /* _testGroupStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9302:22: note: Function in derived class
+        virtual void testGroupEnded( TestGroupStats const& _testGroupStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9311:22: style: The function 'testRunEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunEnded( TestRunStats const& _testRunStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:8327:22: note: Virtual function in base class
+        virtual void testRunEnded( TestRunStats const& /* _testRunStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9311:22: note: Function in derived class
+        virtual void testRunEnded( TestRunStats const& _testRunStats ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9678:37: style: The function 'getPreferences' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual ReporterPreferences getPreferences() const {
+                                    ^
+Stratego/tests/catch.hpp:8296:37: note: Virtual function in base class
+        virtual ReporterPreferences getPreferences() const CATCH_OVERRIDE {
+                                    ^
+Stratego/tests/catch.hpp:9678:37: note: Function in derived class
+        virtual ReporterPreferences getPreferences() const {
+                                    ^
+Stratego/tests/catch.hpp:9684:22: style: The function 'noMatchingTestCases' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void noMatchingTestCases( std::string const& spec ) {
+                     ^
+Stratego/tests/catch.hpp:8302:22: note: Virtual function in base class
+        virtual void noMatchingTestCases( std::string const& ) CATCH_OVERRIDE {}
+                     ^
+Stratego/tests/catch.hpp:9684:22: note: Function in derived class
+        virtual void noMatchingTestCases( std::string const& spec ) {
+                     ^
+Stratego/tests/catch.hpp:9688:22: style: The function 'assertionStarting' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void assertionStarting( AssertionInfo const& ) {
+                     ^
+Stratego/tests/catch.hpp:5036:22: note: Virtual function in base class
+        virtual void assertionStarting( AssertionInfo const& assertionInfo ) = 0;
+                     ^
+Stratego/tests/catch.hpp:9688:22: note: Function in derived class
+        virtual void assertionStarting( AssertionInfo const& ) {
+                     ^
+Stratego/tests/catch.hpp:9691:22: style: The function 'assertionEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual bool assertionEnded( AssertionStats const& _assertionStats ) {
+                     ^
+Stratego/tests/catch.hpp:5039:22: note: Virtual function in base class
+        virtual bool assertionEnded( AssertionStats const& assertionStats ) = 0;
+                     ^
+Stratego/tests/catch.hpp:9691:22: note: Function in derived class
+        virtual bool assertionEnded( AssertionStats const& _assertionStats ) {
+                     ^
+Stratego/tests/catch.hpp:9710:22: style: The function 'testRunEnded' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void testRunEnded( TestRunStats const& _testRunStats ) {
+                     ^
+Stratego/tests/catch.hpp:8327:22: note: Virtual function in base class
+        virtual void testRunEnded( TestRunStats const& /* _testRunStats */ ) CATCH_OVERRIDE {
+                     ^
+Stratego/tests/catch.hpp:9710:22: note: Function in derived class
+        virtual void testRunEnded( TestRunStats const& _testRunStats ) {
+                     ^
+Stratego/tests/catch.hpp:513:22: style: The function 'addRef' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void addRef() const {
+                     ^
+Stratego/tests/catch.hpp:504:22: note: Virtual function in base class
+        virtual void addRef() const = 0;
+                     ^
+Stratego/tests/catch.hpp:513:22: note: Function in derived class
+        virtual void addRef() const {
+                     ^
+Stratego/tests/catch.hpp:516:22: style: The function 'release' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+        virtual void release() const {
+                     ^
+Stratego/tests/catch.hpp:505:22: note: Virtual function in base class
+        virtual void release() const = 0;
+                     ^
+Stratego/tests/catch.hpp:516:22: note: Function in derived class
+        virtual void release() const {
+                     ^
+Stratego/tests/catch.hpp:3852:26: style: The function 'set' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+            virtual void set( C&, std::string const& ) const {}
+                         ^
+Stratego/tests/catch.hpp:3815:26: note: Virtual function in base class
+            virtual void set( ConfigT& config, std::string const& value ) const = 0;
+                         ^
+Stratego/tests/catch.hpp:3852:26: note: Function in derived class
+            virtual void set( C&, std::string const& ) const {}
+                         ^
+Stratego/tests/catch.hpp:3853:26: style: The function 'setFlag' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+            virtual void setFlag( C& ) const {}
+                         ^
+Stratego/tests/catch.hpp:3816:26: note: Virtual function in base class
+            virtual void setFlag( ConfigT& config ) const = 0;
+                         ^
+Stratego/tests/catch.hpp:3853:26: note: Function in derived class
+            virtual void setFlag( C& ) const {}
+                         ^
+Stratego/tests/catch.hpp:3854:26: style: The function 'takesArg' overrides a function in a base class but is not marked with a 'override' specifier. [missingOverride]
+            virtual bool takesArg() const { return true; }
+                         ^
+Stratego/tests/catch.hpp:3817:26: note: Virtual function in base class
+            virtual bool takesArg() const = 0;
+                         ^
+Stratego/tests/catch.hpp:3854:26: note: Function in derived class
+            virtual bool takesArg() const { return true; }
+                         ^
+Stratego/tests/catch.hpp:8262:17: style: Condition 'existingReporter' is always true [knownConditionTrueFalse]
+            if( existingReporter )
+                ^
+Stratego/tests/catch.hpp:8257:9: note: Assuming that condition 'existingReporter' is not redundant
+    if( existingReporter ) {
+        ^
+Stratego/tests/catch.hpp:8262:17: note: Condition 'existingReporter' is always true
+            if( existingReporter )
+                ^
+Stratego/tests/catch.hpp:6321:25: style:inconclusive: Function 'registerTestCase' argument 2 names different: declaration 'className' definition 'classOrQualifiedMethodName'. [funcArgNamesDifferent]
+            char const* classOrQualifiedMethodName,
+                        ^
+Stratego/tests/catch.hpp:634:21: note: Function 'registerTestCase' argument 2 names different: declaration 'className' definition 'classOrQualifiedMethodName'.
+        char const* className,
+                    ^
+Stratego/tests/catch.hpp:6321:25: note: Function 'registerTestCase' argument 2 names different: declaration 'className' definition 'classOrQualifiedMethodName'.
+            char const* classOrQualifiedMethodName,
+                        ^
+Stratego/tests/catch.hpp:6890:35: style:inconclusive: Function 'Colour' argument 1 names different: declaration 'other' definition '_other'. [funcArgNamesDifferent]
+    Colour::Colour( Colour const& _other ) : m_moved( false ) { const_cast<Colour&>( _other ).m_moved = true; }
+                                  ^
+Stratego/tests/catch.hpp:4802:31: note: Function 'Colour' argument 1 names different: declaration 'other' definition '_other'.
+        Colour( Colour const& other );
+                              ^
+Stratego/tests/catch.hpp:6890:35: note: Function 'Colour' argument 1 names different: declaration 'other' definition '_other'.
+    Colour::Colour( Colour const& _other ) : m_moved( false ) { const_cast<Colour&>( _other ).m_moved = true; }
+                                  ^
+Stratego/tests/catch.hpp:7094:40: style:inconclusive: Function 'makeTestCase' argument 1 names different: declaration 'testCase' definition '_testCase'. [funcArgNamesDifferent]
+    TestCase makeTestCase(  ITestCase* _testCase,
+                                       ^
+Stratego/tests/catch.hpp:2825:40: note: Function 'makeTestCase' argument 1 names different: declaration 'testCase' definition '_testCase'.
+    TestCase makeTestCase(  ITestCase* testCase,
+                                       ^
+Stratego/tests/catch.hpp:7094:40: note: Function 'makeTestCase' argument 1 names different: declaration 'testCase' definition '_testCase'.
+    TestCase makeTestCase(  ITestCase* _testCase,
+                                       ^
+Stratego/tests/catch.hpp:7095:48: style:inconclusive: Function 'makeTestCase' argument 2 names different: declaration 'className' definition '_className'. [funcArgNamesDifferent]
+                            std::string const& _className,
+                                               ^
+Stratego/tests/catch.hpp:2826:48: note: Function 'makeTestCase' argument 2 names different: declaration 'className' definition '_className'.
+                            std::string const& className,
+                                               ^
+Stratego/tests/catch.hpp:7095:48: note: Function 'makeTestCase' argument 2 names different: declaration 'className' definition '_className'.
+                            std::string const& _className,
+                                               ^
+Stratego/tests/catch.hpp:7096:48: style:inconclusive: Function 'makeTestCase' argument 3 names different: declaration 'name' definition '_name'. [funcArgNamesDifferent]
+                            std::string const& _name,
+                                               ^
+Stratego/tests/catch.hpp:2827:48: note: Function 'makeTestCase' argument 3 names different: declaration 'name' definition '_name'.
+                            std::string const& name,
+                                               ^
+Stratego/tests/catch.hpp:7096:48: note: Function 'makeTestCase' argument 3 names different: declaration 'name' definition '_name'.
+                            std::string const& _name,
+                                               ^
+Stratego/tests/catch.hpp:7097:48: style:inconclusive: Function 'makeTestCase' argument 4 names different: declaration 'description' definition '_descOrTags'. [funcArgNamesDifferent]
+                            std::string const& _descOrTags,
+                                               ^
+Stratego/tests/catch.hpp:2828:48: note: Function 'makeTestCase' argument 4 names different: declaration 'description' definition '_descOrTags'.
+                            std::string const& description,
+                                               ^
+Stratego/tests/catch.hpp:7097:48: note: Function 'makeTestCase' argument 4 names different: declaration 'description' definition '_descOrTags'.
+                            std::string const& _descOrTags,
+                                               ^
+Stratego/tests/catch.hpp:7098:51: style:inconclusive: Function 'makeTestCase' argument 5 names different: declaration 'lineInfo' definition '_lineInfo'. [funcArgNamesDifferent]
+                            SourceLineInfo const& _lineInfo )
+                                                  ^
+Stratego/tests/catch.hpp:2829:51: note: Function 'makeTestCase' argument 5 names different: declaration 'lineInfo' definition '_lineInfo'.
+                            SourceLineInfo const& lineInfo );
+                                                  ^
+Stratego/tests/catch.hpp:7098:51: note: Function 'makeTestCase' argument 5 names different: declaration 'lineInfo' definition '_lineInfo'.
+                            SourceLineInfo const& _lineInfo )
+                                                  ^
+Stratego/tests/catch.hpp:2663:31: performance: Function parameter '_tag' should be passed by const reference. [passedByValue]
+        TagAlias( std::string _tag, SourceLineInfo _lineInfo ) : tag( _tag ), lineInfo( _lineInfo ) {}
+                              ^
+Stratego/tests/catch.hpp:2663:52: performance: Function parameter '_lineInfo' should be passed by const reference. [passedByValue]
+        TagAlias( std::string _tag, SourceLineInfo _lineInfo ) : tag( _tag ), lineInfo( _lineInfo ) {}
+                                                   ^
+Stratego/tests/catch.hpp:6186:35: performance: Function parameter 'i' should be passed by const reference. [passedByValue]
+        bool operator() (TestCase i,TestCase j) const { return (i<j);}
+                                  ^
+Stratego/tests/catch.hpp:6186:46: performance: Function parameter 'j' should be passed by const reference. [passedByValue]
+        bool operator() (TestCase i,TestCase j) const { return (i<j);}
+                                             ^
+Stratego/tests/catch.hpp:9825:42: performance: Function parameter 'issue' should be passed by const reference. [passedByValue]
+            void printIssue( std::string issue ) const {
+                                         ^
+Checking Stratego/tests/main.cpp: CATCH_ARC_ENABLED=0;CATCH_CONFIG_MAIN;__OBJC__...
+Stratego/tests/catch.hpp:2869:20: error: syntax error: =[...]; [syntaxError]
+            id obj = [[m_cls alloc] init];
+                   ^
+Checking Stratego/tests/main.cpp: CATCH_ARC_ENABLED=0;__OBJC__...
+Checking Stratego/tests/main.cpp: CATCH_CONFIG_COLOUR_ANSI;CATCH_CONFIG_COLOUR_NONE;CATCH_CONFIG_COLOUR_WINDOWS...
+Checking Stratego/tests/main.cpp: CATCH_CONFIG_CPP11_GENERATED_METHODS;CATCH_CONFIG_CPP11_NO_GENERATED_METHODS;CATCH_CONFIG_NO_CPP11...
+Checking Stratego/tests/main.cpp: CATCH_CONFIG_CPP11_IS_ENUM;CATCH_CONFIG_CPP11_NO_IS_ENUM;CATCH_CONFIG_NO_CPP11...
+Checking Stratego/tests/main.cpp: CATCH_CONFIG_CPP11_LONG_LONG;CATCH_CONFIG_NO_CPP11;CATCH_CONFIG_NO_LONG_LONG...
+Checking Stratego/tests/main.cpp: CATCH_CONFIG_CPP11_NOEXCEPT;CATCH_CONFIG_CPP11_NO_NOEXCEPT;CATCH_CONFIG_NO_CPP11...
+Checking Stratego/tests/main.cpp: CATCH_CONFIG_CPP11_NO_NULLPTR;CATCH_CONFIG_CPP11_NULLPTR;CATCH_CONFIG_NO_CPP11...
+Checking Stratego/tests/main.cpp: CATCH_CONFIG_CPP11_NO_TUPLE;CATCH_CONFIG_CPP11_TUPLE;CATCH_CONFIG_NO_CPP11...
+Checking Stratego/tests/main.cpp: CATCH_CONFIG_CPP11_OVERRIDE;CATCH_CONFIG_NO_CPP11;CATCH_CONFIG_NO_OVERRIDE...
+Checking Stratego/tests/main.cpp: CATCH_CONFIG_CPP11_UNIQUE_PTR;CATCH_CONFIG_NO_CPP11;CATCH_CONFIG_NO_UNIQUE_PTR...
+11/17 files checked 53% done
+Checking Stratego/tests/test_models.cpp ...
+Stratego/tests/test_models.cpp:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 47 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+Stratego/tests/test_models.cpp:6:0: error: failed to expand 'TEST_CASE', Wrong number of parameters for macro 'TEST_CASE'. [preprocessorErrorDirective]
+TEST_CASE("Moving"){
+^
+Checking Stratego/tests/test_models.cpp: CATCH_CONFIG_NO_VARIADIC_MACROS;CATCH_CONFIG_VARIADIC_MACROS...
+Checking Stratego/tests/test_models.cpp: CATCH_CONFIG_PREFIX_ALL...
+Stratego/tests/test_models.cpp:51:59: error: There is an unknown macro here somewhere. Configuration is required. If ; is a macro then please configure it. [unknownMacro]
+        REQUIRE_THROWS(board.move(pos,Direction::BOTTOM,4););
+                                                          ^
+12/17 files checked 79% done
+Checking Stratego/tui/Controller.cpp ...
+Stratego/tui/Controller.h:30:9: style: Unused private function: 'Controller::createDistance' [unusedPrivateFunction]
+    int createDistance(std::string distance);
+        ^
+Stratego/tui/Controller.h:30:9: performance:inconclusive: Technically the member function 'stratego::Controller::createDistance' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+    int createDistance(std::string distance);
+        ^
+Stratego/tui/Controller.cpp:94:27: note: Technically the member function 'stratego::Controller::createDistance' can be static (but you may consider moving to unnamed namespace).
+int stratego::Controller::createDistance(std::string distance){
+                          ^
+Stratego/tui/Controller.h:30:9: note: Technically the member function 'stratego::Controller::createDistance' can be static (but you may consider moving to unnamed namespace).
+    int createDistance(std::string distance);
+        ^
+Stratego/tui/view.h:23:12: style: Class 'View' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+    inline View(Facade &facade):facade(facade){}
+           ^
+13/17 files checked 86% done
+Checking Stratego/tui/Controller.h ...
+14/17 files checked 89% done
+Checking Stratego/tui/main.cpp ...
+15/17 files checked 90% done
+Checking Stratego/tui/view.cpp ...
+Stratego/tui/view.h:28:12: performance:inconclusive: Technically the member function 'stratego::View::askMove' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+    string askMove();
+           ^
+Stratego/tui/view.cpp:22:14: note: Technically the member function 'stratego::View::askMove' can be static (but you may consider moving to unnamed namespace).
+string View::askMove(){
+             ^
+Stratego/tui/view.h:28:12: note: Technically the member function 'stratego::View::askMove' can be static (but you may consider moving to unnamed namespace).
+    string askMove();
+           ^
+Stratego/tui/view.h:49:10: performance:inconclusive: Technically the member function 'stratego::View::displayError' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+    void displayError(string err);
+         ^
+Stratego/tui/view.cpp:61:12: note: Technically the member function 'stratego::View::displayError' can be static (but you may consider moving to unnamed namespace).
+void View::displayError(string err){
+           ^
+Stratego/tui/view.h:49:10: note: Technically the member function 'stratego::View::displayError' can be static (but you may consider moving to unnamed namespace).
+    void displayError(string err);
+         ^
+Stratego/tui/view.h:54:12: performance:inconclusive: Technically the member function 'stratego::View::askSwap' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+    string askSwap();
+           ^
+Stratego/tui/view.cpp:5:14: note: Technically the member function 'stratego::View::askSwap' can be static (but you may consider moving to unnamed namespace).
+string View::askSwap(){
+             ^
+Stratego/tui/view.h:54:12: note: Technically the member function 'stratego::View::askSwap' can be static (but you may consider moving to unnamed namespace).
+    string askSwap();
+           ^
+Stratego/tui/view.h:63:10: performance:inconclusive: Technically the member function 'stratego::View::askCheatMode' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+    char askCheatMode();
+         ^
+Stratego/tui/view.cpp:38:12: note: Technically the member function 'stratego::View::askCheatMode' can be static (but you may consider moving to unnamed namespace).
+char View::askCheatMode(){
+           ^
+Stratego/tui/view.h:63:10: note: Technically the member function 'stratego::View::askCheatMode' can be static (but you may consider moving to unnamed namespace).
+    char askCheatMode();
+         ^
+Stratego/tui/view.cpp:61:32: performance: Function parameter 'err' should be passed by const reference. [passedByValue]
+void View::displayError(string err){
+                               ^
+16/17 files checked 96% done
+Checking Stratego/tui/view.h ...
+17/17 files checked 100% done
+Stratego/tui/Controller.cpp:94:0: style: The function 'createDistance' is never used. [unusedFunction]
+
+^
+Stratego/tui/view.cpp:57:0: style: The function 'displayCurrentPlayer' is never used. [unusedFunction]
+
+^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+

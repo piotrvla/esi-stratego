@@ -19,7 +19,8 @@ Modele::Board::Board(bool a){
 }
 
 void Modele::Board::initializeArmy(unsigned player){
-    vector<pair<char, int>> listOfPieces={pair('9',1), pair('8',1),pair('7',2),pair('6',3),pair('5',4),
+    vector<pair<char, int>> listOfPieces={
+        pair('9',1), pair('8',1),pair('7',2),pair('6',3),pair('5',4),
                 pair('4',4),pair('3',4),pair('2',5),pair('1',8),
                 pair('0',1),pair('F',1),pair('B',6)};
 
@@ -33,17 +34,25 @@ void Modele::Board::initializeArmy(unsigned player){
                 if(line.size()<2) throw out_of_range("Not enough file input.");
                 char selectedSymbol = line.at(0);
                 line.erase(0, 2);
-                vector<pair<char, int>>::iterator availibilitySymbol = find_if(listOfPieces.begin(), listOfPieces.end(), [selectedSymbol](pair<char, int> currentSymbol){
-                    return selectedSymbol == currentSymbol.first;
+                // @pbt you can use "auto"
+                vector<pair<char, int>>::iterator availibilitySymbol =
+                        find_if(listOfPieces.begin(),
+                            listOfPieces.end(),
+                            [selectedSymbol](pair<char, int> currentSymbol){
+                        return selectedSymbol == currentSymbol.first;
                 });
 
-                if(availibilitySymbol==listOfPieces.end()) throw out_of_range("Piece not found.");
-                if(availibilitySymbol->second==0) throw out_of_range("No more piece");
+                if(availibilitySymbol==listOfPieces.end())
+                    throw out_of_range("Piece not found.");
+                if(availibilitySymbol->second==0)
+                    throw out_of_range("No more piece");
                 availibilitySymbol->second--;
 
                 optional<Piece> piece((Piece(selectedSymbol,player)));
 
                 if(player==1){
+                    // @pbt why piece is optional ?
+                    // @pbt what copy do you ?
                 board[3-lineNb][i] = piece;
                 }else if(player==2){
                     board[BOARD_SIZE+lineNb-4][BOARD_SIZE-i-1] = piece;
@@ -76,13 +85,15 @@ void Modele::Board::initializeArmy(unsigned player){
 optional<Piece> Modele::Board::at(Position pos) const{
     return board.at(pos.getX()).at(pos.getY());
 }
+
 optional<Piece> & Modele::Board::at (Position pos){
     return board.at(pos.getX()).at(pos.getY());
 }
 
-bool Modele::Board::isInside(Position pos){
+bool Modele::Board::isInside(const Position & pos){
     return 0 <= pos.getX() && 0 <= pos.getY()
-            && pos.getX() < (int)BOARD_SIZE && pos.getY() < (int)BOARD_SIZE;
+            && pos.getX() < BOARD_SIZE
+            && pos.getY() < BOARD_SIZE;
 }
 
 
@@ -95,12 +106,17 @@ inline bool Modele::Board::isPiece(Position pos){
     return true;
 }
 
-optional<Piece> Modele::Board::attack(optional<Piece> &piece, optional<Piece> &piece2){
-    if(piece->getPlayer()==piece2->getPlayer())
-        throw invalid_argument("Cannot attack own piece! Attacking piece is of player " + std::to_string(piece->getSymbole()) + " while defender's is of " + piece2->getSymbole());
-    else if(piece2->getSymbole()=='W')
+optional<Piece> Modele::Board::attack(
+        optional<Piece> &piece, optional<Piece> &piece2){
+    if(piece->getPlayer() == piece2->getPlayer())
+        throw invalid_argument(
+                "Cannot attack own piece! Attacking piece is of player "
+                + std::to_string(piece->getSymbole())
+                + " while defender's is of "
+                + piece2->getSymbole());
+    else if(piece2->getSymbole() == 'W')
         throw invalid_argument("Cannot attack an obstacle");
-    if(piece->getSymbole()=='2' && piece2->getSymbole()=='B')
+    if(piece->getSymbole() == '2' && piece2->getSymbole() == 'B')
         return piece;
     else if(piece2->getSymbole()=='B')
         return piece2;
@@ -115,11 +131,13 @@ optional<Piece> Modele::Board::attack(optional<Piece> &piece, optional<Piece> &p
     else
         return optional<Piece>{};
 }
+
 bool Modele::Board::canMoveAt(Position pos, Direction direction, int distance){
     if(!isPiece(pos))
         throw invalid_argument("That's not a piece to move!");
     else if(!isInside(pos)){
         throw invalid_argument("Given position is out of bonds");
+        // @pbt break **before** an operator
     }else if(at(pos).value().getSymbole() == 'B'||
              at(pos)->getSymbole() == 'F' ||
              at(pos)->getSymbole() == 'W')
@@ -194,15 +212,19 @@ void Modele::Board::move(Position pos, Direction direction, int distance){
     }
 }
 bool Modele::Board::isGameOver(){
+    // @pbt valgrind don't like this… but why ?
     int flags=0;
     player1=false;
     player2=false;
-    for(int i = 0 ; i<(int)BOARD_SIZE;i++){
+    // @pbt you can use auto keyword
+    for(auto i = 0 ; i < BOARD_SIZE;i++){
         for(int j = 0; j <(int)BOARD_SIZE;j++){
+            // @ pbt create 6 new (same) position :-(
             if(isPiece(Position{i,j})
                     && at(Position{i,j})->getSymbole()=='F')
                 flags++;
-            if(at(Position{i,j})->getSymbole()!='F' && at(Position{i,j})->getSymbole()!='B'){
+            if(at(Position{i,j})->getSymbole()!='F'
+                    && at(Position{i,j})->getSymbole()!='B'){
                 if(!player1 && at(Position(i,j))->getPlayer()==1){
                     player1=true;
                 }

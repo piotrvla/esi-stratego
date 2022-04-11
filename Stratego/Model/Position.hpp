@@ -18,11 +18,11 @@ public:
      * @brief getX returns the row position.
      * @return row position.
      */
-    int getX();
+    int getX() const ;
     /**
      * @brief getY returns the col position.
      * @return col position.
      */
-    int getY();
+    int getY() const ;
 };
 #endif // POSITION_H

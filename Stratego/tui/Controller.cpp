@@ -17,8 +17,9 @@ void stratego::Controller::start(){
             std::string swapParams;
             while((swapParams=view.askSwap())!="END"){
                 view.printPlayer();
-                Position p1 = createPosition(swapParams.substr(0, swapParams.find(" ")));
-                swapParams=swapParams.erase(0, swapParams.find(" ")+1);
+                Position p1 = createPosition(
+                            swapParams.substr(0, swapParams.find(" ")));
+                swapParams = swapParams.erase(0, swapParams.find(" ")+1);
 
                 try{
                 facade.swap(p1, createPosition(swapParams));

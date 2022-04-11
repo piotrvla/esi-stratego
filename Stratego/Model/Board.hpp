@@ -9,6 +9,8 @@
 #include <ctime>
 #include <iostream>
 #include <string>
+
+// @pbt can't do forward declaration ?
 #include "Direction.hpp"
 #include "Piece.hpp"
 #include "Position.hpp"
@@ -23,6 +25,7 @@ namespace Modele{
 
         std::array<std::array<std::optional<Piece>,BOARD_SIZE>,BOARD_SIZE> board;
         bool cheatMode=false;
+        // @pbt bool is shaky choice
         bool player1=false;
         bool player2=false;
         /**
@@ -40,13 +43,16 @@ namespace Modele{
          * @param piece2 defender
          * @return reference of the winner.
          */
-        std::optional<Piece> attack(std::optional<Piece> &piece, std::optional<Piece> &piece2);
+        std::optional<Piece> attack(
+                std::optional<Piece> &piece,
+                std::optional<Piece> &piece2);
         /**
          * @brief isInside verifies if the given position is inside.
          * @param pos to check.
          * @return true if is inside, if not false.
          */
-        bool isInside(Position pos);
+        // @pbt const ref
+        bool isInside(const Position & pos);
     public:
         /**
          * @brief Board is a constructor with no parameters,
