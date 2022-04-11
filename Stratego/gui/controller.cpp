@@ -45,6 +45,7 @@ namespace strategoGui{
         try {
             facade.move(pos1,dir,distance);
             facade.nextPlayer();
+            facade.isGameOver();
         }  catch (std::exception &e) {
             view.updateGameStatus(e.what());
         }

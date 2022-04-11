@@ -16,9 +16,8 @@ View::View(Facade &f, QWidget *parent)
 
 {
     ui->setupUi(this);
-    ui->gridLayout->setHorizontalSpacing(0);
-    ui->gridLayout->setVerticalSpacing(0);
     this->setWindowTitle("Stratego - Smolinski Piotr & Noé Delcroix");
+    this->setFixedSize(this->width(), this->height());
     facade.addObserver(this);
     updateBoard();
 }
@@ -61,10 +60,23 @@ void View::updateCurrentPlayer(QString text){
     ui->player->setText(text);
 
 }
-void View::update(const std::string & propertyName){
+void View::gameOver(){
+    QLayoutItem *child;
+    while ((child = ui->gridLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    ui->player->setText("");
+    ui->winner->setText("Player " + QString::number(facade.getWinner())+" is the winner.");
 
+}
+void View::update(const std::string & propertyName){
     if(propertyName=="move"){
         updateBoard();
+    }else if(propertyName=="game over"){
+        gameOver();
+
+
     }
 
 }

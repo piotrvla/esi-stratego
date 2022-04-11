@@ -23,6 +23,7 @@ Piece Facade::at(Position pos) const{
 bool Facade::isGameOver(){
     if(board.isGameOver()){
         state=State::GAME_OVER;
+        notify("game over");
         return true;
     }
     return false;

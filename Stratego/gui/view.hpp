@@ -35,7 +35,9 @@ private:
     std::vector<Position> buttonsClicked;
     strategoGui::Controller * ctrl_= nullptr;
     void updateBoard();
+    void gameOver();
     void update(const std::string & propertyName) override;
+
 
 private slots:
     void eventHandler(Position pos);

@@ -149,6 +149,25 @@
      <string>Authors:</string>
     </property>
    </widget>
+   <widget class="QLabel" name="winner">
+    <property name="geometry">
+     <rect>
+      <x>1360</x>
+      <y>300</y>
+      <width>291</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Niagara Solid</family>
+      <pointsize>40</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

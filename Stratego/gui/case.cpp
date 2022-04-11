@@ -46,7 +46,7 @@ void Case::paintEvent(QPaintEvent *e) {
         painter.drawRect(QRect(0,0,130,72));
     }
     if(!hidden && player!=0){
-        painter.setPen(Qt::black);
+        painter.setPen(Qt::white);
         QFont font;
         font.setPointSize(15);
         painter.setFont(font);
