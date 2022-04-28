@@ -37,6 +37,7 @@ private:
     void updateBoard();
     void gameOver();
     void update(const std::string & propertyName) override;
+    void resizeEvent(QResizeEvent *e);
 
 
 private slots:

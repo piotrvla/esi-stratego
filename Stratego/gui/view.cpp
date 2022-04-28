@@ -17,9 +17,10 @@ View::View(Facade &f, QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("Stratego - Smolinski Piotr & Noé Delcroix");
-    this->setFixedSize(this->width(), this->height());
+
     facade.addObserver(this);
     updateBoard();
+
 }
 
 void View::updateBoard(){
@@ -66,6 +67,7 @@ void View::gameOver(){
         delete child->widget();
         delete child;
     }
+
     ui->player->setText("");
     ui->winner->setText("Player " + QString::number(facade.getWinner())+" is the winner.");
 
@@ -78,6 +80,12 @@ void View::update(const std::string & propertyName){
 
 
     }
+
+}
+void View::resizeEvent(QResizeEvent *e){
+    ui->gridLayoutWidget->setFixedSize(ui->centralwidget->width()*0.7,ui->centralwidget->height());
+    ui->verticalLayoutWidget->setGeometry(ui->centralwidget->width()/2,0,ui->gridLayoutWidget->width(),ui->verticalLayoutWidget->height());
+    ui->verticalLayoutWidget->setFixedSize(ui->centralwidget->width()*0.7,ui->centralwidget->height());
 
 }
 

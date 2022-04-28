@@ -28,6 +28,7 @@ protected:
 
 signals:
     void sendValue(Position pos);
+
 };
 
 #endif // CASE_HPP

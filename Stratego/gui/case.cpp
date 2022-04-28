@@ -50,10 +50,8 @@ void Case::paintEvent(QPaintEvent *e) {
         QFont font;
         font.setPointSize(15);
         painter.setFont(font);
-        painter.drawText(QPoint(65,40),QString{role});
+        painter.drawText(QPoint(0,0),QString{role});
     }
-
-
 
 }
 void Case::mousePressEvent(QMouseEvent *event) {
