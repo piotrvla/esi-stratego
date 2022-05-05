@@ -1,6 +1,8 @@
  #include "Facade.hpp"
 
-Facade::Facade():board{Modele::Board()},currentPlayer{1},state{State::NOT_STARTED}{
+using namespace Modele;
+
+Facade::Facade():board{Board()},currentPlayer{1},state{State::NOT_STARTED}{
 
 }
 void Facade::move(Position pos, Direction direction, int distance){
@@ -41,7 +43,7 @@ unsigned Facade::getCurrentPlayer() const{
 
 }
 void Facade::nextPlayer(){
-    if(state==State::NEXT_PLAYER | state==State::SWAPING)
+    if((state==State::NEXT_PLAYER | state==State::SWAPING))
         currentPlayer = currentPlayer==1 ? 2 : 1;
     if(state==State::SWAPING && currentPlayer==2){
         state=State::SWAPING;

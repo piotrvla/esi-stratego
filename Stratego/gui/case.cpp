@@ -2,7 +2,9 @@
 #include <cmath>
 #include <iostream>
 
+namespace strategoGui{
 Case::Case(int player, char role, Position position,bool hidden,QWidget *parent) : QWidget(parent), pos{position},role{role},player{player},hidden{hidden}{
+
 }
 
 #pragma GCC diagnostic push
@@ -46,17 +48,45 @@ void Case::paintEvent(QPaintEvent *e) {
         painter.drawRect(QRect(0,0,130,72));
     }
     if(!hidden && player!=0){
+        qDebug("ok");
         painter.setPen(Qt::white);
         QFont font;
         font.setPointSize(15);
         painter.setFont(font);
         painter.drawText(QPoint(0,0),QString{role});
+    }else{
+        qDebug("pas ok");
     }
+
+    QWidget::setAcceptDrops(true);
 
 }
 void Case::mousePressEvent(QMouseEvent *event) {
     event->accept();
+
+    QDrag *drag = new QDrag(this);
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setText("text");
+    drag->setMimeData(mimeData);
+    Qt::DropAction dropAction = drag->exec();
+}
+
+void Case::dragEnterEvent(QDragEnterEvent * event){
+    event->accept();
+    emit sendDragStatus(true);
     emit sendValue(pos);
+}
+
+void Case::dragLeaveEvent(QDragLeaveEvent *event){
+
+}
+
+void Case::dropEvent(QDropEvent*event){
+    event->accept();
+    emit sendDragStatus(false);
+    //emit sendValue(pos);
+}
+
 }
 
 

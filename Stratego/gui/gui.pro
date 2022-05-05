@@ -7,12 +7,14 @@ include(../config.pri)
 
 
 SOURCES += \
+    boardGui.cpp \
     case.cpp \
     controller.cpp \
     main.cpp \
     view.cpp
 
 HEADERS += \
+    boardGui.hpp \
     case.hpp \
     controller.hpp \
     view.hpp

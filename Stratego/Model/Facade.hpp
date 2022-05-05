@@ -1,6 +1,6 @@
 #ifndef FACADE_H
 #define FACADE_H
-#include "Board.hpp"
+#include "./Board.hpp"
 #include "State.hpp"
 #include "observable.h"
 #include "observer.h"

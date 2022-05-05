@@ -2,15 +2,15 @@
 #define CONTROLLER_HPP
 
 #include "view.hpp"
-class Facade;
-class View;
+
+
 namespace strategoGui {
 /**
  * @brief The Controller class allows to link the model and the view.
  * It manages the game mechanism for the graphic version .
  */
 class Controller {
-    Facade &facade;
+    Facade & facade;
     View & view;
 
 public:
@@ -19,9 +19,7 @@ public:
      * @param game game
      * @param view view of the game
      */
-    Controller(Facade &facade, View &view) :
-        facade{facade}, view{view} {
-    }
+    Controller(Facade &facade, View & view):facade{facade}, view{view}{};
     /**
      * @brief Starts the game.
      */

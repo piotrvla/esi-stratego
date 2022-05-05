@@ -7,8 +7,15 @@ namespace strategoGui{
         view.show();
         view.controller(this);
         facade.nextPlayer();
+        //view.update("move");
     }
     void Controller::move(Position pos1, Position pos2){
+        qDebug("ok");
+        qDebug("okok");
+        if(!facade.isPiece(pos1) || facade.at(pos1).getPlayer()!=facade.getCurrentPlayer()){
+            view.updateGameStatus("Cette pièce n'appartient pas au joueur.");
+            return;
+        }
 
         view.updateGameStatus("");
         Direction dir;
@@ -51,7 +58,6 @@ namespace strategoGui{
         }
 
         view.updateCurrentPlayer("Player " + QString::number(facade.getCurrentPlayer()) + " turn.");
-
     }
 
 }

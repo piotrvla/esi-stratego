@@ -1,5 +1,5 @@
 #include "view.hpp"
-#include "controller.hpp"
+#include "boardGui.hpp"
 #include "ui_stratego.h"
 #include <QMessageBox>
 #include <QPalette>
@@ -8,52 +8,53 @@
 #include <iostream>
 #include <string>
 #include "case.hpp"
+#include "controller.hpp"
+
+namespace strategoGui{
 View::View(Facade &f, QWidget *parent)
     : QMainWindow(parent)
     , facade{f}
     , ui(new Ui::View)
     , buttonsClicked{}
+    , board(ui, this, facade, parent)
 
 {
     ui->setupUi(this);
     this->setWindowTitle("Stratego - Smolinski Piotr & Noé Delcroix");
 
     facade.addObserver(this);
-    updateBoard();
-
+    board.setController(ctrl_);
+    board.updateBoard();
+}
+/*
+void View::dragEventHandler(bool status){
+    qDebug("dragStatus");
 }
 
-void View::updateBoard(){
-        QLayoutItem *child;
-        while ((child = ui->gridLayout->takeAt(0)) != nullptr) {
-            delete child->widget();
-            delete child;
-        }
-    for (int i=0;i<10 ;i++ ) {
-        for (int j =0;j<10 ;j++ ) {
-            if(facade.isPiece(Position{i,j})){
-                Case *piece = new Case(facade.at(Position{i,j}).getPlayer(),
-                                     facade.at(Position{i,j}).getSymbole(),Position{i,j},facade.at(Position{i,j}).getPlayer()!=facade.getCurrentPlayer(),this);
-                ui->gridLayout->addWidget(piece,i,j);
-                if(facade.at(Position{i,j}).getSymbole()!='W')
-                    connect(piece,SIGNAL(sendValue(Position)),this,SLOT(eventHandler(Position)));
-             }else{
-                Case *piece = new Case(0,'E',Position{i,j},false,this);
-                ui->gridLayout->addWidget(piece,i,j);
-                connect(piece,SIGNAL(sendValue(Position)),this,SLOT(eventHandler(Position)));
-            }
-         }
-     }
-
-}
 void View::eventHandler(Position pos){
+    qDebug("%zu", buttonsClicked.size());
+    if(buttonsClicked.size()==0 || pos.getX()!=buttonsClicked.at(0).getX() || pos.getY()!=buttonsClicked.at(0).getY()){
+        qDebug("ok");
     buttonsClicked.push_back(pos);
-    if(buttonsClicked.size()>=2){
+    }
+    if(buttonsClicked.size()>=2 && !dragStatus){
+        while(buttonsClicked.size()>2){
+            buttonsClicked.erase(buttonsClicked.begin()+1);
+        }
         ctrl_->move(buttonsClicked.at(0),buttonsClicked.at(1));
+        //Si le deuxième emplacement n'est pas une pièce ou si la deuxième pièce n'appartient pas au joueur courant
+        if(!facade.isPiece(buttonsClicked.at(1)) || facade.at(buttonsClicked.at(1)).getPlayer()!=facade.getCurrentPlayer()){
         buttonsClicked.clear();
-
+        }else{
+            buttonsClicked.erase(buttonsClicked.begin());
+        }
+    }else if(buttonsClicked.size()==1 && (!facade.isPiece(pos) || facade.at(pos).getPlayer()!=facade.getCurrentPlayer())){
+        //Si le premier emplacement cliqué n'est pas une pièce ou n'appartient pas au joueur.
+        updateGameStatus("Cette pièce n'appartient pas au joueur.");
+        buttonsClicked.clear();
     }
 }
+*/
 void View::updateGameStatus(QString text){
     ui->gamestatus->setText(text);
 }
@@ -74,7 +75,7 @@ void View::gameOver(){
 }
 void View::update(const std::string & propertyName){
     if(propertyName=="move"){
-        updateBoard();
+        board.updateBoard();
     }else if(propertyName=="game over"){
         gameOver();
 
@@ -82,18 +83,20 @@ void View::update(const std::string & propertyName){
     }
 
 }
+
 void View::resizeEvent(QResizeEvent *e){
-    ui->gridLayoutWidget->setFixedSize(ui->centralwidget->width()*0.7,ui->centralwidget->height());
-    ui->verticalLayoutWidget->setGeometry(ui->centralwidget->width()/2,0,ui->gridLayoutWidget->width(),ui->verticalLayoutWidget->height());
-    ui->verticalLayoutWidget->setFixedSize(ui->centralwidget->width()*0.7,ui->centralwidget->height());
+    ui->gridLayoutWidget->setFixedSize(ui->centralwidget->width()*0.5,ui->centralwidget->height());
+    //ui->verticalLayoutWidget->setGeometry(ui->centralwidget->width()/2,0,ui->gridLayoutWidget->width(),ui->verticalLayoutWidget->height());
+    ui->verticalLayoutWidget->setFixedSize(ui->centralwidget->width()*0.5,ui->centralwidget->height());
 
 }
 
 
 View::~View()
 {
-    delete ui;
+    //delete ui;
 }
 
+}
 
 
