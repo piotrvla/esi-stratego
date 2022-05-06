@@ -25,9 +25,6 @@ public:
      */
     void start();
 
-    void move(Position pos1, Position pos2);
-
-
 };
 
 }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1234</width>
-    <height>781</height>
+    <width>1305</width>
+    <height>770</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>891</width>
+      <width>941</width>
       <height>731</height>
      </rect>
     </property>
@@ -41,9 +41,9 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>910</x>
+      <x>960</x>
       <y>10</y>
-      <width>416</width>
+      <width>331</width>
       <height>731</height>
      </rect>
     </property>
@@ -60,6 +60,7 @@
         <font>
          <family>Nimbus Roman</family>
          <pointsize>30</pointsize>
+         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -78,13 +79,14 @@
       <widget class="QLabel" name="player">
        <property name="font">
         <font>
-         <family>Nimbus Roman</family>
-         <pointsize>20</pointsize>
-         <bold>true</bold>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>18</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="text">
-        <string>Player X turn</string>
+        <string>Player 1 turn</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -113,6 +115,7 @@
         <font>
          <family>Nimbus Roman</family>
          <pointsize>20</pointsize>
+         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -128,9 +131,10 @@
       <widget class="QLabel" name="label_7">
        <property name="font">
         <font>
-         <family>Nimbus Roman</family>
-         <pointsize>20</pointsize>
-         <bold>true</bold>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>18</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="text">
@@ -145,9 +149,10 @@
       <widget class="QLabel" name="label_6">
        <property name="font">
         <font>
-         <family>Nimbus Roman</family>
-         <pointsize>20</pointsize>
-         <bold>true</bold>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>18</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="text">

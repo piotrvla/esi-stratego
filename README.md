@@ -1,7 +1,26 @@
 # Stratego
-## Start :
+
+## Gameplay GUI:
+### Start:
+To execute the game, you should run the main class from the gui sub project. 
+
+### Gameplay and some additional informations:
+
+- Firstly, the game goes through the swapping mode, since the pieces at the start are randomly initialized for both players. Initially the player 1 (blue), has to start to swap. Once he have finished, current player needs to make an invalid swap, swapping its piece with a blank space, same goes for the second user.
+- Then, the real gameplay starts until the enemy flag is captured.
+- For every wrong move, on the right side of the window, additional information is displayed to inform the player.
+- Current player is always displayed under the Stratego's "logo".
+- The window is resizable.
+
+### Modifications since the last submission in the model package.
+1. Observer -observable pattern.
+
+## Gameplay TUI:
+
+### Start :
+
 First of all, make sure that you're running it in the terminal. Then run the subdir called tui. Same goes for the test, run test subdir instead of tui.
-### Gameplay TUI:
+
 Before the game starts it will asks you if all the cases should be visible [y/n] answer is needed.
 ```
 Do you want to use the cheat mode? [y/n]
@@ -99,10 +118,26 @@ Game is over when the flag piece is catch or there's no pieces to move.
 │
 └───Stratego
     │   config.pri
-    │   main.cpp
-    │   Position.cpp
-    │   Position.hpp
     │   Stratego.pro
+    │   Stratego.pro.user
+    │
+    ├───gui
+    │   │   boardGui.cpp
+    │   │   boardGui.hpp
+    │   │   case.cpp
+    │   │   case.hpp
+    │   │   controller.cpp
+    │   │   controller.hpp
+    │   │   gui.cpp
+    │   │   gui.pro
+    │   │   gui.pro.user
+    │   │   main.cpp
+    │   │   view.cpp
+    │   │   view.hpp
+    │   │
+    │   └───resources
+    │           images.qrc
+    │           stratego.ui
     │
     ├───Model
     │       Board.cpp
@@ -111,6 +146,8 @@ Game is over when the flag piece is catch or there's no pieces to move.
     │       Facade.cpp
     │       Facade.hpp
     │       Model.pro
+    │       observable.h
+    │       observer.h
     │       Piece.cpp
     │       Piece.hpp
     │       Position.cpp

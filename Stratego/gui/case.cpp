@@ -80,7 +80,6 @@ void Case::dragLeaveEvent(QDragLeaveEvent *event){
 void Case::dropEvent(QDropEvent*event){
     event->accept();
     emit sendDragStatus(false);
-    //emit sendValue(pos);
 }
 
 }

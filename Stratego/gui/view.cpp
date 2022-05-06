@@ -3,7 +3,6 @@
 #include "ui_stratego.h"
 #include <QMessageBox>
 #include <QPalette>
-#include <QPalette>
 #include <QPushButton>
 #include <iostream>
 #include <string>
@@ -21,7 +20,7 @@ View::View(Facade &f, QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("Stratego - Smolinski Piotr & Noé Delcroix");
-    ui->centralwidget->setMinimumSize(1234,781);
+    ui->centralwidget->setMinimumSize(1400,777);
     facade.addObserver(this);
     board.updateBoard();
 }
@@ -53,10 +52,9 @@ void View::update(const std::string & propertyName){
 }
 
 void View::resizeEvent(QResizeEvent *e){
-    ui->gridLayoutWidget->setFixedSize((ui->centralwidget->width()*0.66)+100,ui->centralwidget->height());
-    ui->verticalLayoutWidget->setFixedWidth(ui->centralwidget->width()*0.33);
+    ui->gridLayoutWidget->setFixedSize((ui->centralwidget->width()-336),ui->centralwidget->height());
     ui->verticalLayoutWidget->setFixedHeight(ui->centralwidget->height());
-    ui->verticalLayoutWidget->move(ui->gridLayoutWidget->size().width()-45,0);
+    ui->verticalLayoutWidget->move(ui->gridLayoutWidget->size().width()+5,0);
 }
 
 
