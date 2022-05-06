@@ -43,7 +43,7 @@
      <rect>
       <x>910</x>
       <y>10</y>
-      <width>301</width>
+      <width>416</width>
       <height>731</height>
      </rect>
     </property>
@@ -58,8 +58,9 @@
       <widget class="QLabel" name="label">
        <property name="font">
         <font>
-         <family>Niagara Solid</family>
-         <pointsize>72</pointsize>
+         <family>Nimbus Roman</family>
+         <pointsize>30</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -77,8 +78,9 @@
       <widget class="QLabel" name="player">
        <property name="font">
         <font>
-         <family>Niagara Solid</family>
-         <pointsize>28</pointsize>
+         <family>Nimbus Roman</family>
+         <pointsize>20</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -93,8 +95,8 @@
       <widget class="QLabel" name="gamestatus">
        <property name="font">
         <font>
-         <family>Impact</family>
-         <pointsize>18</pointsize>
+         <family>Nimbus Roman</family>
+         <pointsize>15</pointsize>
         </font>
        </property>
        <property name="text">
@@ -109,8 +111,9 @@
       <widget class="QLabel" name="winner">
        <property name="font">
         <font>
-         <family>Niagara Solid</family>
-         <pointsize>40</pointsize>
+         <family>Nimbus Roman</family>
+         <pointsize>20</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -125,8 +128,9 @@
       <widget class="QLabel" name="label_7">
        <property name="font">
         <font>
-         <family>Niagara Solid</family>
-         <pointsize>24</pointsize>
+         <family>Nimbus Roman</family>
+         <pointsize>20</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -141,8 +145,9 @@
       <widget class="QLabel" name="label_6">
        <property name="font">
         <font>
-         <family>Niagara Solid</family>
-         <pointsize>24</pointsize>
+         <family>Nimbus Roman</family>
+         <pointsize>20</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
