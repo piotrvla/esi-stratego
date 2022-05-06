@@ -48,14 +48,11 @@ void Case::paintEvent(QPaintEvent *e) {
         painter.drawRect(QRect(0,0,130,72));
     }
     if(!hidden && player!=0){
-        qDebug("ok");
         painter.setPen(Qt::white);
         QFont font;
         font.setPointSize(15);
         painter.setFont(font);
-        painter.drawText(QPoint(0,0),QString{role});
-    }else{
-        qDebug("pas ok");
+        painter.drawText(QPoint(40,40),QString{role});
     }
 
     QWidget::setAcceptDrops(true);
@@ -63,7 +60,6 @@ void Case::paintEvent(QPaintEvent *e) {
 }
 void Case::mousePressEvent(QMouseEvent *event) {
     event->accept();
-
     QDrag *drag = new QDrag(this);
     QMimeData *mimeData = new QMimeData;
     mimeData->setText("text");

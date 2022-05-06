@@ -34,3 +34,5 @@ DEPENDPATH += $$PWD/../Model
 
 FORMS += \
     resources/stratego.ui
+
+RESOURCES +=

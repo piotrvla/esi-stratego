@@ -41,10 +41,6 @@ void Board::positionHandler(Position pos){
         movPosInit=pos;
     else
         movPosEnd=pos;
-
-    qDebug("pos init x %d y %d", movPosInit.getX(), movPosInit.getY());
-    qDebug("pos end x %d y %d", movPosEnd.getX(), movPosEnd.getY());
-
     if(!dragStatus && movPosInit.getX()!=-1 && movPosInit.getY()!=-1 && movPosEnd.getX()!=-1 && movPosEnd.getY()!=-1){
         //controller->move(movPosInit, movPosEnd);
         move(movPosInit, movPosEnd);
@@ -55,7 +51,6 @@ void Board::positionHandler(Position pos){
 
 void Board::dragStatusHandler(bool status){
     dragStatus=status;
-    qDebug("%d", status);
     positionHandler(movPosEnd);
 
 }
@@ -65,7 +60,6 @@ void Board::setController(Controller * controller){
 }
 
 void Board::move(Position pos1, Position pos2){
-    qDebug("%d", facade.getState());
     if(!facade.isPiece(pos1) || facade.at(pos1).getPlayer()!=facade.getCurrentPlayer()){
         view->updateGameStatus("Cette pièce n'appartient pas au joueur.");
         return;
