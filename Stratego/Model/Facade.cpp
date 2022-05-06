@@ -47,6 +47,7 @@ void Facade::nextPlayer(){
         currentPlayer = currentPlayer==1 ? 2 : 1;
     if(state==State::SWAPING && currentPlayer==2){
         state=State::SWAPING;
+        notify("swap");
     }else{
         state=State::MOVING;
         notify("move");
@@ -74,6 +75,7 @@ void Facade::swap(Position p1, Position p2){
     if(at(p1).getPlayer()!=currentPlayer || at(p2).getPlayer()!=currentPlayer)
         throw std::invalid_argument("That's not your piece");
     board.swap(p1, p2);
+    notify("swap");
 }
 void Facade::setCheatMode(char chMode){
     if(chMode=='y')

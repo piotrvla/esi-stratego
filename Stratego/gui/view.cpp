@@ -45,7 +45,7 @@ void View::gameOver(){
 
 }
 void View::update(const std::string & propertyName){
-    if(propertyName=="move"){
+    if(propertyName=="move" || propertyName=="swap"){
         board.updateBoard();
     }else if(propertyName=="game over"){
         gameOver();
