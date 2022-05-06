@@ -37,15 +37,26 @@ void Board::updateBoard(){
 }
 
 void Board::positionHandler(Position pos){
+    view->updateGameStatus("");
     if(movPosInit.getX()==-1 && movPosInit.getY()==-1)
         movPosInit=pos;
     else
         movPosEnd=pos;
     if(!dragStatus && movPosInit.getX()!=-1 && movPosInit.getY()!=-1 && movPosEnd.getX()!=-1 && movPosEnd.getY()!=-1){
-        //controller->move(movPosInit, movPosEnd);
+        if(facade.getState()==State::MOVING){
         move(movPosInit, movPosEnd);
+        }else if(facade.getState()==State::SWAPING){
+            try{
+            facade.swap(movPosInit, movPosEnd);
+            }catch(std::exception & e){
+                view->updateGameStatus("Invalid swap. Going to next player.");
+                facade.nextPlayer();
+                view->updateCurrentPlayer("Player " + QString::number(facade.getCurrentPlayer()) + " turn.");
+            }
+        }
         movPosInit=Position(-1, -1);
         movPosEnd=Position(-1,-1);
+
     }
 }
 
@@ -53,10 +64,6 @@ void Board::dragStatusHandler(bool status){
     dragStatus=status;
     positionHandler(movPosEnd);
 
-}
-
-void Board::setController(Controller * controller){
-    this->controller=controller;
 }
 
 void Board::move(Position pos1, Position pos2){

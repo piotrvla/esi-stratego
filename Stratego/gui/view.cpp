@@ -23,7 +23,6 @@ View::View(Facade &f, QWidget *parent)
     this->setWindowTitle("Stratego - Smolinski Piotr & Noé Delcroix");
     ui->centralwidget->setMinimumSize(1234,781);
     facade.addObserver(this);
-    board.setController(ctrl_);
     board.updateBoard();
 }
 
@@ -56,7 +55,6 @@ void View::update(const std::string & propertyName){
 void View::resizeEvent(QResizeEvent *e){
     ui->gridLayoutWidget->setFixedSize((ui->centralwidget->width()*0.66)+100,ui->centralwidget->height());
     ui->verticalLayoutWidget->setFixedWidth(ui->centralwidget->width()*0.33);
-
     ui->verticalLayoutWidget->setFixedHeight(ui->centralwidget->height());
     ui->verticalLayoutWidget->move(ui->gridLayoutWidget->size().width()-45,0);
 }
@@ -64,7 +62,7 @@ void View::resizeEvent(QResizeEvent *e){
 
 View::~View()
 {
-    //delete ui;
+    delete ui;
 }
 
 }

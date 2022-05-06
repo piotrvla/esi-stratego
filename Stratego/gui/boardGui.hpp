@@ -23,14 +23,12 @@ private:
     Ui::View * ui;
     Facade & facade;
     View * view;
-    Controller * controller=nullptr;
     void move(Position pos1, Position pos2);
     QWidget * parent;
     bool dragStatus;
 public:
     Board(Ui::View * ui, strategoGui::View * view, Facade & facade, QWidget * parent=nullptr);
     void updateBoard();
-    void setController(Controller * controller);
 };
 }
 
