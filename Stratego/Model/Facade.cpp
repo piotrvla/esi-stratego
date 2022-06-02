@@ -5,6 +5,11 @@ using namespace Modele;
 Facade::Facade():board{Board()},currentPlayer{1},state{State::NOT_STARTED}{
 
 }
+void Facade::randomPieces(){
+    board.randomPieces(this->currentPlayer);
+    notify("swap");
+}
+
 void Facade::move(Position pos, Direction direction, int distance){
     if(state!=State::MOVING)
         throw std::invalid_argument("Cannot move right now");

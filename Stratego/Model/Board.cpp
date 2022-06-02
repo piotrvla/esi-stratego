@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include <stdio.h>
 using namespace std;
 Modele::Board::Board(){
     for(unsigned player=1; player<=2; player++){
@@ -70,6 +71,49 @@ void Modele::Board::initializeArmy(unsigned player){
 
         fo.close();
         initializeArmy(player);
+    }
+}
+
+void Modele::Board::randomPieces(unsigned player){
+    vector<pair<char, int>> listOfPieces={pair('9',0), pair('8',0),pair('7',0),pair('6',0),pair('5',0),
+                pair('4',0),pair('3',0),pair('2',0),pair('1',0),
+                pair('0',0),pair('F',0),pair('B',0)};
+    //compte les elements
+    for(unsigned i=0; i<BOARD_SIZE; i++){
+        for(unsigned j=0; j<BOARD_SIZE; j++){
+            if(isPiece(Position(i, j)) && at(Position(i, j))->getPlayer()==player){
+                for(unsigned z=0; z<listOfPieces.size(); z++){
+                    if(listOfPieces.at(z).first==at(Position(i,j))->getSymbole()){
+                        listOfPieces.at(z).second++;
+                        break;
+                    }
+                }
+            }
+        }
+       }
+
+    //supprime les clés vides
+    for(unsigned i=0; i<listOfPieces.size(); i++){
+        if(listOfPieces.at(i).second==0){
+            listOfPieces.erase(listOfPieces.begin()+i);
+        }
+    }
+
+    //modifie le board
+    srand(time(NULL)+player);
+    for(unsigned i=0; i<BOARD_SIZE; i++){
+        for(unsigned j=0; j<BOARD_SIZE; j++){
+            if(isPiece(Position(i, j)) && at(Position(i, j))->getPlayer()==player){
+                unsigned randNb = rand()%listOfPieces.size();
+                pair<char, int> & selectedPiece = listOfPieces.at(randNb);
+                optional<Piece> piece((Piece(selectedPiece.first,player)));
+                board.at(i).at(j).swap(piece);
+                selectedPiece.second--;
+                if(listOfPieces.at(randNb).second==0){
+                    listOfPieces.erase(listOfPieces.begin()+randNb);
+                }
+            }
+        }
     }
 }
 

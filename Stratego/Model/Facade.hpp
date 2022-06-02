@@ -26,6 +26,7 @@ public:
      * initial state becomes NOT_STARTED.
      */
     Facade();
+    void randomPieces();
     /**
      * @brief move asks the board to move from the given position, in the given direction by distance cases.
      * @param pos position to move from.

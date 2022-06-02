@@ -13,6 +13,7 @@
 #include "Piece.hpp"
 #include "Position.hpp"
 #include <stdlib.h>
+#include <stdio.h>
 
 namespace Modele{
     /**
@@ -122,6 +123,8 @@ namespace Modele{
          * @param p2 position 2 to swap to.
          */
         void swap(Position p1, Position p2);
+
+        void randomPieces(unsigned player);
 
         
     };

@@ -21,6 +21,9 @@ View::View(Facade &f, QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("Stratego - Smolinski Piotr & Noé Delcroix");
     ui->centralwidget->setMinimumSize(1400,777);
+    QObject::connect(ui->randomPieces, &QPushButton::clicked, [=]() {
+         facade.randomPieces();
+    });
     facade.addObserver(this);
     board.updateBoard();
 }
