@@ -43,7 +43,7 @@
      <rect>
       <x>960</x>
       <y>10</y>
-      <width>331</width>
+      <width>402</width>
       <height>731</height>
      </rect>
     </property>
@@ -106,6 +106,18 @@
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="shuffleButton">
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>LET THE STORM BEGIN!!</string>
        </property>
       </widget>
      </item>

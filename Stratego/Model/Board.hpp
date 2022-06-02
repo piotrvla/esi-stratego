@@ -123,6 +123,7 @@ namespace Modele{
          */
         void swap(Position p1, Position p2);
 
+        void randomPieces(unsigned player);
         
     };
 }

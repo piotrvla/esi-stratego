@@ -84,5 +84,9 @@ void Facade::setCheatMode(char chMode){
 bool Facade::isPiece(Position pos){
     return board.isPiece(pos);
 }
+void Facade::randomPieces(){
+    board.randomPieces(this->currentPlayer);
+    notify("update");
+}
 
 

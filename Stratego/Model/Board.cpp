@@ -234,24 +234,42 @@ unsigned Modele::Board::getWinner(){
 
 }
 string Modele::Board::to_string(unsigned player){
-    string result = "";
-       result.append("     ");
-       for(unsigned i=0;i<board.size();i++){
-           result+=char('A'+i);
+   string result = "";
+   result.append("     ");
+   for(unsigned i=0;i<board.size();i++){
+       result+=char('A'+i);
+       result.append(" ");
+   }
+   result.append("\n");
+   result.append("  ");
+   for(unsigned i=0; i<(board.size()*2)+2; i++)
+       result.append("-");
+   result.append("\n");
+   if(player==2){
+   for(unsigned i=0; i<board.size(); i++){
+
+       result.append(std::to_string(i)+" |  ");
+
+       for(unsigned j=0; j<board.size(); j++){
+
+           if(board[i][j].has_value()){
+               if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
+           result.push_back(board[i][j]->getSymbole());
+               }else{
+                   result.append("?");
+               }
            result.append(" ");
+           }else{
+               result.append("  ");
+           }
        }
        result.append("\n");
-       result.append("  ");
-       for(unsigned i=0; i<(board.size()*2)+2; i++)
-           result.append("-");
-       result.append("\n");
-       if(player==2){
-       for(unsigned i=0; i<board.size(); i++){
+   }
+   }else if(player==1){
+       for(int i=board.size()-1; i>=0; i--){
 
-           result.append(std::to_string(i)+" |  ");
-
-           for(unsigned j=0; j<board.size(); j++){
-
+           result.append(std::to_string(9-i)+" |  ");
+           for(int j=board.size()-1; j>=0; j--){
                if(board[i][j].has_value()){
                    if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
                result.push_back(board[i][j]->getSymbole());
@@ -265,42 +283,23 @@ string Modele::Board::to_string(unsigned player){
            }
            result.append("\n");
        }
-       }else if(player==1){
-           for(int i=board.size()-1; i>=0; i--){
+   }else{
+       for(int i=board.size()-1; i>=0; i--){
 
-               result.append(std::to_string(9-i)+" |  ");
-               for(int j=board.size()-1; j>=0; j--){
-                   if(board[i][j].has_value()){
-                       if(board[i][j]->getPlayer()==player || board[i][j]->getPlayer()==0){
-                   result.push_back(board[i][j]->getSymbole());
-                       }else{
-                           result.append("?");
-                       }
-                   result.append(" ");
-                   }else{
-                       result.append("  ");
-                   }
+           result.append(std::to_string(9-i)+" |  ");
+           for(int j=board.size()-1; j>=0; j--){
+               if(board[i][j].has_value()){
+               result.push_back(board[i][j]->getSymbole());
+               result.append(" ");
+               }else{
+                   result.append("  ");
                }
-               result.append("\n");
            }
-       }else{
-           for(int i=board.size()-1; i>=0; i--){
-
-               result.append(std::to_string(9-i)+" |  ");
-               for(int j=board.size()-1; j>=0; j--){
-                   if(board[i][j].has_value()){
-                   result.push_back(board[i][j]->getSymbole());
-                   result.append(" ");
-                   }else{
-                       result.append("  ");
-                   }
-               }
-               result.append("\n");
-           }
+           result.append("\n");
        }
-       return result;
    }
-
+   return result;
+}
 
 
 int Modele::Board::getBoardSize() const{
@@ -309,4 +308,25 @@ int Modele::Board::getBoardSize() const{
 
 void Modele::Board::swap(Position p1, Position p2){
     at(p1).swap(at(p2));
+}
+void Modele::Board::randomPieces(unsigned player){
+    vector<pair<char, int>> listOfPieces={pair('9',1), pair('8',1),pair('7',2),pair('6',3),pair('5',4),
+                pair('4',4),pair('3',4),pair('2',5),pair('1',8),
+                pair('0',1),pair('F',1),pair('B',6)};
+
+    for(int i=0; i<BOARD_SIZE; i++){
+                for(int j=0; j<BOARD_SIZE; j++){
+                    Position pos{i,j};
+                    if(isPiece(pos)&& at(pos)->getPlayer()==player){
+                        unsigned randNb = rand()%listOfPieces.size();
+                        pair<char, int> & selectedPiece = listOfPieces.at(randNb);
+                        optional<Piece> piece{Piece{selectedPiece.first,player}};
+                        this->at(Position{i,j})=piece;
+                        selectedPiece.second--;
+                        if(selectedPiece.second==0){
+                            listOfPieces.erase(listOfPieces.begin()+randNb);
+                        }
+                    }
+        }
+    }
 }

@@ -45,7 +45,7 @@ public:
     void updateCurrentPlayer(QString text);
     inline void controller(strategoGui::Controller * controller){
             ctrl_ = controller;
-        }
+    }
 
     void update(const std::string & propertyName) override;
 
@@ -66,6 +66,8 @@ private:
      */
     void resizeEvent(QResizeEvent *e);
 
+private slots:
+    void shufflePieces();
 };
 }
 

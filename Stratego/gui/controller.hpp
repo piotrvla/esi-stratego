@@ -25,6 +25,9 @@ public:
      */
     void start();
 
+    void shufflePieces(){
+        facade.randomPieces();
+    }
 };
 
 }

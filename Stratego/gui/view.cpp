@@ -8,6 +8,8 @@
 #include <string>
 #include "case.hpp"
 #include "controller.hpp"
+#include <QDebug>
+
 
 namespace strategoGui{
 View::View(Facade &f, QWidget *parent)
@@ -23,6 +25,7 @@ View::View(Facade &f, QWidget *parent)
     ui->centralwidget->setMinimumSize(1400,777);
     facade.addObserver(this);
     board.updateBoard();
+    QObject::connect(ui->shuffleButton,SIGNAL(clicked()),this,SLOT(shufflePieces()));
 }
 
 void View::updateGameStatus(QString text){
@@ -44,19 +47,21 @@ void View::gameOver(){
 
 }
 void View::update(const std::string & propertyName){
-    if(propertyName=="move" || propertyName=="swap"){
+    if(propertyName=="move" || propertyName=="swap" || propertyName=="update"){
         board.updateBoard();
     }else if(propertyName=="game over"){
         gameOver();
     }
 }
-
 void View::resizeEvent(QResizeEvent *e){
     ui->gridLayoutWidget->setFixedSize((ui->centralwidget->width()-336),ui->centralwidget->height());
     ui->verticalLayoutWidget->setFixedHeight(ui->centralwidget->height());
     ui->verticalLayoutWidget->move(ui->gridLayoutWidget->size().width()+5,0);
 }
-
+void View::shufflePieces(){
+    qDebug("shuffle time!");
+    ctrl_->shufflePieces();
+}
 
 View::~View()
 {

@@ -89,6 +89,8 @@ public:
      */
     void setCheatMode(char mode);
     bool isPiece(Position pos);
+
+    void randomPieces();
     // Subject interface
 
     void addObserver(Observer * o)override
